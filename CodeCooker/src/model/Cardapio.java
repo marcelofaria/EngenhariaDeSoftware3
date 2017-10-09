@@ -14,14 +14,32 @@ public class Cardapio {
     /**
      * Default constructor
      */
-    public Cardapio() {
+    public Cardapio(Collection<Item> itens, DiaDaSemana dia) {
+        this.setDia(dia);
+        this.setItens(itens);
     }
 
+    public DiaDaSemana getDia(){
+        return this.dia;
+    }
+    
+    public void setDia(DiaDaSemana dia){
+        this.dia = dia;
+    }
+
+    public Collection<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(Collection<Item> itens) {
+        this.itens = itens;
+    }
+    
     /**
      * 
      */
     private DiaDaSemana dia;
-
+    private Collection<Item> itens;
 
 
 }
