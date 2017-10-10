@@ -1,8 +1,8 @@
-
+package model;
 import java.util.*;
 
 /**
- * 
+ * Sincronizado
  */
 public class Caixa extends Funcionario {
 
