@@ -1,4 +1,4 @@
-
+package model;
 import java.util.*;
 
 /**
@@ -6,21 +6,12 @@ import java.util.*;
  */
 public abstract class Funcionario {
 
-    /**
-     * Default constructor
-     */
+    private String nome;
+    private String cpf;
+        
     public Funcionario() {
     }
 
-    /**
-     * 
-     */
-    private String nome;
-
-    /**
-     * 
-     */
-    private String cpf;
 
 
 }

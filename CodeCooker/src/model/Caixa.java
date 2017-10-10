@@ -1,19 +1,20 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
-/**
- * Sincronizado
- */
 public class Caixa extends Funcionario {
 
-    /**
-     * Default constructor
-     */
-    public Caixa() {
+    private int ID;
+
+    public int getID() {
+        return ID;
     }
-
+    
+    public Caixa(String nome, String cpf) {
+        super(nome, cpf);
+        
+    }
+    
 }
-
-
-/* COMENTARIO IDIOTA */

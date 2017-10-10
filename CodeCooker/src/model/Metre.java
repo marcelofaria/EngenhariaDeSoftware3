@@ -1,4 +1,4 @@
-
+package model;
 import java.util.*;
 
 /**
@@ -6,10 +6,9 @@ import java.util.*;
  */
 public class Metre extends Funcionario {
 
-    /**
-     * Default constructor
-     */
-    public Metre() {
+    public Metre(String nome, String cpf) {
+        super(nome, cpf);
     }
+
 
 }
