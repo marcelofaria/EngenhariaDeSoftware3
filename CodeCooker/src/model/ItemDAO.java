@@ -23,7 +23,7 @@ public class ItemDAO extends DAO{
     private static ItemDAO instance;
     private static Connection myCONN;
     
-    public ItemDAO getInstance(){
+    public static ItemDAO getInstance(){
         if(ItemDAO.instance == null){
             instance = new ItemDAO();
             return instance;
