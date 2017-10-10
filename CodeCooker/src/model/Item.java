@@ -24,6 +24,14 @@ public class Item {
     
     private int idItem;
 
+    public int getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
+    }
+
     /**
      * 
      */
