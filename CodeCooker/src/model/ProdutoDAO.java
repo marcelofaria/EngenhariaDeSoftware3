@@ -79,13 +79,42 @@ public class ProdutoDAO extends DAO{
         return this.retrieveGeneric("SELECT * FROM produto WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
     
-     public Produto retrieveById(int id) {
+    public Produto retrieveById(int id) {
         Produto produto = null;
         List<Produto> produtos = this.retrieveGeneric("SELECT * FROM produto WHERE id="+id);
         if(!produtos.isEmpty()){
             produto = produtos.get(0);
         }
         return produto;
+    }
+     
+    public boolean update(Produto produto) {
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("UPDATE contatos SET qtd=?, nome=?, marca=?, fornecedor=? WHERE id = ?");
+            stmt.setInt(1, produto.getQtd());
+            stmt.setString(2, produto.getNome());
+            stmt.setString(3, produto.getMarca());
+            stmt.setString(4, produto.getFornecedor());
+            int update = this.executeUpdate(stmt);
+            if (update == 1) {
+                return true;
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        return false;
+    }
+
+    public void delete(Produto produto) {
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM produto WHERE id = ?");
+            stmt.setInt(1, produto.getId());
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+        }
     }
     
 }

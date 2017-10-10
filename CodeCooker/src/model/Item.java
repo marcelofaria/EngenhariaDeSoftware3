@@ -15,8 +15,14 @@ public class Item {
     /**
      * Default constructor
      */
-    public Item() {
+    public Item(String nome, float preco, String ingredientes, boolean disp) {
+        this.nome = nome;
+        this.preco = preco;
+        this.ingredientes = ingredientes;
+        this.disponibilidade = disp;
     }
+    
+    private int idItem;
 
     /**
      * 
@@ -65,7 +71,7 @@ public class Item {
         this.ingredientes = ingredientes;
     }
 
-    public boolean isDisponibilidade() {
+    public boolean getDisponibilidade() {
         return disponibilidade;
     }
 
