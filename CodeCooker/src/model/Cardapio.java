@@ -11,6 +11,8 @@ enum DiaDaSemana{
  */
 public class Cardapio {
 
+    private DiaDaSemana dia;
+    private Collection<Item> itens;
     /**
      * Default constructor
      */
@@ -38,8 +40,6 @@ public class Cardapio {
     /**
      * 
      */
-    private DiaDaSemana dia;
-    private Collection<Item> itens;
 
 
 }
