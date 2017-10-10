@@ -11,9 +11,17 @@ public class ItemPedido {
     /**
      * Default constructor
      */
-    public ItemPedido() {
+    public ItemPedido(Item item, short qtd) {
+        this.item = item;
+        this.qtd = qtd;
+        this.valor = this.calcularValor(this.item.getPreco(), qtd);
     }
 
+    /**
+     * 
+     */
+    private short idItemPedido;
+    
     /**
      * 
      */
@@ -23,15 +31,51 @@ public class ItemPedido {
      * 
      */
     private float valor;
+    
+
+    /**
+     * 
+     */
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
 
+   public short getIdItemPedido() {
+        return idItemPedido;
+    }
 
+    public void setIdItemPedido(short idItemPedido) {
+        this.idItemPedido = idItemPedido;
+    }
+
+    public short getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(short qtd) {
+        this.qtd = qtd;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 
     /**
      * @return
      */
-    public void calcularValor() {
-        // TODO implement here
+    public float calcularValor(float preco, short qtd) {
+        return (preco * qtd);
     }
 
 }

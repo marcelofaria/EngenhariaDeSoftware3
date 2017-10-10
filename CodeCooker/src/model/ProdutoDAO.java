@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -67,6 +66,7 @@ public class ProdutoDAO extends DAO{
             rs.close();
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
         return produtos;
     }
@@ -102,6 +102,7 @@ public class ProdutoDAO extends DAO{
             }
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
         return false;
     }
