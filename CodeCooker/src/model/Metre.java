@@ -11,5 +11,14 @@ public class Metre extends Funcionario {
         super(nome, cpf);
     }
 
+    private int idMetre;
 
+    public int getIdMetre() {
+        return idMetre;
+    }
+
+    public void setIdMetre(int idMetre) {
+        this.idMetre = idMetre;
+    }
+    
 }
