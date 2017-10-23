@@ -1,4 +1,4 @@
-    
+package model;    
 import java.util.*;
 import model.ItemPedido;
 

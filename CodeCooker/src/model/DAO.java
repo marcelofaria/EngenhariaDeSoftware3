@@ -17,9 +17,9 @@ import java.sql.SQLException;
  */
 public abstract class DAO {
     private static Connection con;
-    private static final String DBURL = "jdbc:mysql:///CodeCookers";
-    //private static final String DBURL = "jdbc:mysql://192.168.0.196/ContatosDB";
-    private static final String username = "root";
+    //private static final String DBURL = "jdbc:mysql:///CodeCookers";
+    private static final String DBURL = "jdbc:mysql://localhost/test";
+    private static final String username = "";
     private static final String password = "";
 
     protected Connection getConnection() {
@@ -27,7 +27,9 @@ public abstract class DAO {
             try {
                 con = DriverManager.getConnection(DBURL, username, password);
             } catch (SQLException e) {
-                throw new IllegalStateException("Cannot connect the database!", e);
+                System.out.println(e.getMessage() + "\n\n\n\n\n");
+                System.out.println(e.getCause()+ "\n\n\n\n\n\n\n\n");
+                throw new IllegalStateException("Cannot connect to the database!");
             }
         }
         return con;

@@ -6,6 +6,9 @@
 package view;
 
 import javax.swing.ImageIcon;
+import model.DAO;
+import model.Gerente;
+import model.GerenteDAO;
 
 /**
  *
@@ -119,7 +122,16 @@ public class AuthenticationView extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordSenhaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        GerenteDAO gerente = GerenteDAO.getInstance();
+        Gerente g;
+        g = gerente.retrieveByPass(PasswordSenha.getPassword().toString());
+        if(g == null){
+            System.out.println("deu merda");
+        }
+        else{
+            
+            System.out.println(g.getNome());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

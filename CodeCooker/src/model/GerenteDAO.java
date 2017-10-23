@@ -20,16 +20,16 @@ public class GerenteDAO extends DAO {
     
     private static GerenteDAO instance;
     private static Connection myCONN;
-
-    private GerenteDAO() {
-    }
-
+    
     public static GerenteDAO getInstance() {
         if (GerenteDAO.instance == null) {
             instance = new GerenteDAO();
             myCONN = instance.getConnection();
+            return instance;
         }
-        return instance;
+        else{
+            return instance;
+        }
     }
     
     public void create(String nome, String cpf, String cnpj) {
@@ -62,6 +62,7 @@ public class GerenteDAO extends DAO {
             stmt = myCONN.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
+                System.out.println("vestigio");
                 gerentes.add(buildObject(rs));
             }
             rs.close();
@@ -77,6 +78,15 @@ public class GerenteDAO extends DAO {
     
     public List<Gerente> retrieveLike(String nome) {
         return this.retrieveGeneric("SELECT * FROM Gerente WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+    }
+    
+    public Gerente retrieveByPass(String pass) {
+        Gerente gerente = null;
+        List<Gerente> gerentes = this.retrieveGeneric("SELECT * FROM Gerente WHERE senha like "+"unicorniosemchifre");
+        if(!gerentes.isEmpty()){
+            gerente = gerentes.get(0);
+        }
+        return gerente;
     }
     
     public Gerente retrieveById(int id) {
