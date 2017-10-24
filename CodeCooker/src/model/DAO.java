@@ -18,9 +18,9 @@ import java.sql.SQLException;
 public abstract class DAO {
     private static Connection con;
     //private static final String DBURL = "jdbc:mysql:///CodeCookers";
-    private static final String DBURL = "jdbc:mysql://localhost/test";
-    private static final String username = "";
-    private static final String password = "";
+    private static final String DBURL = "jdbc:mysql://179.247.174.192:3306/codecookers";
+    private static final String username = "root";
+    private static final String password = "1111";
 
     protected Connection getConnection() {
         if (con == null) {

@@ -51,10 +51,7 @@
               </Group>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="mesa4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="mesa4" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="d4" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="o4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -207,6 +204,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Financeiro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="financeiroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="d1">
       <Properties>

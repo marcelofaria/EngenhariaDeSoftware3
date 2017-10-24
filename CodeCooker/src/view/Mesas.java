@@ -6,6 +6,9 @@
 package view;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 
 /**
@@ -20,7 +23,48 @@ public class Mesas extends javax.swing.JFrame {
     public Mesas() {
         initComponents();
     }
+    
+    WriteFiles wf = new WriteFiles();
+    ReadFiles rf = new ReadFiles();
 
+    public void salvar() throws IOException{
+        if(d1.isSelected()){
+            wf.escrever("true");  
+        }
+        else{
+            wf.escrever("false");
+        }
+        if(o1.isSelected()){
+            wf.escrever("true");  
+        }
+        else{
+            wf.escrever("false");
+        }
+        if(r1.isSelected()){
+            wf.escrever("true");  
+        }
+        else{
+            wf.escrever("false");
+        }
+    
+    
+    }
+    
+    public void ler() throws IOException{
+    
+        String asojd;
+        asojd = ReadFiles.read(wf.file);
+        System.out.println(asojd);
+        
+        if(asojd.compareTo("true") == 0){
+        
+            System.out.println("Entrou");
+            d1.setSelected(true);
+            
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,6 +123,11 @@ public class Mesas extends javax.swing.JFrame {
         estoque.setText("Estoque");
 
         financeiro.setText("Financeiro");
+        financeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                financeiroActionPerformed(evt);
+            }
+        });
 
         d1.setText("Desocupada");
         d1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,9 +317,7 @@ public class Mesas extends javax.swing.JFrame {
                         .addComponent(r1, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(mesa4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mesa4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(d4)
                         .addComponent(o4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,6 +438,12 @@ public class Mesas extends javax.swing.JFrame {
         cv.setVisible(true);
         cv.setLocationRelativeTo(null);
         dispose();
+        try {
+            salvar();
+        } catch (IOException ex) {
+            Logger.getLogger(Mesas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_cardapioActionPerformed
 
     private void d1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d1ActionPerformed
@@ -484,38 +537,83 @@ public class Mesas extends javax.swing.JFrame {
 
     private void d5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d5ActionPerformed
         // TODO add your handling code here:
+        if (d5.isSelected()){
+            o5.setSelected(false);
+            r5.setSelected(false);
+            mesa5.setBackground(Color.green);
+        }
     }//GEN-LAST:event_d5ActionPerformed
 
     private void o5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_o5ActionPerformed
         // TODO add your handling code here:
+        if (o5.isSelected()){
+            d5.setSelected(false);
+            r5.setSelected(false);
+            mesa5.setBackground(Color.red);
+        }
     }//GEN-LAST:event_o5ActionPerformed
 
     private void r5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r5ActionPerformed
         // TODO add your handling code here:
+        if (r5.isSelected()){
+            d5.setSelected(false);
+            o5.setSelected(false);
+            mesa5.setBackground(Color.yellow);
+        }
     }//GEN-LAST:event_r5ActionPerformed
 
     private void d6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d6ActionPerformed
         // TODO add your handling code here:
+        if (d6.isSelected()){
+            o6.setSelected(false);
+            r6.setSelected(false);
+            mesa6.setBackground(Color.green);
+        }
     }//GEN-LAST:event_d6ActionPerformed
 
     private void o6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_o6ActionPerformed
         // TODO add your handling code here:
+        if (o6.isSelected()){
+            d6.setSelected(false);
+            r6.setSelected(false);
+            mesa6.setBackground(Color.red);
+        }
     }//GEN-LAST:event_o6ActionPerformed
 
     private void d4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_d4ActionPerformed
         // TODO add your handling code here:
+        if (d4.isSelected()){
+            o4.setSelected(false);
+            r4.setSelected(false);
+            mesa4.setBackground(Color.green);
+        }
     }//GEN-LAST:event_d4ActionPerformed
 
     private void r6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r6ActionPerformed
         // TODO add your handling code here:
+        if (r6.isSelected()){
+            d6.setSelected(false);
+            o6.setSelected(false);
+            mesa6.setBackground(Color.yellow);
+        }
     }//GEN-LAST:event_r6ActionPerformed
 
     private void o4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_o4ActionPerformed
         // TODO add your handling code here:
+        if (o4.isSelected()){
+            d4.setSelected(false);
+            r4.setSelected(false);
+            mesa4.setBackground(Color.red);
+        }
     }//GEN-LAST:event_o4ActionPerformed
 
     private void r4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r4ActionPerformed
         // TODO add your handling code here:
+        if (r4.isSelected()){
+            d4.setSelected(false);
+            o4.setSelected(false);
+            mesa4.setBackground(Color.yellow);
+        }
     }//GEN-LAST:event_r4ActionPerformed
 
     private void reservarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarMesaActionPerformed
@@ -527,7 +625,18 @@ public class Mesas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mostrarReservasActionPerformed
 
-    private void statusMesas(){
+    private void financeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_financeiroActionPerformed
+        // TODO add your handling code here:
+        Financeiro f = new Financeiro();
+
+        f.setVisible(true);
+        f.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_financeiroActionPerformed
+
+   
+    
+    public void statusMesas(){
         d1.setSelected(true);
         mesa1.setBackground(Color.green);
         
@@ -536,6 +645,15 @@ public class Mesas extends javax.swing.JFrame {
         
         d3.setSelected(true);
         mesa3.setBackground(Color.green);
+        
+        d4.setSelected(true);
+        mesa4.setBackground(Color.green);
+        
+        d5.setSelected(true);
+        mesa5.setBackground(Color.green);
+        
+        d6.setSelected(true);
+        mesa6.setBackground(Color.green);
     }
     /**
      * @param args the command line arguments
