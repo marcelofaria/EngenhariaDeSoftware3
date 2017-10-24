@@ -50,7 +50,7 @@ CREATE TABLE Pedido (
 	FOREIGN KEY(contaID) REFERENCES Conta(contaID)
 );
 
-CREATE TABLE ItemPedido (
+CREATE TABLE Item_Pedido (
 	itemID INT NOT NULL,
 	pedidoID INT NOT NULL,
 	Quantidade SMALLINT NOT NULL,
