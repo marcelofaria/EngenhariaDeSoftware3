@@ -2,7 +2,7 @@ CREATE DATABASE CodeCookers;
 
 USE CodeCookers;
 
-CREATE TABLE Caixa (
+/*CREATE TABLE Caixa (
 	caixaID INT NOT NULL AUTO_INCREMENT,
 	senha VARCHAR(50) NOT NULL,
 	nome VARCHAR(150) NOT NULL,
@@ -25,6 +25,17 @@ CREATE TABLE Gerente (
 	cpf VARCHAR(11) NOT NULL,
 	cnpj VARCHAR(14) NOT NULL,
 	PRIMARY KEY(gerenteID)
+);*/
+
+CREATE TABLE Usuario (
+	usuarioID INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(50) NOT NULL,
+	password VARCHAR(100) NOT NULL,
+	tipoUsuario SMALLINT NOT NULL,
+	nome VARCHAR(150) NOT NULL,
+	cpf VARCHAR(11) NOT NULL,
+	cnpj VARCHAR(20),
+	PRIMARY KEY(usuarioID)
 );
 
 CREATE TABLE Conta (
@@ -85,13 +96,13 @@ CREATE TABLE Mesa (
 CREATE TABLE Reserva (
 	reservaID INT NOT NULL AUTO_INCREMENT,
 	numMesa SMALLINT NOT NULL,
-	metreID INT NOT NULL,
+	usuarioID INT NOT NULL,
 	nome VARCHAR(200) NOT NULL,
 	DataEHorario DATETIME NOT NULL,
 	numPessoas SMALLINT NOT NULL,
 	telefone VARCHAR(15),
 	PRIMARY KEY(reservaID),
 	FOREIGN KEY(numMesa) REFERENCES Mesa(numMesa),
-	FOREIGN KEY(metreID) REFERENCES Metre(metreID)
+	FOREIGN KEY(usuarioID) REFERENCES Usuario(usuarioID)
 );
 

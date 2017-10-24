@@ -10,40 +10,59 @@ package model;
  * @author rafael
  */
 
-enum tipoConta{
-    Gerente, Caixa, Metre
-}
-
 public class Usuario {
     
-    private tipoConta tipo;
-    private int idFunc;
-    private String hash;
+    private int usuarioID;
+    private int tipoUsuario;
+    private String nome;
+    private String cpf;
+    private String cnpj;
 
-    public tipoConta getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(tipoConta tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getIdFunc() {
-        return idFunc;
-    }
-
-    public void setIdFunc(int idFunc) {
-        this.idFunc = idFunc;
-    }
-
-    public String getHash() {
-        return hash;
-    }
-
-    public void setHash(String hash) {
-        this.hash = hash;
+    Usuario(String nome, String cpf, int tipo, String cnpj){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.tipoUsuario = tipo;
+        this.cnpj = cnpj;
     }
     
-    
+    public int getUsuarioID() {
+        return usuarioID;
+    }
+
+    public void setUsuarioID(int usuarioID) {
+        this.usuarioID = usuarioID;
+    }
+
+    public int getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(int tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
     
 }
