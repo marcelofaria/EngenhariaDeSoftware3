@@ -6,9 +6,12 @@
 package view;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.CaixaDAO;
 import model.DAO;
 import model.Gerente;
 import model.GerenteDAO;
+import model.MetreDAO;
 
 /**
  *
@@ -21,6 +24,7 @@ public class AuthenticationView extends javax.swing.JFrame {
      */
     public AuthenticationView() {
         initComponents();
+        
     }
 
     /**
@@ -37,12 +41,13 @@ public class AuthenticationView extends javax.swing.JFrame {
         TextUsuario = new javax.swing.JTextField();
         LabelUsuario = new javax.swing.JLabel();
         LabelSenha = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         PasswordSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -61,10 +66,10 @@ public class AuthenticationView extends javax.swing.JFrame {
 
         LabelSenha.setText("Senha: ");
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        login.setText("Login");
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
 
@@ -74,6 +79,12 @@ public class AuthenticationView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(login)
+                .addGap(33, 33, 33)
+                .addComponent(jButton2)
+                .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -84,12 +95,6 @@ public class AuthenticationView extends javax.swing.JFrame {
                     .addComponent(TextUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                     .addComponent(PasswordSenha))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33)
-                .addComponent(jButton2)
-                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,9 +107,9 @@ public class AuthenticationView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(login)
                     .addComponent(jButton2))
                 .addGap(26, 26, 26))
         );
@@ -121,8 +126,8 @@ public class AuthenticationView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordSenhaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GerenteDAO gerente = GerenteDAO.getInstance();
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        /*GerenteDAO gerente = GerenteDAO.getInstance();
         Gerente g;
         g = gerente.retrieveByPass(PasswordSenha.getPassword().toString());
         if(g == null){
@@ -131,8 +136,34 @@ public class AuthenticationView extends javax.swing.JFrame {
         else{
             
             System.out.println(g.getNome());
+        }*/
+        
+        GerenteDAO g = new GerenteDAO();
+        MetreDAO m = new MetreDAO();
+        CaixaDAO c = new CaixaDAO();       
+        
+        String u;
+        String senha;
+        
+        u = TextUsuario.getText();
+        senha = String.valueOf(PasswordSenha.getPassword());
+        
+        if(CaixaDAO.getInstance().retrieveLike(u) != null && c.retrieveByPass(senha) != null){
+        
+            JOptionPane.showMessageDialog(null, "Voce logou!");
+            System.out.println(senha);
+            
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        else{
+        
+            JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
+            
+        }
+        
+                
+        
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,8 +205,8 @@ public class AuthenticationView extends javax.swing.JFrame {
     private javax.swing.JLabel LabelUsuario;
     private javax.swing.JPasswordField PasswordSenha;
     private javax.swing.JTextField TextUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JButton login;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,7 @@ public class MetreDAO extends DAO {
     private static MetreDAO instance;
     private static Connection myCONN;
 
-    private MetreDAO() {
+    public MetreDAO() {
     }
 
     public static MetreDAO getInstance() {
@@ -47,7 +47,7 @@ public class MetreDAO extends DAO {
     private Metre buildObject(ResultSet rs) {
         Metre m = null;
         try {
-            m = new Metre(rs.getString("nome"), rs.getString("cpf"));
+            m = new Metre(rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"));
         } catch (SQLException e) {
         }
         return m;

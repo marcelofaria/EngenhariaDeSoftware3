@@ -12,9 +12,20 @@ public class Caixa extends Funcionario {
         return ID;
     }
     
+    private String senha;
     private String nome;
     private String cpf;
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+ 
+    
     public String getNome() {
         return nome;
     }
@@ -33,8 +44,8 @@ public class Caixa extends Funcionario {
     
     
     
-    public Caixa(String nome, String cpf) {
-        super(nome, cpf);
+    public Caixa(String senha, String nome, String cpf) {
+        super(senha, nome, cpf);
         
     }
     

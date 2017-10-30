@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class CaixaDAO extends DAO{
     private static CaixaDAO instance;
     private static Connection myCONN;
 
-    private CaixaDAO() {
+    public CaixaDAO() {
     }
 
     public static CaixaDAO getInstance() {
@@ -27,12 +28,13 @@ public class CaixaDAO extends DAO{
         return instance;
     }
     
-    public void create(String nome, String cpf) {
+    public void create(String senha, String nome, String cpf) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO caixa (nome,cpf) VALUES (?,?)");
-            stmt.setString(1, nome);
-            stmt.setString(2, cpf);
+            stmt = myCONN.prepareStatement("INSERT INTO caixa (senha,nome,cpf) VALUES (?,?,?)");
+            stmt.setString(1, senha);
+            stmt.setString(2, nome);
+            stmt.setString(3, cpf);
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
@@ -42,7 +44,7 @@ public class CaixaDAO extends DAO{
     private Caixa buildObject(ResultSet rs) {
         Caixa caixa = null;
         try {
-            caixa = new Caixa(rs.getString("nome"), rs.getString("cpf"));
+            caixa = new Caixa(rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"));
         } catch (SQLException e) {
         }
         return caixa;
@@ -71,11 +73,32 @@ public class CaixaDAO extends DAO{
     
     public List<Caixa> retrieveLike(String nome) {
         return this.retrieveGeneric("SELECT * FROM caixa WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        
     }
+    
+    public Caixa retrieveByName(String name) {
+        Caixa caixa = null;
+        List<Caixa> caixas = this.retrieveGeneric("SELECT * FROM caixa WHERE nome="+name);
+        if(!caixas.isEmpty()){
+            caixa = caixas.get(0);
+        }
+        return caixa;
+    }
+    
+    
+    public Caixa retrieveByPass(String pass) {
+        Caixa caixa = null;
+        List<Caixa> caixas = this.retrieveGeneric("SELECT * FROM caixa WHERE senha="+pass);
+        if(!caixas.isEmpty()){
+            caixa = caixas.get(0);
+        }
+        return caixa;
+    }
+
     
     public Caixa retrieveById(int id) {
         Caixa caixa = null;
-        List<Caixa> caixas = this.retrieveGeneric("SELECT * FROM caixa WHERE id="+id);
+        List<Caixa> caixas = this.retrieveGeneric("SELECT * FROM caixa WHERE caixaID="+id);
         if(!caixas.isEmpty()){
             caixa = caixas.get(0);
         }

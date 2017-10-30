@@ -48,7 +48,7 @@ public class GerenteDAO extends DAO {
     private Gerente buildObject(ResultSet rs) {
         Gerente g = null;
         try {
-            g = new Gerente(rs.getString("nome"), rs.getString("cpf"), rs.getString("cnpj"));
+            g = new Gerente(rs.getString("senha"), rs.getString("nome"), rs.getString("cpf"), rs.getString("cnpj"));
         } catch (SQLException e) {
         }
         return g;

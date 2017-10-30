@@ -7,8 +7,8 @@ import java.util.*;
  */
 public class Metre extends Funcionario {
 
-    public Metre(String nome, String cpf) {
-        super(nome, cpf);
+    public Metre(String senha, String nome, String cpf) {
+        super(senha, nome, cpf);
     }
 
     private int idMetre;
