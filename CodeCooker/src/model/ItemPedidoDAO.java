@@ -35,7 +35,7 @@ public class ItemPedidoDAO extends DAO{
     public void create(int idPedido, Item item, short qtd){
         ItemPedido i = new ItemPedido(item, qtd);
         PreparedStatement createItem = null;
-        String query = "INSERT INTO ItemPedido (idItem, idPedido, Quantidade, Valor) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO item_pedido (idItem, idPedido, quantidade, valor) VALUES (?, ?, ?, ?)";
         try {
             createItem = ItemPedidoDAO.myCONN.prepareStatement(query);
             createItem.setInt(1, i.getItem().getIdItem());
@@ -53,7 +53,7 @@ public class ItemPedidoDAO extends DAO{
         ItemPedido ip = null;
         try {
             Item item = ItemDAO.getInstance().retrieveById(rs.getInt("idItem"));
-            ip = new ItemPedido(item, rs.getShort("Quantidade"));
+            ip = new ItemPedido(item, rs.getShort("quantidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -79,12 +79,12 @@ public class ItemPedidoDAO extends DAO{
     }
     
     public List<ItemPedido> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM ItemPedido ORDER BY idPedido");
+        return this.retrieveGeneric("SELECT * FROM item_pedido ORDER BY idPedido");
     }
     
     public ItemPedido retrieveById(int id) {
         ItemPedido ip = null;
-        List<ItemPedido> ips = this.retrieveGeneric("SELECT * FROM Reserva WHERE id="+id);
+        List<ItemPedido> ips = this.retrieveGeneric("SELECT * FROM reserva WHERE id="+id);
         if(!ips.isEmpty()){
             ip = ips.get(0);
         }
@@ -94,7 +94,7 @@ public class ItemPedidoDAO extends DAO{
     public boolean update(ItemPedido ip, int idPedido) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE Reserva SET idPedido=?, idItem=?, Quantidade=?, Valor=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE reserva SET idPedido=?, idItem=?, quantidade=?, valor=? WHERE id = ?");
             stmt.setInt(1, idPedido);
             stmt.setInt(2, ip.getItem().getIdItem());
             stmt.setShort(3, ip.getQtd());
@@ -114,7 +114,7 @@ public class ItemPedidoDAO extends DAO{
     public void delete(ItemPedido ip) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM Reserva WHERE idReserva = ?");
+            stmt = myCONN.prepareStatement("DELETE FROM reserva WHERE idReserva = ?");
             stmt.setInt(1, ip.getIdItemPedido());
             this.executeUpdate(stmt);
             stmt.close();

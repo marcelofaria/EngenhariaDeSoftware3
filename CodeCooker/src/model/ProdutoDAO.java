@@ -34,7 +34,7 @@ public class ProdutoDAO extends DAO{
     public void create(int qtd, String nome, String marca, String fornecedor) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO Produto (qtd, nome, marca, fornecedor) VALUES (?,?,?,?)");
+            stmt = myCONN.prepareStatement("INSERT INTO produto (qtd, nome, marca, fornecedor) VALUES (?,?,?,?)");
             stmt.setInt(1, qtd);
             stmt.setString(2, nome);
             stmt.setString(3, marca);
@@ -73,16 +73,16 @@ public class ProdutoDAO extends DAO{
     }
     
     public List<Produto> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM Produto ORDER BY qtd");
+        return this.retrieveGeneric("SELECT * FROM produto ORDER BY qtd");
     }
     
     public List<Produto> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Produto WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM produto WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
     
     public Produto retrieveById(int id) {
         Produto produto = null;
-        List<Produto> produtos = this.retrieveGeneric("SELECT * FROM Produto WHERE id="+id);
+        List<Produto> produtos = this.retrieveGeneric("SELECT * FROM produto WHERE id="+id);
         if(!produtos.isEmpty()){
             produto = produtos.get(0);
         }
@@ -92,7 +92,7 @@ public class ProdutoDAO extends DAO{
     public boolean update(Produto produto) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE Produto SET qtd=?, nome=?, marca=?, fornecedor=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE produto SET qtd=?, nome=?, marca=?, fornecedor=? WHERE id = ?");
             stmt.setInt(1, produto.getQtd());
             stmt.setString(2, produto.getNome());
             stmt.setString(3, produto.getMarca());
@@ -111,7 +111,7 @@ public class ProdutoDAO extends DAO{
     public void delete(Produto produto) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM Produto WHERE id = ?");
+            stmt = myCONN.prepareStatement("DELETE FROM produto WHERE id = ?");
             stmt.setInt(1, produto.getId());
             this.executeUpdate(stmt);
             stmt.close();

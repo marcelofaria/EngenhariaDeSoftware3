@@ -36,7 +36,7 @@ public class MesaDAO extends DAO{
     public void create(short numMesa, boolean status){
         Mesa m = new Mesa(numMesa, status);
         PreparedStatement createMesa = null;
-        String query = "INSERT INTO MESA (numMesa, status) VALUES (?, ?)";
+        String query = "INSERT INTO mesa (numMesa, status) VALUES (?, ?)";
         try {
             createMesa = MesaDAO.myCONN.prepareStatement(query);
             createMesa.setShort(1, numMesa);
@@ -76,7 +76,7 @@ public class MesaDAO extends DAO{
     }
     
     public List<Mesa> RetrieveAll(){
-        return this.retrieveGeneric("SELECT * FROM Mesa ORDER BY numMesa");
+        return this.retrieveGeneric("SELECT * FROM mesa ORDER BY numMesa");
     }
     
     public Mesa retrieveById(short numMesa) {
@@ -91,7 +91,7 @@ public class MesaDAO extends DAO{
     public boolean update(Mesa m) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE Mesa SET status=? WHERE numMesa = ?");
+            stmt = myCONN.prepareStatement("UPDATE mesa SET status=? WHERE numMesa = ?");
             stmt.setBoolean(1, m.getStatus());
             stmt.setShort(2, m.getNumMesa());
             int update = this.executeUpdate(stmt);
@@ -108,7 +108,7 @@ public class MesaDAO extends DAO{
     public void delete(Mesa m) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM Mesa WHERE numMesa = ?");
+            stmt = myCONN.prepareStatement("DELETE FROM mesa WHERE numMesa = ?");
             stmt.setShort(1, m.getNumMesa());
             this.executeUpdate(stmt);
             stmt.close();

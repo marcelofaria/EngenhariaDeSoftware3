@@ -5,7 +5,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import model.UsuarioDAO;
 
 
 /**
@@ -41,6 +43,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         senha = new javax.swing.JPasswordField();
+        username = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        tipoUsuario = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,6 +70,12 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
+        nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeActionPerformed(evt);
+            }
+        });
+
         Buscar.setText("Buscar");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,9 +85,20 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("RG");
+        jLabel2.setText("CPF");
 
         jLabel3.setText("Senha");
+
+        jLabel4.setText("Username");
+
+        jLabel5.setText("Tipo");
+
+        tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Caixa", "Metre" }));
+        tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,20 +109,28 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cadastrar, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpf)
-                    .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(username)
+                    .addComponent(tipoUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -107,6 +138,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -115,7 +150,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(Cadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Buscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -123,10 +158,35 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
         // TODO add your handling code here:
-        /*CaixaDAO cdao = new CaixaDAO();
-        cdao.getInstance();*/
+        UsuarioDAO udao = new UsuarioDAO();
+        udao.getInstance();
         
-        //cdao.create(String.valueOf(senha.getPassword()), nome.getText(), cpf.getText());
+        int tipo = 0;
+        
+        String value = tipoUsuario.getSelectedItem().toString();
+        
+        if (value.compareTo("Caixa") == 0){
+        
+            tipo = 1;
+            
+        }
+        else if(value.compareTo("Metre") == 0){
+        
+            tipo = 2;
+        
+        }
+        
+        try{
+            udao.create(username.getText(),String.valueOf(senha.getPassword()), tipo, nome.getText(), cpf.getText());
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            username.setText("");
+            senha.setText("");
+            nome.setText("");
+            cpf.setText("");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Cadastrado sem sucesso");
+        }
         
     }//GEN-LAST:event_CadastrarActionPerformed
 
@@ -139,6 +199,14 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         //System.out.println(cdao.retrieveById(i));
         
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoUsuarioActionPerformed
+
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +250,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nome;
     private javax.swing.JPasswordField senha;
+    private javax.swing.JComboBox<String> tipoUsuario;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

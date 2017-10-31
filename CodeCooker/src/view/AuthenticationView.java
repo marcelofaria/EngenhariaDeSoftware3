@@ -8,6 +8,8 @@ package view;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.DAO;
+import model.Usuario;
+import model.UsuarioDAO;
 
 /**
  *
@@ -70,6 +72,11 @@ public class AuthenticationView extends javax.swing.JFrame {
         });
 
         jButton2.setText("Sair");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,28 +141,45 @@ public class AuthenticationView extends javax.swing.JFrame {
             System.out.println(g.getNome());
         }*/      
         
+        UsuarioDAO udao = UsuarioDAO.getInstance();
+        
         String u;
         String senha;
         
         u = TextUsuario.getText();
         senha = String.valueOf(PasswordSenha.getPassword());
         
-        /*if(CaixaDAO.getInstance().retrieveLike(u) != null && c.retrieveByPass(senha) != null){
+        Usuario usuario = udao.retrieveByUsername(u);
+        Usuario usuarioSenha = udao.retrieveByPass(senha);
         
-            JOptionPane.showMessageDialog(null, "Voce logou!");
-            System.out.println(senha);
-            
+        
+        if(usuario != null && usuarioSenha != null){
+        
+            int tipo = usuario.getTipoUsuario();
+            if(tipo == 1){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Caixa");
+                
+            }
+            else if(tipo == 2){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Metre");
+            }
+         
         }
         
         else{
         
             JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
             
-        }*/
+        }
         
                 
         
     }//GEN-LAST:event_loginActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
