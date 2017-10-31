@@ -34,7 +34,7 @@ public class UsuarioDAO extends DAO {
     public void create(String username, String pass, int tipo, String nome, String cpf) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, password, tipoUsuario, nome, cpf) VALUES (?, ?, ?, ?, ?)");
+            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, senha, tipoUsuario, nome, cpf) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, username);
             stmt.setString(2, pass);
             stmt.setInt(3, tipo);
@@ -49,7 +49,7 @@ public class UsuarioDAO extends DAO {
     public void create(String username, String pass, int tipo, String nome, String cpf, String cnpj) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, password, tipoUsuario, nome, cpf, cnpj) VALUES (?, ?, ?, ?, ?, ?)");
+            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, senha, tipoUsuario, nome, cpf, cnpj) VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, username);
             stmt.setString(2, pass);
             stmt.setInt(3, tipo);
@@ -108,7 +108,7 @@ public class UsuarioDAO extends DAO {
     
     public Usuario retrieveByPass(String pass) {
         Usuario usu = null;
-        List<Usuario> usus = this.retrieveGeneric("SELECT * FROM usuario WHERE password Like '"+pass+"'");
+        List<Usuario> usus = this.retrieveGeneric("SELECT * FROM usuario WHERE senha Like '"+pass+"'");
         if(!usus.isEmpty()){
             usu = usus.get(0);
         }
@@ -127,7 +127,7 @@ public class UsuarioDAO extends DAO {
     public boolean update(Usuario u, String username, String password) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE usuario SET username=?, password=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE usuario SET username=?, senha=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE id = ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setInt(3, u.getTipoUsuario());
