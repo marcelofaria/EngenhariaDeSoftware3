@@ -36,10 +36,4 @@ public class Cardapio {
     public void setItens(Collection<Item> itens) {
         this.itens = itens;
     }
-    
-    /**
-     * 
-     */
-
-
 }
