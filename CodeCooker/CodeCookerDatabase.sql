@@ -1,6 +1,6 @@
-CREATE DATABASE CodeCookers;
+CREATE DATABASE codecookers;
 
-USE CodeCookers;
+USE codecookers;
 
 /*CREATE TABLE Caixa (
 	caixaID INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ CREATE TABLE Gerente (
 	PRIMARY KEY(gerenteID)
 );*/
 
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
 	usuarioID INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(50) NOT NULL,
 	password VARCHAR(100) NOT NULL,
@@ -38,14 +38,14 @@ CREATE TABLE Usuario (
 	PRIMARY KEY(usuarioID)
 );
 
-CREATE TABLE Conta (
+CREATE TABLE conta (
 	contaID INT NOT NULL AUTO_INCREMENT,
 	valorTotal DOUBLE(10, 2) NOT NULL,
 	dataConta DATE NOT NULL,
 	PRIMARY KEY(contaID)
 );
 
-CREATE TABLE Item (
+CREATE TABLE item (
 	itemID INT NOT NULL AUTO_INCREMENT,
 	Nome VARCHAR(100) NOT NULL,
 	Ingredientes VARCHAR(500),
@@ -53,7 +53,7 @@ CREATE TABLE Item (
 	PRIMARY KEY(itemID)
 );
 
-CREATE TABLE Pedido (
+CREATE TABLE pedido (
 	pedidoID INT NOT NULL AUTO_INCREMENT,
 	contaID INT NOT NULL,
 	valor DOUBLE(10, 2),
@@ -61,7 +61,7 @@ CREATE TABLE Pedido (
 	FOREIGN KEY(contaID) REFERENCES Conta(contaID)
 );
 
-CREATE TABLE Item_Pedido (
+CREATE TABLE item_pedido (
 	itemID INT NOT NULL,
 	pedidoID INT NOT NULL,
 	Quantidade SMALLINT NOT NULL,
@@ -71,14 +71,14 @@ CREATE TABLE Item_Pedido (
 	FOREIGN KEY(pedidoID) REFERENCES Pedido(pedidoID)
 );
 
-CREATE TABLE Item_Cardapio (
+CREATE TABLE item_cardapio (
 	itemID INT NOT NULL,
 	diaDaSemana SMALLINT NOT NULL,
 	PRIMARY KEY(itemID, diaDaSemana),
 	FOREIGN KEY(itemID) REFERENCES Item(itemID)
 );
 
-CREATE TABLE Produto (
+CREATE TABLE produto (
 	produtoID INT NOT NULL AUTO_INCREMENT,
 	qtd INT NOT NULL,
 	nome VARCHAR(150) NOT NULL,
@@ -87,18 +87,18 @@ CREATE TABLE Produto (
 	PRIMARY KEY(produtoID)
 );
 
-CREATE TABLE Mesa (
+CREATE TABLE mesa (
 	numMesa SMALLINT NOT NULL AUTO_INCREMENT,
 	status BOOLEAN NOT NULL,
 	PRIMARY KEY(numMesa)
 );
 
-CREATE TABLE Reserva (
+CREATE TABLE reserva (
 	reservaID INT NOT NULL AUTO_INCREMENT,
 	numMesa SMALLINT NOT NULL,
 	usuarioID INT NOT NULL,
 	nome VARCHAR(200) NOT NULL,
-	DataEHorario DATETIME NOT NULL,
+	dataEHorario DATETIME NOT NULL,
 	numPessoas SMALLINT NOT NULL,
 	telefone VARCHAR(15),
 	PRIMARY KEY(reservaID),
