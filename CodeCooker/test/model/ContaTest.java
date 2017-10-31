@@ -2,6 +2,9 @@ package model;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,6 +42,7 @@ public class ContaTest {
      */
     @Test
     public void testGetID() {
+
         System.out.println("getID");
         Conta conta = new Conta(100, null);
         
@@ -74,9 +78,11 @@ public class ContaTest {
     @Test
     public void testGetData() {
         System.out.println("getData");
-        Conta conta = new Conta(100, null);
+        Date data = new Date();
         
-        assertEquals(null, conta.getData());
+        Conta conta = new Conta(100, data);
+
+        assertEquals(data.toString(), conta.getData().toString());
     }
 
     /**
@@ -85,10 +91,17 @@ public class ContaTest {
     @Test
     public void testSetData() {
         System.out.println("setData");
-        Conta conta = new Conta(100, null);
-        //conta.setData(Date.);
-        
-        //assertEquals(, conta.getData());
+        Date data = new Date();
+        Conta conta = new Conta(100, data);
+        try {
+            TimeUnit.SECONDS.sleep(1);
+            Date data2 = new Date();
+            conta.setData(data2);
+            
+            assertEquals(data2.toString(), conta.getData().toString());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ContaTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

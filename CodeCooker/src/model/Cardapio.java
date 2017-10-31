@@ -12,11 +12,11 @@ enum DiaDaSemana{
 public class Cardapio {
 
     private DiaDaSemana dia;
-    private Collection<Item> itens;
+    private ArrayList<Item> itens;
     /**
      * Default constructor
      */
-    public Cardapio(Collection<Item> itens, DiaDaSemana dia) {
+    public Cardapio(ArrayList<Item> itens, DiaDaSemana dia) {
         this.setDia(dia);
         this.setItens(itens);
     }
@@ -29,11 +29,11 @@ public class Cardapio {
         this.dia = dia;
     }
 
-    public Collection<Item> getItens() {
+    public ArrayList<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Collection<Item> itens) {
+    public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
 }

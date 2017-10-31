@@ -64,9 +64,22 @@ public class CardapioTest {
     @Test
     public void testGetItens() {
         System.out.println("getItens");
-        Collection<Cardapio> cardapio = new ArrayList<Cardapio>();
         
-        //assertEquals(, cardapio.getItens());
+        ArrayList<Item> itens = new ArrayList<>();
+        Item i = new Item("Farofa", 12, "Mandioca, linguica", true);
+        itens.add(i);
+        Cardapio cardapio = new Cardapio(itens, DiaDaSemana.Domingo);
+        ArrayList<Item> itens2 = cardapio.getItens();
+        
+        for(Item x : itens2){
+            if(x.getNome().compareTo("Farofa") == 0){
+                assertEquals("Farofa", x.getNome());
+            }
+            else{
+                fail("Nao foi possivel obter a referencia de getItens().");
+            }
+        }
+       
     }
 
     /**
@@ -75,11 +88,20 @@ public class CardapioTest {
     @Test
     public void testSetItens() {
         System.out.println("setItens");
-        Collection<Cardapio> cardapio = new ArrayList<Cardapio>();
-       /* Cardapio c1 = new Cardapio( ,null);
-        cardapio.add(c1);
         
-        assertEquals(,cardapio.SetItens());*/
+        ArrayList<Item> itens = new ArrayList<>();
+        Item item1 = new Item("Feijao", 10, "Feijao", true);
+        itens.add(item1);
+        Cardapio c1 = new Cardapio(itens , DiaDaSemana.Segunda);
+        ArrayList<Item> itens2 = new ArrayList<>();
+        
+        Item item2 = new Item("Arroz", 12, "Arroz", true);
+        itens2.add(item2);
+        
+        c1.setItens(itens2);
+        
+        
+        assertEquals(c1.getItens().get(0).getNome(), "Arroz");
     }
     
 }
