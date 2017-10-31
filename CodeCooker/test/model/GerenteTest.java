@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Classe para testes dos métodos da classe "Gerente"
  * @author OTAVIO-Note
  */
 public class GerenteTest {

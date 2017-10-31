@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import org.junit.After;
@@ -13,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Classe para testes dos métodos da classe "Caixa"
  * @author Inoue
  */
 public class CaixaTest {
@@ -43,12 +38,9 @@ public class CaixaTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        Caixa instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Caixa c1 = new Caixa("1234", "Plínio", "123456789");
+        
+        assertEquals(0, c1.getID());
     }
 
     /**
@@ -56,8 +48,10 @@ public class CaixaTest {
      */
     @Test
     public void testGetSenha() {
-     Caixa caixa = new Caixa ("banana","Joel","607");
-      assertEquals("banana", caixa.getSenha());
+        System.out.println("getSenha");
+        Caixa caixa = new Caixa ("banana","Joel","607");
+     
+        assertEquals("banana", caixa.getSenha());
     }
 
     /**
@@ -68,6 +62,7 @@ public class CaixaTest {
         System.out.println("setSenha");
         Caixa c1 = new Caixa("banana","Joel","607");
         c1.setSenha("morango");
+        
         assertEquals("morango",c1.getSenha());
     }
 
@@ -77,8 +72,8 @@ public class CaixaTest {
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        
         Caixa caixa = new Caixa ("banana","Joel","607");
+        
         assertEquals("Joel", caixa.getNome());
     }
 
@@ -88,8 +83,9 @@ public class CaixaTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-         Caixa c1 = new Caixa("banana","Joel","607");
+        Caixa c1 = new Caixa("banana","Joel","607");
         c1.setNome("Santana");
+        
         assertEquals("Santana",c1.getNome());
     }
 
@@ -99,7 +95,8 @@ public class CaixaTest {
     @Test
     public void testGetCpf() {
         System.out.println("getCpf");
-         Caixa caixa = new Caixa ("banana","Joel","607");
+        Caixa caixa = new Caixa ("banana","Joel","607");
+        
         assertEquals("607", caixa.getCpf());
     }
 
@@ -111,7 +108,7 @@ public class CaixaTest {
         System.out.println("setCpf");
         Caixa c1 = new Caixa("banana","Joel","607");
         c1.setCpf("456");
+        
         assertEquals("456",c1.getCpf());
-    }
-    
+    } 
 }

@@ -1,6 +1,5 @@
 package model;
 
-import java.time.Instant;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -13,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Classe para testes dos métodos da classe "Conta"
  * @author OTAVIO-Note
  */
 public class ContaTest {
@@ -112,8 +111,5 @@ public class ContaTest {
         System.out.println("calcularValorTotal");
         Conta conta = new Conta(100, null);
         conta.calcularValorTotal();
-        
-        //assertEquals(250, conta.calcularValorTotal());
     }
-    
 }

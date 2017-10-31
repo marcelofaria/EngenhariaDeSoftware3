@@ -42,11 +42,10 @@ public class Caixa extends Funcionario {
         this.cpf = cpf;
     }
     
-    
-    
     public Caixa(String senha, String nome, String cpf) {
         super(senha, nome, cpf);
-        
+        this.senha = senha;
+        this.nome = nome;
+        this.cpf = cpf;
     }
-    
 }

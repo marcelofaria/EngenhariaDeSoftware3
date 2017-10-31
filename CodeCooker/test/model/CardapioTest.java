@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Collection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 //import static org.junit.Assert.*;
 import static junit.framework.Assert.*;
 /**
- *
+ * Classe para testes dos métodos da classe "Cardapio"
  * @author OTAVIO-Note
  */
 public class CardapioTest {
@@ -79,7 +78,6 @@ public class CardapioTest {
                 fail("Nao foi possivel obter a referencia de getItens().");
             }
         }
-       
     }
 
     /**
@@ -100,8 +98,6 @@ public class CardapioTest {
         
         c1.setItens(itens2);
         
-        
         assertEquals(c1.getItens().get(0).getNome(), "Arroz");
     }
-    
 }
