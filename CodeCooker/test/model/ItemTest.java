@@ -43,12 +43,9 @@ public class ItemTest {
     @Test
     public void testGetIdItem() {
         System.out.println("getIdItem");
-        Item instance = null;
-        int expResult = 0;
-        int result = instance.getIdItem();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", false);
+        
+        assertEquals(0, i.getIdItem());
     }
 
     /**
@@ -57,11 +54,10 @@ public class ItemTest {
     @Test
     public void testSetIdItem() {
         System.out.println("setIdItem");
-        int idItem = 0;
-        Item instance = null;
-        instance.setIdItem(idItem);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setIdItem(5);
+        
+        assertEquals(5, i.getIdItem());
     }
 
     /**
@@ -70,12 +66,9 @@ public class ItemTest {
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        Item instance = null;
-        String expResult = "";
-        String result = instance.getNome();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        
+        assertEquals("Bife", i.getNome());
     }
 
     /**
@@ -84,11 +77,10 @@ public class ItemTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nome = "";
-        Item instance = null;
-        instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setNome("Virado");
+        
+        assertEquals("Virado", i.getNome());
     }
 
     /**
@@ -97,12 +89,9 @@ public class ItemTest {
     @Test
     public void testGetPreco() {
         System.out.println("getPreco");
-        Item instance = null;
-        float expResult = 0.0F;
-        float result = instance.getPreco();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        
+        assertEquals(10, i.getPreco(), 0.0);
     }
 
     /**
@@ -111,11 +100,10 @@ public class ItemTest {
     @Test
     public void testSetPreco() {
         System.out.println("setPreco");
-        float preco = 0.0F;
-        Item instance = null;
-        instance.setPreco(preco);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setPreco(25);
+   
+        assertEquals(25, i.getPreco(), 0.0);
     }
 
     /**
@@ -124,12 +112,9 @@ public class ItemTest {
     @Test
     public void testGetIngredientes() {
         System.out.println("getIngredientes");
-        Item instance = null;
-        String expResult = "";
-        String result = instance.getIngredientes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        
+        assertEquals("carne", i.getIngredientes());
     }
 
     /**
@@ -138,11 +123,10 @@ public class ItemTest {
     @Test
     public void testSetIngredientes() {
         System.out.println("setIngredientes");
-        String ingredientes = "";
-        Item instance = null;
-        instance.setIngredientes(ingredientes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setIngredientes("milho");
+        
+        assertEquals("milho", i.getIngredientes());
     }
 
     /**
@@ -151,12 +135,9 @@ public class ItemTest {
     @Test
     public void testGetDisponibilidade() {
         System.out.println("getDisponibilidade");
-        Item instance = null;
-        boolean expResult = false;
-        boolean result = instance.getDisponibilidade();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+               
+        assertEquals(true, i.getDisponibilidade());
     }
 
     /**
@@ -165,11 +146,10 @@ public class ItemTest {
     @Test
     public void testSetDisponibilidade() {
         System.out.println("setDisponibilidade");
-        boolean disponibilidade = false;
-        Item instance = null;
-        instance.setDisponibilidade(disponibilidade);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setDisponibilidade(false);
+        
+        assertEquals(false, i.getDisponibilidade());
     }
 
     /**
@@ -178,12 +158,9 @@ public class ItemTest {
     @Test
     public void testGetTipo() {
         System.out.println("getTipo");
-        Item instance = null;
-        Tipo expResult = null;
-        Tipo result = instance.getTipo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+               
+        assertEquals(null, i.getTipo());
     }
 
     /**
@@ -192,11 +169,10 @@ public class ItemTest {
     @Test
     public void testSetTipo() {
         System.out.println("setTipo");
-        Tipo tipo = null;
-        Item instance = null;
-        instance.setTipo(tipo);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Item i = new Item("Bife", 10, "carne", true);
+        i.setTipo(Tipo.Prato);
+        
+        assertEquals(Tipo.Prato, i.getTipo());
     }
     
 }

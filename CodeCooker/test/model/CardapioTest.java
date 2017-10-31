@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.Collection;
@@ -11,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import java.util.ArrayList;
 //import static org.junit.Assert.*;
 import static junit.framework.Assert.*;
 /**
@@ -55,11 +51,11 @@ public class CardapioTest {
     @Test
     public void testSetDia() {
         System.out.println("setDia");
-        DiaDaSemana dia = null;
-        Cardapio instance = null;
-        instance.setDia(dia);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Cardapio cardapio = new Cardapio(null, DiaDaSemana.Terca);
+        cardapio.setDia(DiaDaSemana.Quarta);
+        
+        assertEquals(DiaDaSemana.Quarta, cardapio.getDia());
+        //System.out. println(cardapio.getDia());
     }
 
     /**
@@ -68,12 +64,9 @@ public class CardapioTest {
     @Test
     public void testGetItens() {
         System.out.println("getItens");
-        Cardapio instance = null;
-        Collection<Item> expResult = null;
-        Collection<Item> result = instance.getItens();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Collection<Cardapio> cardapio = new ArrayList<Cardapio>();
+        
+        //assertEquals(, cardapio.getItens());
     }
 
     /**
@@ -82,11 +75,11 @@ public class CardapioTest {
     @Test
     public void testSetItens() {
         System.out.println("setItens");
-        Collection<Item> itens = null;
-        Cardapio instance = null;
-        instance.setItens(itens);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Collection<Cardapio> cardapio = new ArrayList<Cardapio>();
+       /* Cardapio c1 = new Cardapio( ,null);
+        cardapio.add(c1);
+        
+        assertEquals(,cardapio.SetItens());*/
     }
     
 }
