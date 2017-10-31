@@ -53,11 +53,9 @@ public class ProdutoTest {
     @Test
     public void testSetQtd() {
         System.out.println("setQtd");
-        int qtd = 0;
-        Produto instance = null;
-        instance.setQtd(qtd);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produto p1 = new Produto(10, "Churros", "Sadia", "Dona Florinda");
+        p1.setQtd(50);
+        assertEquals(50,p1.getQtd());
     }
 
     /**
@@ -103,11 +101,10 @@ public class ProdutoTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nome = "";
-        Produto instance = null;
-        instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        Produto p1 = new Produto(10, "Churros", "Sadia", "Dona Florinda");
+        p1.setNome("Crepe");
+        assertEquals("Crepe",p1.getNome());
     }
 
     /**
@@ -126,11 +123,9 @@ public class ProdutoTest {
     @Test
     public void testSetMarca() {
         System.out.println("setMarca");
-        String marca = "";
-        Produto instance = null;
-        instance.setMarca(marca);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produto p1 = new Produto(10, "Churros", "Sadia", "Dona Florinda");
+        p1.setMarca("Perdigao");
+        assertEquals("Perdigao",p1.getMarca());
     }
 
     /**
@@ -149,12 +144,11 @@ public class ProdutoTest {
     @Test
     public void testSetFornecedor() {
         System.out.println("setFornecedor");
-        String fornecedor = "";
-        Produto instance = null;
-        instance.setFornecedor(fornecedor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produto p1 = new Produto(10, "Churros", "Sadia", "Dona Florinda");
+        p1.setFornecedor("Seu Madruga");
+        assertEquals("Seu Madruga",p1.getFornecedor());
     }
-    
+   
 }
 
+ 
