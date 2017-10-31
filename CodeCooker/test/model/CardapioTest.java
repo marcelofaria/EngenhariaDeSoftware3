@@ -44,12 +44,9 @@ public class CardapioTest {
     @Test
     public void testGetDia() {
         System.out.println("getDia");
-        Cardapio instance = null;
-        DiaDaSemana expResult = null;
-        DiaDaSemana result = instance.getDia();
-        assertEquals("Segunda",Cardapio.getDia());
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Cardapio cardapio = new Cardapio(null, DiaDaSemana.Domingo);
+        
+        assertEquals(DiaDaSemana.Domingo, cardapio.getDia());
     }
 
     /**
