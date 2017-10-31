@@ -30,7 +30,7 @@ CREATE TABLE Gerente (
 CREATE TABLE usuario (
 	usuarioID INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(50) NOT NULL,
-	password VARCHAR(100) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
 	tipoUsuario SMALLINT NOT NULL,
 	nome VARCHAR(150) NOT NULL,
 	cpf VARCHAR(11) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE pedido (
 	contaID INT NOT NULL,
 	valor DOUBLE(10, 2),
 	PRIMARY KEY(pedidoID),
-	FOREIGN KEY(contaID) REFERENCES Conta(contaID)
+	FOREIGN KEY(contaID) REFERENCES conta(contaID)
 );
 
 CREATE TABLE item_pedido (
@@ -67,15 +67,15 @@ CREATE TABLE item_pedido (
 	Quantidade SMALLINT NOT NULL,
 	Valor DOUBLE(10, 2),
 	PRIMARY KEY(itemID, pedidoID),
-	FOREIGN KEY(itemID) REFERENCES Item(itemID),
-	FOREIGN KEY(pedidoID) REFERENCES Pedido(pedidoID)
+	FOREIGN KEY(itemID) REFERENCES item(itemID),
+	FOREIGN KEY(pedidoID) REFERENCES pedido(pedidoID)
 );
 
 CREATE TABLE item_cardapio (
 	itemID INT NOT NULL,
 	diaDaSemana SMALLINT NOT NULL,
 	PRIMARY KEY(itemID, diaDaSemana),
-	FOREIGN KEY(itemID) REFERENCES Item(itemID)
+	FOREIGN KEY(itemID) REFERENCES item(itemID)
 );
 
 CREATE TABLE produto (
@@ -102,7 +102,7 @@ CREATE TABLE reserva (
 	numPessoas SMALLINT NOT NULL,
 	telefone VARCHAR(15),
 	PRIMARY KEY(reservaID),
-	FOREIGN KEY(numMesa) REFERENCES Mesa(numMesa),
-	FOREIGN KEY(usuarioID) REFERENCES Usuario(usuarioID)
+	FOREIGN KEY(numMesa) REFERENCES mesa(numMesa),
+	FOREIGN KEY(usuarioID) REFERENCES usuario(usuarioID)
 );
 
