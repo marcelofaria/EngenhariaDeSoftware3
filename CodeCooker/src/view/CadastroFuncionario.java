@@ -136,7 +136,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         cdao.getInstance();
         int i = 1;
         
-        System.out.println(cdao.retrieveGeneric("SELECT * FROM caixa ORDER BY nome"));
+        System.out.println(cdao.retrieveById(9));
         //System.out.println(cdao.retrieveById(i));
         
     }//GEN-LAST:event_BuscarActionPerformed
