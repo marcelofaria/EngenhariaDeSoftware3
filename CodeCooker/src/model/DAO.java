@@ -18,8 +18,8 @@ import java.sql.SQLException;
 public abstract class DAO {
     private static Connection con;
     //private static final String DBURL = "jdbc:mysql:///CodeCookers";
-    private static final String DBURL = "jdbc:mysql://127.0.0.1/codecookers";
-    private static final String username = "root";
+    private static final String DBURL = "jdbc:mysql://127.0.0.1/test";
+    private static final String username = "";
     private static final String password = "";
 
     protected Connection getConnection() {

@@ -6,7 +6,7 @@
 package view;
 
 import javax.swing.JTextArea;
-import model.CaixaDAO;
+
 
 /**
  *
@@ -123,20 +123,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
         // TODO add your handling code here:
-        CaixaDAO cdao = new CaixaDAO();
-        cdao.getInstance();
+        /*CaixaDAO cdao = new CaixaDAO();
+        cdao.getInstance();*/
         
-        cdao.create(String.valueOf(senha.getPassword()), nome.getText(), cpf.getText());
+        //cdao.create(String.valueOf(senha.getPassword()), nome.getText(), cpf.getText());
         
     }//GEN-LAST:event_CadastrarActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        CaixaDAO cdao = new CaixaDAO();
-        cdao.getInstance();
-        int i = 1;
+        /*CaixaDAO cdao = new CaixaDAO();
+        cdao.getInstance();*/
         
-        System.out.println(cdao.retrieveGeneric("SELECT * FROM caixa ORDER BY nome"));
+        //System.out.println(cdao.retrieveGeneric("SELECT * FROM caixa ORDER BY nome"));
         //System.out.println(cdao.retrieveById(i));
         
     }//GEN-LAST:event_BuscarActionPerformed

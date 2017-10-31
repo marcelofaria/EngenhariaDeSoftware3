@@ -7,11 +7,7 @@ package view;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import model.CaixaDAO;
 import model.DAO;
-import model.Gerente;
-import model.GerenteDAO;
-import model.MetreDAO;
 
 /**
  *
@@ -136,11 +132,7 @@ public class AuthenticationView extends javax.swing.JFrame {
         else{
             
             System.out.println(g.getNome());
-        }*/
-        
-        GerenteDAO g = new GerenteDAO();
-        MetreDAO m = new MetreDAO();
-        CaixaDAO c = new CaixaDAO();       
+        }*/      
         
         String u;
         String senha;
@@ -148,7 +140,7 @@ public class AuthenticationView extends javax.swing.JFrame {
         u = TextUsuario.getText();
         senha = String.valueOf(PasswordSenha.getPassword());
         
-        if(CaixaDAO.getInstance().retrieveLike(u) != null && c.retrieveByPass(senha) != null){
+        /*if(CaixaDAO.getInstance().retrieveLike(u) != null && c.retrieveByPass(senha) != null){
         
             JOptionPane.showMessageDialog(null, "Voce logou!");
             System.out.println(senha);
@@ -159,7 +151,7 @@ public class AuthenticationView extends javax.swing.JFrame {
         
             JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
             
-        }
+        }*/
         
                 
         
