@@ -33,13 +33,13 @@ public class MesaDAO extends DAO{
         }
     }
     
-    public void create(short numMesa, boolean status){
+    public void create(int numMesa, boolean status){
         Mesa m = new Mesa(numMesa, status);
         PreparedStatement createMesa = null;
         String query = "INSERT INTO mesa (numMesa, status) VALUES (?, ?)";
         try {
             createMesa = MesaDAO.myCONN.prepareStatement(query);
-            createMesa.setShort(1, numMesa);
+            createMesa.setInt(1, numMesa);
             createMesa.setBoolean(2, status);
             this.executeUpdate(createMesa);
         } catch (SQLException ex) {
@@ -93,7 +93,7 @@ public class MesaDAO extends DAO{
         try {
             stmt = myCONN.prepareStatement("UPDATE mesa SET status=? WHERE numMesa = ?");
             stmt.setBoolean(1, m.getStatus());
-            stmt.setShort(2, m.getNumMesa());
+            stmt.setInt(2, m.getNumMesa());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -109,7 +109,7 @@ public class MesaDAO extends DAO{
         PreparedStatement stmt;
         try {
             stmt = myCONN.prepareStatement("DELETE FROM mesa WHERE numMesa = ?");
-            stmt.setShort(1, m.getNumMesa());
+            stmt.setInt(1, m.getNumMesa());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

@@ -31,15 +31,15 @@ public class ReservaDAO extends DAO{
         }
     }
     
-    public void create(short numMesa, String nome, Time horario, short numPessoas, String telefone) {
+    public void create(int numMesa, String nome, Time horario, int numPessoas, String telefone) {
         PreparedStatement stmt;
         try {
             stmt = myCONN.prepareStatement("INSERT INTO reserva (numMesa, nome, horario, numPessoas, telefone) "
                     + "VALUES (?, ?, ?, ?, ?)");
-            stmt.setShort(1, numMesa);
+            stmt.setInt(1, numMesa);
             stmt.setString(2, nome);
             stmt.setTime(3, horario);
-            stmt.setShort(4, numPessoas);
+            stmt.setInt(4, numPessoas);
             stmt.setString(5, telefone);
             this.executeUpdate(stmt);
             stmt.close();
@@ -51,7 +51,7 @@ public class ReservaDAO extends DAO{
     private Reserva buildObject(ResultSet rs) {
         Reserva r = null;
         try {
-            r = new Reserva(rs.getShort("numMesa"), rs.getString("nome"), rs.getTime("horario"), rs.getShort("numPessoas"), rs.getString("telefone"));
+            r = new Reserva(rs.getInt("numMesa"), rs.getString("nome"), rs.getTime("horario"), rs.getInt("numPessoas"), rs.getString("telefone"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -97,10 +97,10 @@ public class ReservaDAO extends DAO{
         PreparedStatement stmt;
         try {
             stmt = myCONN.prepareStatement("UPDATE reserva SET numMesa=?, nome=?, horario=?, numPessoas=?, telefone=? WHERE id = ?");
-            stmt.setShort(1, r.getNumPessoas());
+            stmt.setInt(1, r.getNumPessoas());
             stmt.setString(2, r.getNome());
             stmt.setTime(3, r.getHorario());
-            stmt.setShort(4, r.getNumPessoas());
+            stmt.setInt(4, r.getNumPessoas());
             stmt.setString(4, r.getTelefone());
             int update = this.executeUpdate(stmt);
             if (update == 1) {

@@ -10,7 +10,7 @@ public class Mesa {
     /**
      * Default constructor
      */
-    public Mesa(short numMesa, boolean status) {
+    public Mesa(int numMesa, boolean status) {
         this.numMesa = numMesa;
         this.status = status;
     }
@@ -18,7 +18,7 @@ public class Mesa {
     /**
      * 
      */
-    private short numMesa;
+    private int numMesa;
 
     /**
      * 
@@ -26,11 +26,11 @@ public class Mesa {
     private boolean status;
     
 
-    public short getNumMesa() {
+    public int getNumMesa() {
         return numMesa;
     }
 
-    public void setNumMesa(short numMesa) {
+    public void setNumMesa(int numMesa) {
         this.numMesa = numMesa;
     }
 

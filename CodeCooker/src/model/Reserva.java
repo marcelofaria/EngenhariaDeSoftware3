@@ -11,7 +11,7 @@ public class Reserva {
     /**
      * Default constructor
      */
-    public Reserva(short numMesa, String nome, Time horario, short numPessoas, String telefone) {
+    public Reserva(int numMesa, String nome, Time horario, int numPessoas, String telefone) {
         this.numMesa = numMesa;
         this.nome = nome;
         this.horario = horario;
@@ -35,7 +35,7 @@ public class Reserva {
     /**
      * 
      */
-    private short numMesa;
+    private int numMesa;
 
     /**
      * 
@@ -50,7 +50,7 @@ public class Reserva {
     /**
      * 
      */
-    private short numPessoas;
+    private int numPessoas;
 
     /**
      * 
@@ -58,11 +58,11 @@ public class Reserva {
     private String telefone;
     
 
-    public short getNumMesa() {
+    public int getNumMesa() {
         return numMesa;
     }
 
-    public void setNumMesa(short numMesa) {
+    public void setNumMesa(int numMesa) {
         this.numMesa = numMesa;
     }
 
@@ -82,11 +82,11 @@ public class Reserva {
         this.horario = horario;
     }
 
-    public short getNumPessoas() {
+    public int getNumPessoas() {
         return numPessoas;
     }
 
-    public void setNumPessoas(short numPessoas) {
+    public void setNumPessoas(int numPessoas) {
         this.numPessoas = numPessoas;
     }
 

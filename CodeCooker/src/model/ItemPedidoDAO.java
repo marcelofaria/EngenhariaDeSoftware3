@@ -32,7 +32,7 @@ public class ItemPedidoDAO extends DAO{
         }
     }
     
-    public void create(int idPedido, Item item, short qtd){
+    public void create(int idPedido, Item item, int qtd){
         ItemPedido i = new ItemPedido(item, qtd);
         PreparedStatement createItem = null;
         String query = "INSERT INTO item_pedido (idItem, idPedido, quantidade, valor) VALUES (?, ?, ?, ?)";
@@ -40,7 +40,7 @@ public class ItemPedidoDAO extends DAO{
             createItem = ItemPedidoDAO.myCONN.prepareStatement(query);
             createItem.setInt(1, i.getItem().getIdItem());
             createItem.setInt(2, idPedido);
-            createItem.setShort(3, i.getQtd());
+            createItem.setInt(3, i.getQtd());
             createItem.setFloat(4, i.getValor());
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class ItemPedidoDAO extends DAO{
             stmt = myCONN.prepareStatement("UPDATE reserva SET idPedido=?, idItem=?, quantidade=?, valor=? WHERE id = ?");
             stmt.setInt(1, idPedido);
             stmt.setInt(2, ip.getItem().getIdItem());
-            stmt.setShort(3, ip.getQtd());
+            stmt.setInt(3, ip.getQtd());
             stmt.setFloat(4, ip.getValor());
             stmt.setInt(5, ip.getIdItemPedido());
             int update = this.executeUpdate(stmt);
