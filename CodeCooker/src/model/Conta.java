@@ -10,14 +10,23 @@ public class Conta {
     private int ID;
     private float valorTotal;
     private Date data;
+    private Collection<Pedido> pedidos;
 
-    public Conta(float valorTotal, Date data) {
-        
-        this.setData(data);
-        this.setValorTotal(valorTotal);
-        
+
+    public Conta(Collection<Pedido> pedidos, Date data) {
+        this.pedidos = pedidos;
+        this.data = data;
+        this.getValorTotal();
     }
 
+    public Collection<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Collection<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -39,7 +48,10 @@ public class Conta {
     }
 
     public void calcularValorTotal() {
-        // TODO implement here
+        this.valorTotal = 0;
+        for(Pedido p : this.pedidos){
+            this.valorTotal += p.getValor();
+        }
     }
 
 }

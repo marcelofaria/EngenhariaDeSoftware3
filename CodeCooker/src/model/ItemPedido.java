@@ -11,16 +11,12 @@ public class ItemPedido {
     /**
      * Default constructor
      */
-    public ItemPedido(Item item, int qtd) {
+    public ItemPedido(Item item, Pedido pedido, int qtd) {
         this.item = item;
+        this.pedido = pedido;
         this.qtd = qtd;
         this.valor = this.calcularValor(this.item.getPreco(), qtd);
     }
-
-    /**
-     * 
-     */
-    private int idItemPedido;
     
     /**
      * 
@@ -37,6 +33,19 @@ public class ItemPedido {
      * 
      */
     private Item item;
+    
+    /**
+     * 
+     */
+    private Pedido pedido;
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
     public Item getItem() {
         return item;
@@ -44,15 +53,6 @@ public class ItemPedido {
 
     public void setItem(Item item) {
         this.item = item;
-    }
-
-
-   public int getIdItemPedido() {
-        return idItemPedido;
-    }
-
-    public void setIdItemPedido(int idItemPedido) {
-        this.idItemPedido = idItemPedido;
     }
 
     public int getQtd() {

@@ -32,15 +32,15 @@ public class ItemPedidoDAO extends DAO{
         }
     }
     
-    public void create(int idPedido, Item item, int qtd){
-        ItemPedido i = new ItemPedido(item, qtd);
+    public void create(Item item, Pedido pedido, int qtd){
+        ItemPedido i = new ItemPedido(item, pedido, qtd);
         PreparedStatement createItem = null;
-        String query = "INSERT INTO item_pedido (idItem, idPedido, quantidade, valor) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO item_pedido (itemID, pedidoID, quantidade, valor) VALUES (?, ?, ?, ?)";
         try {
             createItem = ItemPedidoDAO.myCONN.prepareStatement(query);
-            createItem.setInt(1, i.getItem().getIdItem());
-            createItem.setInt(2, idPedido);
-            createItem.setInt(3, i.getQtd());
+            createItem.setInt(1, item.getId());
+            createItem.setInt(2, pedido.getId());
+            createItem.setInt(3, qtd);
             createItem.setFloat(4, i.getValor());
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
@@ -52,8 +52,9 @@ public class ItemPedidoDAO extends DAO{
     private ItemPedido buildObject(ResultSet rs) {
         ItemPedido ip = null;
         try {
-            Item item = ItemDAO.getInstance().retrieveById(rs.getInt("idItem"));
-            ip = new ItemPedido(item, rs.getShort("quantidade"));
+            Item item = ItemDAO.getInstance().retrieveById(rs.getInt("itemID"));
+            Pedido pedido = PedidoDAO.getInstance().retrieveById(rs.getInt("pedidoID"));
+            ip = new ItemPedido(item, pedido, rs.getShort("quantidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -91,15 +92,14 @@ public class ItemPedidoDAO extends DAO{
         return ip;
     }
     
-    public boolean update(ItemPedido ip, int idPedido) {
+    public boolean update(ItemPedido ip) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE reserva SET idPedido=?, idItem=?, quantidade=?, valor=? WHERE id = ?");
-            stmt.setInt(1, idPedido);
-            stmt.setInt(2, ip.getItem().getIdItem());
-            stmt.setInt(3, ip.getQtd());
-            stmt.setFloat(4, ip.getValor());
-            stmt.setInt(5, ip.getIdItemPedido());
+            stmt = myCONN.prepareStatement("UPDATE item_pedido SET quantidade=?, valor=? WHERE itemID = ? AND pedidoID = ?");
+            stmt.setInt(1, ip.getQtd());
+            stmt.setFloat(2, ip.getValor());
+            stmt.setInt(3, ip.getItem().getId());
+            stmt.setInt(4, ip.getPedido().getId());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -114,8 +114,9 @@ public class ItemPedidoDAO extends DAO{
     public void delete(ItemPedido ip) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM reserva WHERE idReserva = ?");
-            stmt.setInt(1, ip.getIdItemPedido());
+            stmt = myCONN.prepareStatement("DELETE FROM item_pedido WHERE itemID = ? AND pedidoID = ?");
+            stmt.setInt(1, ip.getItem().getId());
+            stmt.setInt(2, ip.getPedido().getId());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

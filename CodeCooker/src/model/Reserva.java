@@ -9,7 +9,12 @@ import java.util.*;
 public class Reserva {
 
     /**
-     * Default constructor
+     * Creates an object of type Reserva
+     * @param numMesa
+     * @param nome
+     * @param horario
+     * @param numPessoas
+     * @param telefone
      */
     public Reserva(int numMesa, String nome, Time horario, int numPessoas, String telefone) {
         this.numMesa = numMesa;

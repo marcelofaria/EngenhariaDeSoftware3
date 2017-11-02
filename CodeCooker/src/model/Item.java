@@ -15,21 +15,17 @@ public class Item {
     /**
      * Default constructor
      */
-    public Item(String nome, float preco, String ingredientes, boolean disp) {
+    public Item(int itemID, String nome, float preco, String ingredientes, boolean disp) {
         this.nome = nome;
         this.preco = preco;
         this.ingredientes = ingredientes;
         this.disponibilidade = disp;
     }
     
-    private int idItem;
+    private int itemID;
 
-    public int getIdItem() {
-        return idItem;
-    }
-
-    public void setIdItem(int idItem) {
-        this.idItem = idItem;
+    public int getId() {
+        return itemID;
     }
 
     /**

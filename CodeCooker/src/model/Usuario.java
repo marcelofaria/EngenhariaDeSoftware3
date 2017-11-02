@@ -29,10 +29,6 @@ public class Usuario {
         return usuarioID;
     }
 
-    public void setUsuarioID(int usuarioID) {
-        this.usuarioID = usuarioID;
-    }
-
     public int getTipoUsuario() {
         return tipoUsuario;
     }
