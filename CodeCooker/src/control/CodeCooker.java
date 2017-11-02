@@ -15,9 +15,10 @@ public class CodeCooker {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       CodeCookerController baseController = new CodeCookerController();
-       baseController.start();
-       
+
+        CodeCookerController baseController = new CodeCookerController();
+        baseController.start();
+        
     }
     
 }
