@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -26,11 +27,11 @@ public class ContaDAO extends DAO{
         }
     }
     
-    public void create(float valorTotal, Date data) {
+    public void create(double valorTotal, Date data) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO conta (valortotal, data) VALUES (?,?)");
-            stmt.setFloat(1, valorTotal);
+            stmt = myCONN.prepareStatement("INSERT INTO conta (valorTotal, dataConta) VALUES (?,?)");
+            stmt.setDouble(1, valorTotal);
             stmt.setDate(2, data);
             this.executeUpdate(stmt);
             stmt.close();
@@ -41,7 +42,11 @@ public class ContaDAO extends DAO{
     private Conta buildObject(ResultSet rs) {
         Conta conta = null;
         try {
-            conta = new Conta(rs.getFloat("valortotal"), rs.getDate("data"));
+            PedidoDAO pDAO = PedidoDAO.getInstance();
+            List<Pedido> pedido = pDAO.retrieveGeneric("SELECT * FROM pedido WHERE contaID =" + rs.getInt("contaID"));
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(rs.getDate("data"));
+            conta = new Conta(rs.getInt("contaID"), pedido, cal);
         } catch (SQLException e) {
         }
         return conta;
@@ -71,9 +76,9 @@ public class ContaDAO extends DAO{
     public boolean update(Conta conta) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE conta SET valortotal=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE conta SET valorTotal=? WHERE id = ?");
             //PedidoDAO.update(...)
-            stmt.setFloat(1, conta.getValorTotal());
+            stmt.setDouble(1, conta.getValorTotal());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;

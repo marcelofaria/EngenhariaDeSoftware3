@@ -8,12 +8,13 @@ import java.util.*;
 public class Conta {
 
     private int ID;
-    private float valorTotal;
-    private Date data;
+    private double valorTotal;
+    private Calendar data;
     private Collection<Pedido> pedidos;
 
 
-    public Conta(Collection<Pedido> pedidos, Date data) {
+    public Conta(int ID, Collection<Pedido> pedidos, Calendar data) {
+        this.ID = ID;
         this.pedidos = pedidos;
         this.data = data;
         this.getValorTotal();
@@ -31,7 +32,8 @@ public class Conta {
         return ID;
     }
 
-    public float getValorTotal() {
+    public double getValorTotal() {
+        this.calcularValorTotal();
         return valorTotal;
     }
 
@@ -39,11 +41,11 @@ public class Conta {
         this.valorTotal = valorTotal;
     }
 
-    public Date getData() {
+    public Calendar getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Calendar data) {
         this.data = data;
     }
 

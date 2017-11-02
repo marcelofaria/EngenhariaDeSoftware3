@@ -33,13 +33,15 @@ public class PedidoDAO extends DAO{
         }
     }
     
-    public void create(List<ItemPedido> itens) {
+    public void create(List<ItemPedido> itens, int contaID, float valor) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO pedido (contaID, valor) VALUES (?, ?, ?)");
+            stmt = myCONN.prepareStatement("INSERT INTO pedido (contaID, valor) VALUES (?, ?)");
             for(ItemPedido i : itens){
-                //stmt.setInt(1, i.get);
-                //stmt.setInt(2, i.getIdItemPedido());
+                ItemPedidoDAO ipDAO = ItemPedidoDAO.getInstance();
+                ipDAO.create(i.getItem(), i.getPedidoID(), 0);
+                stmt.setInt(1, contaID);
+                stmt.setFloat(2, valor);
                 this.executeUpdate(stmt);
             }
             stmt.close();
@@ -53,13 +55,13 @@ public class PedidoDAO extends DAO{
         Array idsArray;
         int[] ids;
         try {
-            idsArray = rs.getArray("idPedido");
+            idsArray = rs.getArray("pedidoID");
             ids = (int[]) idsArray.getArray();
             itens = new ArrayList<>();
             for(int x : ids){
                 itens.add(ItemPedidoDAO.getInstance().retrieveById(x));
             }
-            p = new Pedido(itens);
+            p = new Pedido(rs.getInt("pedidoID"), itens);
         } catch (SQLException e) {
         }
         return p;
@@ -79,7 +81,7 @@ public class PedidoDAO extends DAO{
     
     public List<Pedido> retrieveAll() {
         
-        return this.retrieveGeneric("SELECT * FROM produto ORDER BY qtd");
+        return this.retrieveGeneric("SELECT * FROM pedido ORDER BY qtd");
     }
     
     public Pedido retrieveById(int id) {
