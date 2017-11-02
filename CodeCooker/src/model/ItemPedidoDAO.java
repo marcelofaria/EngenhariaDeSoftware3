@@ -32,14 +32,14 @@ public class ItemPedidoDAO extends DAO{
         }
     }
     
-    public void create(Item item, Pedido pedido, int qtd){
-        ItemPedido i = new ItemPedido(item, pedido, qtd);
+    public void create(Item item, int pedidoID, int qtd){
+        ItemPedido i = new ItemPedido(item, pedidoID, qtd);
         PreparedStatement createItem = null;
         String query = "INSERT INTO item_pedido (itemID, pedidoID, quantidade, valor) VALUES (?, ?, ?, ?)";
         try {
             createItem = ItemPedidoDAO.myCONN.prepareStatement(query);
             createItem.setInt(1, item.getId());
-            createItem.setInt(2, pedido.getId());
+            createItem.setInt(2, pedidoID);
             createItem.setInt(3, qtd);
             createItem.setFloat(4, i.getValor());
             this.executeUpdate(createItem);
@@ -54,7 +54,7 @@ public class ItemPedidoDAO extends DAO{
         try {
             Item item = ItemDAO.getInstance().retrieveById(rs.getInt("itemID"));
             Pedido pedido = PedidoDAO.getInstance().retrieveById(rs.getInt("pedidoID"));
-            ip = new ItemPedido(item, pedido, rs.getShort("quantidade"));
+            ip = new ItemPedido(item, pedido.getId(), rs.getShort("quantidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -80,12 +80,12 @@ public class ItemPedidoDAO extends DAO{
     }
     
     public List<ItemPedido> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM item_pedido ORDER BY idPedido");
+        return this.retrieveGeneric("SELECT * FROM item_pedido ORDER BY pedidoID");
     }
     
     public ItemPedido retrieveById(int id) {
         ItemPedido ip = null;
-        List<ItemPedido> ips = this.retrieveGeneric("SELECT * FROM reserva WHERE id="+id);
+        List<ItemPedido> ips = this.retrieveGeneric("SELECT * FROM item_pedido WHERE id="+id);
         if(!ips.isEmpty()){
             ip = ips.get(0);
         }

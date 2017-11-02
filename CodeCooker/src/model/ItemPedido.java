@@ -8,12 +8,14 @@ import java.util.*;
  */
 public class ItemPedido {
 
+    private int pedidoID;
+
     /**
      * Default constructor
      */
-    public ItemPedido(Item item, Pedido pedido, int qtd) {
+    public ItemPedido(Item item, int pedidoID, int qtd) {
         this.item = item;
-        this.pedido = pedido;
+        this.pedidoID = pedidoID;
         this.qtd = qtd;
         this.valor = this.calcularValor(this.item.getPreco(), qtd);
     }
@@ -38,6 +40,10 @@ public class ItemPedido {
      * 
      */
     private Pedido pedido;
+
+    public int getPedidoID() {
+        return pedidoID;
+    }
 
     public Pedido getPedido() {
         return pedido;
