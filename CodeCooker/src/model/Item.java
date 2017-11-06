@@ -15,8 +15,9 @@ public class Item {
     /**
      * Default constructor
      */
-    public Item(int itemID, String nome, float preco, String ingredientes, boolean disp) {
+    public Item(int itemID, String nome, Tipo tipo, float preco, String ingredientes, boolean disp) {
         this.nome = nome;
+        this.tipo = tipo;
         this.preco = preco;
         this.ingredientes = ingredientes;
         this.disponibilidade = disp;

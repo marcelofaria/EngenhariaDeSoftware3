@@ -47,9 +47,10 @@ CREATE TABLE conta (
 
 CREATE TABLE item (
 	itemID INT NOT NULL AUTO_INCREMENT,
-	Nome VARCHAR(100) NOT NULL,
-	Ingredientes VARCHAR(500),
-	Disponibilidade BOOLEAN NOT NULL,
+	nome VARCHAR(100) NOT NULL,
+	tipo VARCHAR(50) NOT NULL,
+	ingredientes VARCHAR(500),
+	disponibilidade BOOLEAN NOT NULL,
 	PRIMARY KEY(itemID)
 );
 

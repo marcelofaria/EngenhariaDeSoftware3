@@ -49,18 +49,6 @@ public class UsuarioTest {
     }
 
     /**
-     * Test of setUsuarioID method, of class Usuario.
-     */
-    @Test
-    public void testSetUsuarioID() {
-        System.out.println("setUsuarioID");
-        Usuario user = new Usuario("Otavio", "34836464854", 1, "00000");
-        user.setUsuarioID(6);
-        
-        assertEquals(6, user.getUsuarioID());
-    }
-
-    /**
      * Test of getTipoUsuario method, of class Usuario.
      */
     @Test

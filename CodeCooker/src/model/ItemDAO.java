@@ -33,15 +33,16 @@ public class ItemDAO extends DAO{
         }
     }
     
-    public void create(String nome, float preco, String ingredientes, boolean disp){
+    public void create(String nome, String tipo, float preco, String ingredientes, boolean disp){
         PreparedStatement createItem = null;
-        String query = "INSERT INTO item (nome, preco, ingredientes, disponibilidade) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO item (nome, preco, ingredientes, disponibilidade, tipo) VALUES (?, ?, ?, ?, ?)";
         try {
             createItem = ItemDAO.myCONN.prepareStatement(query);
             createItem.setString(1, nome);
             createItem.setFloat(2, preco);
             createItem.setString(3, ingredientes);
             createItem.setBoolean(4, disp);
+            createItem.setString(5, tipo);
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
             Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +53,7 @@ public class ItemDAO extends DAO{
     public Item BuildObject(ResultSet rs){
         Item i = null;
         try {
-            i = new Item(rs.getInt("itemID"), rs.getString("nome"), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
+            i = new Item(rs.getInt("itemID"), rs.getString("nome"), Tipo.valueOf(rs.getString("tipo")), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
