@@ -35,7 +35,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-        setLookAndFeel();
+        //setLookAndFeel();
         baseController = new CodeCookerController();
         initComponents();
         tabPane.setEnabledAt(1, false);
