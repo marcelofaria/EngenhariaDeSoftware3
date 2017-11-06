@@ -8,6 +8,10 @@ package view;
 import control.CodeCookerController;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Label;
+import java.awt.Toolkit;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -34,7 +38,48 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLookAndFeel();
         baseController = new CodeCookerController();
         initComponents();
+        tabPane.setEnabledAt(1, false);
+        tabPane.setEnabledAt(2, false);
+        tabPane.setEnabledAt(3, false);
+        tabPane.setEnabledAt(4, false);
+        tabPane.setEnabledAt(5, false);
+        tabPane.setEnabledAt(6, false);
+        tabPane.setEnabledAt(7, false);
+        CenteredFrame(this);
+        lblBemVindo.setVisible(false);
         lblImagemCozinheiro.add(lblTitulo);
+    }
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaPrincipal().setVisible(true);
+            }
+        });
     }
 
     /**
@@ -46,7 +91,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabMesas = new javax.swing.JTabbedPane();
+        tabPane = new javax.swing.JTabbedPane();
         pnlHome = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
@@ -55,6 +100,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         lblImagemCozinheiro = new javax.swing.JLabel();
+        lblBemVindo = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         pnlMesas = new javax.swing.JPanel();
         btnMesa2 = new javax.swing.JButton();
         lblMesa1 = new javax.swing.JLabel();
@@ -122,17 +169,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnExcluirFuncionario = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CodeCookers");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        tabMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tabMesas.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        tabMesas.setToolTipText("");
-        tabMesas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tabMesas.setMinimumSize(new java.awt.Dimension(110, 50));
-        tabMesas.setPreferredSize(new java.awt.Dimension(433, 230));
-        tabMesas.addChangeListener(new javax.swing.event.ChangeListener() {
+        tabPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tabPane.setToolTipText("");
+        tabPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabPane.setMinimumSize(new java.awt.Dimension(110, 50));
+        tabPane.setPreferredSize(new java.awt.Dimension(433, 230));
+        tabPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                tabMesasStateChanged(evt);
+                tabPaneStateChanged(evt);
             }
         });
 
@@ -163,6 +212,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         lblImagemCozinheiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cozinheiro.jpg"))); // NOI18N
 
+        lblBemVindo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblBemVindo.setText("Bem Vindo!");
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
         pnlHome.setLayout(pnlHomeLayout);
         pnlHomeLayout.setHorizontalGroup(
@@ -170,18 +233,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
                 .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLogin)
-                            .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblUsuario)
-                                .addComponent(lblSenha))))
-                    .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTitulo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlHomeLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnLogin)
+                                    .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblSenha)
+                                        .addComponent(lblUsuario))))
+                            .addGroup(pnlHomeLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTitulo)))
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblBemVindo)))
+                .addGap(18, 18, 18)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImagemCozinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlHomeLayout.setVerticalGroup(
@@ -190,8 +261,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(91, 91, 91)
+                        .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlHomeLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))
+                            .addGroup(pnlHomeLayout.createSequentialGroup()
+                                .addComponent(lblTitulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblBemVindo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(lblUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,7 +284,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
 
         pnlMesas.setBackground(new java.awt.Color(255, 255, 255));
         pnlMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -372,7 +451,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addContainerGap(42, Short.MAX_VALUE))))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pnlMesas); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pnlMesas); // NOI18N
 
         blTituloCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         blTituloCardapio.setText("Cardápio");
@@ -429,7 +508,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/menu.png")), pnlCardapio); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/menu.png")), pnlCardapio); // NOI18N
 
         lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloItens.setText("Alimentos e Bebidas");
@@ -486,7 +565,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(103, 103, 103))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/sandwich.png")), pnlItens); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/sandwich.png")), pnlItens); // NOI18N
 
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloContas.setText("Contas");
@@ -590,7 +669,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/conta.png")), pnlContas); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/conta.png")), pnlContas); // NOI18N
 
         lblTituloEstoque.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloEstoque.setText("Controle de Estoque");
@@ -647,7 +726,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(103, 103, 103))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pnlEstoque); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pnlEstoque); // NOI18N
 
         lblTituloFinanceiro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloFinanceiro.setText("Financeiro");
@@ -729,7 +808,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/money.png")), pnlFinancas); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/money.png")), pnlFinancas); // NOI18N
 
         lblTituloFuncionarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloFuncionarios.setText("Funcionários");
@@ -803,37 +882,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
         );
 
-        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/waiter.png")), jPanel1); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/waiter.png")), jPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabMesas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabMesas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabMesasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabMesasStateChanged
+    private void tabPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPaneStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabMesasStateChanged
+    }//GEN-LAST:event_tabPaneStateChanged
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     public static void setLookAndFeel() {
-    try {
-      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch(Exception e) {
-      System.out.println("Error setting native LAF: " + e);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            System.out.println("Error setting native LAF: " + e);
+        }
     }
-}
+    
+    public void CenteredFrame(javax.swing.JFrame objFrame) {
+        Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int iCoordX = (objDimension.width - objFrame.getWidth()) / 2;
+        int iCoordY = (objDimension.height - objFrame.getHeight()) / 2;
+        objFrame.setLocation(iCoordX, iCoordY);
+    }
+    
+    public void PrepararTela(int tipo){
+        
+        lblUsuario.setVisible(false);
+        txtUsuario.setVisible(false);
+        lblSenha.setVisible(false);
+        txtSenha.setVisible(false);
+        btnLogin.setVisible(false);
+        lblBemVindo.setVisible(true);
+        
+        if(tipo == 1){
+            tabPane.setEnabledAt(4, true);
+        }
+        else if(tipo == 2){
+            tabPane.setEnabledAt(1, true);
+        }
+        else if(tipo == 3){
+            tabPane.setEnabledAt(1, true);
+            tabPane.setEnabledAt(2, true);
+            tabPane.setEnabledAt(3, true);
+            tabPane.setEnabledAt(4, true);
+            tabPane.setEnabledAt(5, true);
+            tabPane.setEnabledAt(6, true);
+            tabPane.setEnabledAt(7, true);
+        }
+        
+    }
     
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
@@ -848,19 +961,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             
             if(res == 1){
                 JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Caixa");
-                dispose();
-                
+                PrepararTela(1);
+
             }
             else if(res == 2){
                 JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Metre");
-                dispose();
+                PrepararTela(2);
                 
             }
             else if(res == 3){
                 JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Gerente");
-                dispose();
-                Mesas m = new Mesas();
-                m.setVisible(true);
+                PrepararTela(3);
             }
         }else{
             JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
@@ -948,10 +1059,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnReservarMesa;
     private javax.swing.JComboBox<String> cmbContaMesas;
     private javax.swing.JFormattedTextField ftxtTotalConta;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblImagemCozinheiro;
     private javax.swing.JLabel lblListaCaixas;
     private javax.swing.JLabel lblListaMetres;
@@ -987,7 +1100,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlItens;
     private javax.swing.JPanel pnlMesas;
-    private javax.swing.JTabbedPane tabMesas;
+    private javax.swing.JTabbedPane tabPane;
     private javax.swing.JTable tblPedidosConta;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
