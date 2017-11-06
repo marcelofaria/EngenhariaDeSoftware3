@@ -1223,6 +1223,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar funcion&#xe1;rio"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarFuncionarioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="btnExcluirFuncionario">
               <Properties>

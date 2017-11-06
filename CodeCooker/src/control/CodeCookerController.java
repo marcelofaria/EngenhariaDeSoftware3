@@ -41,4 +41,12 @@ public class CodeCookerController {
         
     }
     
+    public void cadUsuario(String username, String pass, int tipo, String nome, String cpf){
+        
+        UsuarioDAO udao = UsuarioDAO.getInstance();
+        
+        udao.create(username, pass, tipo, nome, cpf);
+        
+    }
+    
 }
