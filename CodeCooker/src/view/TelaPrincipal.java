@@ -85,14 +85,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnExcluirItem = new javax.swing.JButton();
         pnlContas = new javax.swing.JPanel();
         lblTituloContas = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbContaMesas = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPedidosConta = new javax.swing.JTable();
         lblTotalConta = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ftxtTotalConta = new javax.swing.JFormattedTextField();
+        btnFecharConta = new javax.swing.JButton();
+        btnAdicionarPedido = new javax.swing.JButton();
+        btnAlterarConta = new javax.swing.JButton();
         pnlEstoque = new javax.swing.JPanel();
         lblTituloEstoque = new javax.swing.JLabel();
         btnAdicionarProduto = new javax.swing.JButton();
@@ -110,11 +110,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblNClientes = new javax.swing.JLabel();
         lblNPedidos = new javax.swing.JLabel();
         lblPratoDoDia = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblTituloFuncionarios = new javax.swing.JLabel();
+        lblListaMetres = new javax.swing.JLabel();
+        lblListaCaixas = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstMetres = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstCaixas = new javax.swing.JList<>();
+        btnCadastrarFuncionario = new javax.swing.JToggleButton();
+        btnExcluirFuncionario = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        tabMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        tabMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabMesas.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabMesas.setToolTipText("");
         tabMesas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -171,7 +181,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(pnlHomeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTitulo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblImagemCozinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlHomeLayout.setVerticalGroup(
@@ -198,7 +208,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
 
         pnlMesas.setBackground(new java.awt.Color(255, 255, 255));
-        pnlMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        pnlMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlMesas.setPreferredSize(new java.awt.Dimension(400, 400));
 
         btnMesa2.setBackground(new java.awt.Color(102, 255, 102));
@@ -276,7 +286,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlMesasLayout.setHorizontalGroup(
             pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMesasLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMesasLayout.createSequentialGroup()
                         .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,8 +321,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(lblMesa2)
                         .addGap(69, 69, 69)
-                        .addComponent(lblMesa3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblMesa3)))
                 .addGap(44, 44, 44)
                 .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,7 +397,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlCardapioLayout.setHorizontalGroup(
             pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCardapioLayout.createSequentialGroup()
-                .addGap(0, 75, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCardapioLayout.createSequentialGroup()
                         .addGroup(pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,9 +491,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloContas.setText("Contas");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6" }));
+        cmbContaMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedidosConta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -507,29 +516,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(70);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        tblPedidosConta.setColumnSelectionAllowed(true);
+        tblPedidosConta.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblPedidosConta);
+        tblPedidosConta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tblPedidosConta.getColumnModel().getColumnCount() > 0) {
+            tblPedidosConta.getColumnModel().getColumn(0).setResizable(false);
+            tblPedidosConta.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tblPedidosConta.getColumnModel().getColumn(1).setResizable(false);
+            tblPedidosConta.getColumnModel().getColumn(2).setResizable(false);
         }
 
         lblTotalConta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTotalConta.setText("Total");
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setBackground(new java.awt.Color(102, 255, 102));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        ftxtTotalConta.setEditable(false);
+        ftxtTotalConta.setBackground(new java.awt.Color(102, 255, 102));
+        ftxtTotalConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
-        jButton1.setText("Fechar conta");
+        btnFecharConta.setText("Fechar conta");
 
-        jButton2.setText("Adicionar pedido");
+        btnAdicionarPedido.setText("Adicionar pedido");
 
-        jButton3.setText("Alterar conta");
+        btnAlterarConta.setText("Alterar conta");
 
         javax.swing.GroupLayout pnlContasLayout = new javax.swing.GroupLayout(pnlContas);
         pnlContas.setLayout(pnlContasLayout);
@@ -541,7 +550,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(lblTotalConta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ftxtTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlContasLayout.createSequentialGroup()
                             .addGap(226, 226, 226)
@@ -550,12 +559,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGap(39, 39, 39)
                             .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(cmbContaMesas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18)
                 .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                    .addComponent(btnFecharConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAlterarConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(22, 22, 22))
         );
         pnlContasLayout.setVerticalGroup(
@@ -564,20 +573,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(lblTituloContas)
                 .addGap(34, 34, 34)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbContaMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlContasLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFecharConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAlterarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotalConta)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftxtTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalConta))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -691,7 +700,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(lblNClientes)
                             .addComponent(lblNPedidos)
                             .addComponent(lblPratoDoDia))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFinancasLayout.setVerticalGroup(
             pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,6 +730,75 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/money.png")), pnlFinancas); // NOI18N
+
+        lblTituloFuncionarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTituloFuncionarios.setText("Funcionários");
+
+        lblListaMetres.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblListaMetres.setText("Metres");
+
+        lblListaCaixas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblListaCaixas.setText("Caixas");
+
+        jScrollPane2.setViewportView(lstMetres);
+
+        jScrollPane3.setViewportView(lstCaixas);
+
+        btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 255, 102));
+        btnCadastrarFuncionario.setText("Cadastrar funcionário");
+
+        btnExcluirFuncionario.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluirFuncionario.setText("Excluir funcionário");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(lblListaMetres)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblListaCaixas)
+                .addGap(123, 123, 123))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTituloFuncionarios)
+                            .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(btnExcluirFuncionario)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(lblTituloFuncionarios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblListaCaixas)
+                    .addComponent(lblListaMetres))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluirFuncionario)
+                .addGap(44, 44, 44))
+        );
+
+        tabMesas.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/waiter.png")), jPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -871,17 +949,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel blTituloMesa;
     private javax.swing.JButton btnAdicionarCardapio;
     private javax.swing.JButton btnAdicionarItem;
+    private javax.swing.JButton btnAdicionarPedido;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnAlterarCardapio;
+    private javax.swing.JButton btnAlterarConta;
     private javax.swing.JButton btnAlterarItem;
     private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnBuscarCardapio;
     private javax.swing.JButton btnBuscarItem;
     private javax.swing.JButton btnBuscarProduto;
+    private javax.swing.JToggleButton btnCadastrarFuncionario;
     private javax.swing.JButton btnExcluirCardapio;
+    private javax.swing.JToggleButton btnExcluirFuncionario;
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnExcluirReserva;
+    private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnMesa1;
     private javax.swing.JButton btnMesa2;
@@ -891,14 +974,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMesa6;
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnReservarMesa;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JComboBox<String> cmbContaMesas;
+    private javax.swing.JFormattedTextField ftxtTotalConta;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblImagemCozinheiro;
+    private javax.swing.JLabel lblListaCaixas;
+    private javax.swing.JLabel lblListaMetres;
     private javax.swing.JLabel lblMesa1;
     private javax.swing.JLabel lblMesa2;
     private javax.swing.JLabel lblMesa3;
@@ -914,6 +998,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloContas;
     private javax.swing.JLabel lblTituloEstoque;
     private javax.swing.JLabel lblTituloFinanceiro;
+    private javax.swing.JLabel lblTituloFuncionarios;
     private javax.swing.JLabel lblTituloItens;
     private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblTxtNClientes;
@@ -921,6 +1006,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValorReceita;
+    private javax.swing.JList<String> lstCaixas;
+    private javax.swing.JList<String> lstMetres;
     private javax.swing.JPanel pnlCardapio;
     private javax.swing.JPanel pnlContas;
     private javax.swing.JPanel pnlEstoque;
@@ -929,6 +1016,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlItens;
     private javax.swing.JPanel pnlMesas;
     private javax.swing.JTabbedPane tabMesas;
+    private javax.swing.JTable tblPedidosConta;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
