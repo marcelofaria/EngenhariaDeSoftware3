@@ -1,2 +1,0 @@
-model.Item
-model.Tipo
