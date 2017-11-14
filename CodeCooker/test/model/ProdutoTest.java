@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import org.junit.After;
@@ -13,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Classe para testes dos métodos da classe "Produto"
  * @author Inoue
  */
 public class ProdutoTest {
@@ -64,12 +59,9 @@ public class ProdutoTest {
     @Test
     public void testGetId() {
         System.out.println("getId");
-        Produto instance = null;
-        int expResult = 0;
-        int result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produto p1 = new Produto(10, "Farinha", "Dona Benta", "Fornecedor1");
+        
+        assertEquals(0, p1.getId());
     }
 
     /**
@@ -78,11 +70,10 @@ public class ProdutoTest {
     @Test
     public void testSetId() {
         System.out.println("setId");
-        int id = 0;
-        Produto instance = null;
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Produto p1 = new Produto(10, "Farinha", "Dona Benta", "Fornecedor1");
+        p1.setId(5);
+        
+        assertEquals(5, p1.getId());
     }
 
     /**
