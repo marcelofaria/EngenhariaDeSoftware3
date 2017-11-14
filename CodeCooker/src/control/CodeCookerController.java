@@ -22,8 +22,8 @@ public class CodeCookerController {
     }
     
     public void start(){
-        TelaPrincipal tp = new TelaPrincipal();
-        tp.setVisible(true);
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        telaPrincipal.setVisible(true);
     }
     
     public int autUsuario(String u, String senha){
