@@ -55,17 +55,6 @@ public class ProdutoTest {
     }
 
     /**
-     * Test of getId method, of class Produto.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        Produto p1 = new Produto(10, "Farinha", "Dona Benta", "Fornecedor1");
-        
-        assertEquals(0, p1.getId());
-    }
-
-    /**
      * Test of setId method, of class Produto.
      */
     @Test
