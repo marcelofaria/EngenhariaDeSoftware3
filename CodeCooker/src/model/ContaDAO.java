@@ -93,7 +93,7 @@ public class ContaDAO extends DAO{
         PreparedStatement stmt;
         try {
             stmt = myCONN.prepareStatement("DELETE FROM conta WHERE id = ?");
-            stmt.setInt(1, conta.getID());
+            stmt.setInt(1, conta.getId());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

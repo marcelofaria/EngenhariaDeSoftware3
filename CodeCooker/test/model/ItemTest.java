@@ -37,17 +37,15 @@ public class ItemTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getIdItem method, of class Item.
-     */
     @Test
-    public void testGetIdItem() {
-        System.out.println("getIdItem");
-        Item i = new Item(0, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
+    public void testGetId(){
+        
+        Item i = new Item(0, "Chili", Tipo.Prato, (float) 19.99, "Feijao, chili, molho de tomate, carne moida", true);
         
         assertEquals(0, i.getId());
+        
     }
-
+    
     /**
      * Test of getNome method, of class Item.
      */

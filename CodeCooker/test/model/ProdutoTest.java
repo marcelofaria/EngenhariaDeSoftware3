@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -51,17 +52,6 @@ public class ProdutoTest {
         Produto p1 = new Produto(10, "Churros", "Sadia", "Dona Florinda");
         p1.setQtd(50);
         assertEquals(50,p1.getQtd());
-    }
-
-    /**
-     * Test of getId method, of class Produto.
-     */
-    @Test
-    public void testGetId() {
-        System.out.println("getId");
-        Produto p1 = new Produto(10, "Farinha", "Dona Benta", "Fornecedor1");
-        
-        assertEquals(0, p1.getId());
     }
 
     /**
