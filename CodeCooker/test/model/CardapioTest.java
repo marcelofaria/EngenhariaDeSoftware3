@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 //import static org.junit.Assert.*;
 import static junit.framework.Assert.*;
 /**
- * Classe para testes dos mÃ©todos da classe "Cardapio"
+ * Classe para testes dos métodos da classe "Cardapio"
  * @author OTAVIO-Note
  */
 public class CardapioTest {
@@ -65,7 +66,7 @@ public class CardapioTest {
         System.out.println("getItens");
         
         ArrayList<Item> itens = new ArrayList<>();
-        Item i = new Item("Farofa", 12, "Mandioca, linguica", true);
+        Item i = new Item(1, "Farofa", Tipo.Porcao, 12, "Mandioca, linguica", true);
         itens.add(i);
         Cardapio cardapio = new Cardapio(itens, DiaDaSemana.Domingo);
         ArrayList<Item> itens2 = cardapio.getItens();
@@ -78,6 +79,7 @@ public class CardapioTest {
                 fail("Nao foi possivel obter a referencia de getItens().");
             }
         }
+       
     }
 
     /**
@@ -88,16 +90,18 @@ public class CardapioTest {
         System.out.println("setItens");
         
         ArrayList<Item> itens = new ArrayList<>();
-        Item item1 = new Item("Feijao", 10, "Feijao", true);
+        Item item1 = new Item(1, "Farofa", Tipo.Porcao, 12, "Mandioca, linguica", true);
         itens.add(item1);
         Cardapio c1 = new Cardapio(itens , DiaDaSemana.Segunda);
         ArrayList<Item> itens2 = new ArrayList<>();
         
-        Item item2 = new Item("Arroz", 12, "Arroz", true);
+        Item item2 = new Item(2, "Arroz", Tipo.Porcao, 15, "Arroz", true);
         itens2.add(item2);
         
         c1.setItens(itens2);
         
+        
         assertEquals(c1.getItens().get(0).getNome(), "Arroz");
     }
+    
 }

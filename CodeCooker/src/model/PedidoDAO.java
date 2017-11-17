@@ -33,15 +33,15 @@ public class PedidoDAO extends DAO{
         }
     }
     
-    public void create(List<ItemPedido> itens) {
+    public void create(List<ItemPedido> itens, int contaID, float valor) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO Pedido (idPedido, idItem) VALUES (?, ?)");
-            int lastId = this.getLastId();
+            stmt = myCONN.prepareStatement("INSERT INTO pedido (contaID, valor) VALUES (?, ?)");
             for(ItemPedido i : itens){
-                lastId++;
-                stmt.setInt(1, lastId);
-                stmt.setInt(2, i.getIdItemPedido());
+                ItemPedidoDAO ipDAO = ItemPedidoDAO.getInstance();
+                ipDAO.create(i.getItem(), i.getPedidoID(), 0);
+                stmt.setInt(1, contaID);
+                stmt.setFloat(2, valor);
                 this.executeUpdate(stmt);
             }
             stmt.close();
@@ -55,13 +55,13 @@ public class PedidoDAO extends DAO{
         Array idsArray;
         int[] ids;
         try {
-            idsArray = rs.getArray("idPedido");
+            idsArray = rs.getArray("pedidoID");
             ids = (int[]) idsArray.getArray();
             itens = new ArrayList<>();
             for(int x : ids){
                 itens.add(ItemPedidoDAO.getInstance().retrieveById(x));
             }
-            p = new Pedido(itens);
+            p = new Pedido(rs.getInt("pedidoID"), itens);
         } catch (SQLException e) {
         }
         return p;
@@ -70,8 +70,8 @@ public class PedidoDAO extends DAO{
     public int getLastId(){
         int lastId = 0;
         try {
-            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT COUNT(*) AS id FROM Pedido"));
-            lastId = rs.getInt("id");
+            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT COUNT(*) AS id FROM pedido"));
+            lastId = rs.getInt("pedidoID");
             return lastId;
         } catch (SQLException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +81,16 @@ public class PedidoDAO extends DAO{
     
     public List<Pedido> retrieveAll() {
         
-        return this.retrieveGeneric("SELECT * FROM produto ORDER BY qtd");
+        return this.retrieveGeneric("SELECT * FROM pedido ORDER BY qtd");
+    }
+    
+    public Pedido retrieveById(int id) {
+        Pedido p = null;
+        List<Pedido> ps = this.retrieveGeneric("SELECT * FROM pedido WHERE pedidoID="+id);
+        if(!ps.isEmpty()){
+            p = ps.get(0);
+        }
+        return p;
     }
     
     public List<Pedido> retrieveGeneric(String query) {

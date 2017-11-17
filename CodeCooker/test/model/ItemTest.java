@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import org.junit.After;
@@ -8,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Classe para testes dos mÃ©todos da classe "Item"
+ * Classe para testes dos métodos da classe "Item"
  * @author OTAVIO-Note
  */
 public class ItemTest {
@@ -32,36 +37,23 @@ public class ItemTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getIdItem method, of class Item.
-     */
     @Test
-    public void testGetIdItem() {
-        System.out.println("getIdItem");
-        Item i = new Item("Bife", 10, "carne", false);
+    public void testGetId(){
         
-        assertEquals(0, i.getIdItem());
-    }
-
-    /**
-     * Test of setIdItem method, of class Item.
-     */
-    @Test
-    public void testSetIdItem() {
-        System.out.println("setIdItem");
-        Item i = new Item("Bife", 10, "carne", true);
-        i.setIdItem(5);
+        Item i = new Item(0, "Chili", Tipo.Prato, (float) 19.99, "Feijao, chili, molho de tomate, carne moida", true);
         
-        assertEquals(5, i.getIdItem());
+        assertEquals(0, i.getId());
+        
     }
-
+    
     /**
      * Test of getNome method, of class Item.
      */
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        Item i = new Item("Bife", 10, "carne", true);
+        //public Item(int itemID, String nome, Tipo tipo, float preco, String ingredientes, boolean disp) {
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         
         assertEquals("Bife", i.getNome());
     }
@@ -72,7 +64,7 @@ public class ItemTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         i.setNome("Virado");
         
         assertEquals("Virado", i.getNome());
@@ -84,7 +76,7 @@ public class ItemTest {
     @Test
     public void testGetPreco() {
         System.out.println("getPreco");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         
         assertEquals(10, i.getPreco(), 0.0);
     }
@@ -95,7 +87,7 @@ public class ItemTest {
     @Test
     public void testSetPreco() {
         System.out.println("setPreco");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         i.setPreco(25);
    
         assertEquals(25, i.getPreco(), 0.0);
@@ -107,9 +99,9 @@ public class ItemTest {
     @Test
     public void testGetIngredientes() {
         System.out.println("getIngredientes");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         
-        assertEquals("carne", i.getIngredientes());
+        assertEquals("Filet Mignon", i.getIngredientes());
     }
 
     /**
@@ -118,7 +110,7 @@ public class ItemTest {
     @Test
     public void testSetIngredientes() {
         System.out.println("setIngredientes");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         i.setIngredientes("milho");
         
         assertEquals("milho", i.getIngredientes());
@@ -130,7 +122,7 @@ public class ItemTest {
     @Test
     public void testGetDisponibilidade() {
         System.out.println("getDisponibilidade");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
                
         assertEquals(true, i.getDisponibilidade());
     }
@@ -141,7 +133,7 @@ public class ItemTest {
     @Test
     public void testSetDisponibilidade() {
         System.out.println("setDisponibilidade");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
         i.setDisponibilidade(false);
         
         assertEquals(false, i.getDisponibilidade());
@@ -153,9 +145,9 @@ public class ItemTest {
     @Test
     public void testGetTipo() {
         System.out.println("getTipo");
-        Item i = new Item("Bife", 10, "carne", true);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
                
-        assertEquals(null, i.getTipo());
+        assertEquals(Tipo.Prato, i.getTipo());
     }
 
     /**
@@ -164,10 +156,10 @@ public class ItemTest {
     @Test
     public void testSetTipo() {
         System.out.println("setTipo");
-        Item i = new Item("Bife", 10, "carne", true);
-        i.setTipo(Tipo.Prato);
+        Item i = new Item(1, "Bife", Tipo.Prato, 10, "Filet Mignon", true);
+        i.setTipo(Tipo.Porcao);
         
-        assertEquals(Tipo.Prato, i.getTipo());
+        assertEquals(Tipo.Porcao, i.getTipo());
     }
     
 }

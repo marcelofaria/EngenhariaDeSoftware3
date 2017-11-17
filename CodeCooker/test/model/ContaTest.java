@@ -37,15 +37,15 @@ public class ContaTest {
     }
 
     /**
-     * Test of getID method, of class Conta.
+     * Test of getId method, of class Conta.
      */
     @Test
     public void testGetID() {
 
         System.out.println("getID");
-        Conta conta = new Conta(100, null);
+        Conta conta = new Conta(0, null, null);
         
-        assertEquals(0, conta.getID());
+        assertEquals(0, conta.getId());
     }
 
     /**
@@ -54,7 +54,8 @@ public class ContaTest {
     @Test
     public void testGetValorTotal() {
         System.out.println("getValorTotal");
-        Conta conta = new Conta(100, null);
+        Conta conta = new Conta(0, null, null);
+        
         
         assertEquals(100, conta.getValorTotal(), 0.0);
     }
@@ -65,7 +66,7 @@ public class ContaTest {
     @Test
     public void testSetValorTotal() {
         System.out.println("setValorTotal");
-        Conta conta = new Conta(100, null);
+        Conta conta = new Conta(0, null, null);
         conta.setValorTotal(250);
         
         assertEquals(250, conta.getValorTotal(), 0.0);
@@ -79,7 +80,7 @@ public class ContaTest {
         System.out.println("getData");
         Date data = new Date();
         
-        Conta conta = new Conta(100, data);
+        Conta conta = new Conta(0, null, null);
 
         assertEquals(data.toString(), conta.getData().toString());
     }
@@ -91,11 +92,11 @@ public class ContaTest {
     public void testSetData() {
         System.out.println("setData");
         Date data = new Date();
-        Conta conta = new Conta(100, data);
+        Conta conta = new Conta(0, null, null);
         try {
             TimeUnit.SECONDS.sleep(1);
             Date data2 = new Date();
-            conta.setData(data2);
+            //conta.setData(data2);
             
             assertEquals(data2.toString(), conta.getData().toString());
         } catch (InterruptedException ex) {
@@ -109,7 +110,7 @@ public class ContaTest {
     @Test
     public void testCalcularValorTotal() {
         System.out.println("calcularValorTotal");
-        Conta conta = new Conta(100, null);
+        Conta conta = new Conta(0, null, null);
         conta.calcularValorTotal();
     }
 }

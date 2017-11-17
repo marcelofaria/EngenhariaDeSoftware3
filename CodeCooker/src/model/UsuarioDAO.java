@@ -34,7 +34,7 @@ public class UsuarioDAO extends DAO {
     public void create(String username, String pass, int tipo, String nome, String cpf) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO Usuario (username, password, tipoUsuario, nome, cpf) VALUES (?, ?, ?, ?, ?)");
+            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, senha, tipoUsuario, nome, cpf) VALUES (?, ?, ?, ?, ?)");
             stmt.setString(1, username);
             stmt.setString(2, pass);
             stmt.setInt(3, tipo);
@@ -49,7 +49,7 @@ public class UsuarioDAO extends DAO {
     public void create(String username, String pass, int tipo, String nome, String cpf, String cnpj) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO Usuario (username, password, tipoUsuario, nome, cpf, cnpj) VALUES (?, ?, ?, ?, ?, ?)");
+            stmt = myCONN.prepareStatement("INSERT INTO usuario (username, senha, tipoUsuario, nome, cpf, cnpj) VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, username);
             stmt.setString(2, pass);
             stmt.setInt(3, tipo);
@@ -65,7 +65,7 @@ public class UsuarioDAO extends DAO {
     private Usuario buildObject(ResultSet rs) {
         Usuario usuario = null;
         try {
-            usuario = new Usuario(rs.getString("nome"), rs.getString("cpf"), rs.getInt("tipoUsuario"), rs.getString("cnpj"));
+            usuario = new Usuario(rs.getInt("usuarioID"), rs.getString("nome"), rs.getString("cpf"), rs.getInt("tipoUsuario"), rs.getString("cnpj"));
         } catch (SQLException e) {
         }
         return usuario;
@@ -90,26 +90,44 @@ public class UsuarioDAO extends DAO {
     }
     
     public List<Usuario> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM Usuario ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM usuario ORDER BY nome");
     }
     
     public List<Usuario> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Usuario WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM usuario WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
     
     public Usuario retrieveById(int id) {
         Usuario usuario = null;
-        List<Usuario> usuarios = this.retrieveGeneric("SELECT * FROM Usuario WHERE id="+id);
+        List<Usuario> usuarios = this.retrieveGeneric("SELECT * FROM usuario WHERE usuarioID="+id);
         if(!usuarios.isEmpty()){
             usuario = usuarios.get(0);
         }
         return usuario;
     }
     
+    public Usuario retrieveByPass(String pass) {
+        Usuario usu = null;
+        List<Usuario> usus = this.retrieveGeneric("SELECT * FROM usuario WHERE senha Like '"+pass+"'");
+        if(!usus.isEmpty()){
+            usu = usus.get(0);
+        }
+        return usu;
+    }
+    
+        public Usuario retrieveByUsername(String username) {
+        Usuario usu = null;
+        List<Usuario> usus = this.retrieveGeneric("SELECT * FROM usuario WHERE username Like '"+username+"'");
+        if(!usus.isEmpty()){
+            usu = usus.get(0);
+        }
+        return usu;
+    }
+    
     public boolean update(Usuario u, String username, String password) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE Usuario SET username=?, password=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE usuario SET username=?, senha=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE usuarioID = ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setInt(3, u.getTipoUsuario());
@@ -130,8 +148,8 @@ public class UsuarioDAO extends DAO {
     public void delete(Usuario u) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM Usuario WHERE id = ?");
-            stmt.setInt(1, u.getUsuarioID());
+            stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE usuarioID = ?");
+            stmt.setInt(1, u.getId());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

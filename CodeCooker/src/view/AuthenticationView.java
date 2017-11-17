@@ -5,13 +5,12 @@
  */
 package view;
 
+import control.CodeCookerController;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import model.CaixaDAO;
 import model.DAO;
-import model.Gerente;
-import model.GerenteDAO;
-import model.MetreDAO;
+import model.Usuario;
+import model.UsuarioDAO;
 
 /**
  *
@@ -24,6 +23,7 @@ public class AuthenticationView extends javax.swing.JFrame {
      */
     public AuthenticationView() {
         initComponents();
+        baseController = new CodeCookerController();
         
     }
 
@@ -74,6 +74,11 @@ public class AuthenticationView extends javax.swing.JFrame {
         });
 
         jButton2.setText("Sair");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,79 +132,47 @@ public class AuthenticationView extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordSenhaActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        /*GerenteDAO gerente = GerenteDAO.getInstance();
-        Gerente g;
-        g = gerente.retrieveByPass(PasswordSenha.getPassword().toString());
-        if(g == null){
-            System.out.println("deu merda");
-        }
-        else{
-            
-            System.out.println(g.getNome());
-        }*/
-        
-        GerenteDAO g = new GerenteDAO();
-        MetreDAO m = new MetreDAO();
-        CaixaDAO c = new CaixaDAO();       
-        
         String u;
         String senha;
         
         u = TextUsuario.getText();
         senha = String.valueOf(PasswordSenha.getPassword());
-        
-        if(CaixaDAO.getInstance().retrieveLike(u) != null && c.retrieveByPass(senha) != null){
-        
-            JOptionPane.showMessageDialog(null, "Voce logou!");
-            System.out.println(senha);
+
+        int res = baseController.autUsuario(u, senha);
+        if(res != 0){
             
-        }
-        
-        else{
-        
-            JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
-            
-        }
-        
+            if(res == 1){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Caixa");
+                dispose();
                 
+            }
+            else if(res == 2){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Metre");
+                dispose();
+                
+            }
+            else if(res == 3){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Gerente");
+                dispose();
+                Mesas m = new Mesas();
+                m.setVisible(true);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
+        } 
         
     }//GEN-LAST:event_loginActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AuthenticationView().setVisible(true);
-            }
-        });
-    }
-
+    CodeCookerController baseController;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelSenha;
     private javax.swing.JLabel LabelUsuario;

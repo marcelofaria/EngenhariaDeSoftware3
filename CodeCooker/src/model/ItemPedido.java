@@ -8,24 +8,22 @@ import java.util.*;
  */
 public class ItemPedido {
 
+    private int pedidoID;
+
     /**
      * Default constructor
      */
-    public ItemPedido(Item item, short qtd) {
+    public ItemPedido(Item item, int pedidoID, int qtd) {
         this.item = item;
+        this.pedidoID = pedidoID;
         this.qtd = qtd;
         this.valor = this.calcularValor(this.item.getPreco(), qtd);
     }
-
-    /**
-     * 
-     */
-    private short idItemPedido;
     
     /**
      * 
      */
-    private short qtd;
+    private int qtd;
 
     /**
      * 
@@ -37,6 +35,23 @@ public class ItemPedido {
      * 
      */
     private Item item;
+    
+    /**
+     * 
+     */
+    private Pedido pedido;
+
+    public int getPedidoID() {
+        return pedidoID;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
 
     public Item getItem() {
         return item;
@@ -46,20 +61,11 @@ public class ItemPedido {
         this.item = item;
     }
 
-
-   public short getIdItemPedido() {
-        return idItemPedido;
-    }
-
-    public void setIdItemPedido(short idItemPedido) {
-        this.idItemPedido = idItemPedido;
-    }
-
-    public short getQtd() {
+    public int getQtd() {
         return qtd;
     }
 
-    public void setQtd(short qtd) {
+    public void setQtd(int qtd) {
         this.qtd = qtd;
     }
 
@@ -74,7 +80,7 @@ public class ItemPedido {
     /**
      * @return
      */
-    public float calcularValor(float preco, short qtd) {
+    public float calcularValor(float preco, int qtd) {
         return (preco * qtd);
     }
 

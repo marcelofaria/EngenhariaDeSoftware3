@@ -33,16 +33,16 @@ public class ItemDAO extends DAO{
         }
     }
     
-    public void create(String nome, float preco, String ingredientes, boolean disp){
-        Item i = new Item(nome, preco, ingredientes, disp);
+    public void create(String nome, String tipo, float preco, String ingredientes, boolean disp){
         PreparedStatement createItem = null;
-        String query = "INSERT INTO Item (Nome, Preco, Ingredientes, Disponibilidade) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO item (nome, preco, ingredientes, disponibilidade, tipo) VALUES (?, ?, ?, ?, ?)";
         try {
             createItem = ItemDAO.myCONN.prepareStatement(query);
             createItem.setString(1, nome);
             createItem.setFloat(2, preco);
             createItem.setString(3, ingredientes);
             createItem.setBoolean(4, disp);
+            createItem.setString(5, tipo);
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
             Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,7 +53,7 @@ public class ItemDAO extends DAO{
     public Item BuildObject(ResultSet rs){
         Item i = null;
         try {
-            i = new Item(rs.getString("Nome"), rs.getFloat("Preco"), rs.getString("Ingredientes"), rs.getBoolean("Disponibilidade"));
+            i = new Item(rs.getInt("itemID"), rs.getString("nome"), Tipo.valueOf(rs.getString("tipo")), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -79,12 +79,12 @@ public class ItemDAO extends DAO{
     }
     
     public List<Item> RetrieveAll(){
-        return this.retrieveGeneric("SELECT * FROM Item ORDER BY idItem");
+        return this.retrieveGeneric("SELECT * FROM item ORDER BY itemID");
     }
     
     public Item retrieveById(int idItem) {
         Item i = null;
-        List<Item> itens = this.retrieveGeneric("SELECT * FROM Item WHERE id = " + idItem);
+        List<Item> itens = this.retrieveGeneric("SELECT * FROM item WHERE id = " + idItem);
         if(!itens.isEmpty()){
             i = itens.get(0);
         }
@@ -92,13 +92,13 @@ public class ItemDAO extends DAO{
     }
     
     public List<Item> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Item WHERE Nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM item WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
     
     public boolean update(Item i) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE Item SET Nome=?, Preco=?, Ingredientes=?, Disponibilidade=? WHERE idItem = ?");
+            stmt = myCONN.prepareStatement("UPDATE item SET nome=?, preco=?, ingredientes=?, disponibilidade=? WHERE itemID = ?");
             stmt.setString(1, i.getNome());
             stmt.setFloat(2, i.getPreco());
             stmt.setString(3, i.getIngredientes());
@@ -117,8 +117,8 @@ public class ItemDAO extends DAO{
     public void delete(Item i) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM Item WHERE idItem = ?");
-            stmt.setInt(1, i.getIdItem());
+            stmt = myCONN.prepareStatement("DELETE FROM item WHERE itemID = ?");
+            stmt.setInt(1, i.getId());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,13 +34,31 @@ public class CardapioDAO extends DAO {
     public void create(DiaDaSemana dia, Collection<Item> itens) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO cardapio (dia, itens) VALUES (?,?)");
+            stmt = myCONN.prepareStatement("INSERT INTO item_cardapio (itemID, diaDaSemana) VALUES (?, ?)");
             stmt.setString(1, dia.toString());
-            stmt.setString(2, itens.toString());
+            int lastId = this.getLastId();
+            for(Item i : itens){
+                lastId++;
+                stmt.setInt(1, lastId);
+                stmt.setInt(2, i.getId());
+                this.executeUpdate(stmt);
+            }
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
         }
+    }
+    
+    public int getLastId(){
+        int lastId = 0;
+        try {
+            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT COUNT(*) AS id FROM item_cardapio"));
+            lastId = rs.getInt("item_cardapioID");
+            return lastId;
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lastId;
     }
 
     /*
