@@ -37,7 +37,7 @@ public class ContaTest {
     }
 
     /**
-     * Test of getID method, of class Conta.
+     * Test of getId method, of class Conta.
      */
     @Test
     public void testGetID() {
@@ -45,7 +45,7 @@ public class ContaTest {
         System.out.println("getID");
         Conta conta = new Conta(0, null, null);
         
-        assertEquals(0, conta.getID());
+        assertEquals(0, conta.getId());
     }
 
     /**

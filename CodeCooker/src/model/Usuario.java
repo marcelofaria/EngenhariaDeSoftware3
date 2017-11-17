@@ -18,14 +18,15 @@ public class Usuario {
     private String cpf;
     private String cnpj;
 
-    Usuario(String nome, String cpf, int tipo, String cnpj){
+    Usuario(int id, String nome, String cpf, int tipo, String cnpj){
+        this.usuarioID = id;
         this.nome = nome;
         this.cpf = cpf;
         this.tipoUsuario = tipo;
         this.cnpj = cnpj;
     }
     
-    public int getUsuarioID() {
+    public int getId() {
         return usuarioID;
     }
 

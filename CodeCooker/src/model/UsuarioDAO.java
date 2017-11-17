@@ -65,7 +65,7 @@ public class UsuarioDAO extends DAO {
     private Usuario buildObject(ResultSet rs) {
         Usuario usuario = null;
         try {
-            usuario = new Usuario(rs.getString("nome"), rs.getString("cpf"), rs.getInt("tipoUsuario"), rs.getString("cnpj"));
+            usuario = new Usuario(rs.getInt("usuarioID"), rs.getString("nome"), rs.getString("cpf"), rs.getInt("tipoUsuario"), rs.getString("cnpj"));
         } catch (SQLException e) {
         }
         return usuario;
@@ -99,7 +99,7 @@ public class UsuarioDAO extends DAO {
     
     public Usuario retrieveById(int id) {
         Usuario usuario = null;
-        List<Usuario> usuarios = this.retrieveGeneric("SELECT * FROM usuario WHERE id="+id);
+        List<Usuario> usuarios = this.retrieveGeneric("SELECT * FROM usuario WHERE usuarioID="+id);
         if(!usuarios.isEmpty()){
             usuario = usuarios.get(0);
         }
@@ -127,7 +127,7 @@ public class UsuarioDAO extends DAO {
     public boolean update(Usuario u, String username, String password) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE usuario SET username=?, senha=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE usuario SET username=?, senha=?, tipoUsuario=?, nome=?, cpf=?, cnpj=?, WHERE usuarioID = ?");
             stmt.setString(1, username);
             stmt.setString(2, password);
             stmt.setInt(3, u.getTipoUsuario());
@@ -148,8 +148,8 @@ public class UsuarioDAO extends DAO {
     public void delete(Usuario u) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE id = ?");
-            stmt.setInt(1, u.getUsuarioID());
+            stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE usuarioID = ?");
+            stmt.setInt(1, u.getId());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

@@ -28,7 +28,7 @@ public class Conta {
         this.pedidos = pedidos;
     }
     
-    public int getID() {
+    public int getId() {
         return ID;
     }
 
