@@ -6,6 +6,7 @@
 package view;
 
 import control.CodeCookerController;
+import control.FuncionarioController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -45,10 +46,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabPane.setEnabledAt(4, false);
         tabPane.setEnabledAt(5, false);
         tabPane.setEnabledAt(6, false);
-        tabPane.setEnabledAt(7, false);
+        
         CenteredFrame(this);
         lblBemVindo.setVisible(false);
         lblImagemCozinheiro.add(lblTitulo);
+        
+        PainelFuncionario pf = new PainelFuncionario();
+        FuncionarioController funcControl = new FuncionarioController(pf);
+        tabPane.addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
+        tabPane.setEnabledAt(7, false);
+        
     }
     
     public static void main(String args[]) {
@@ -158,16 +165,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblNClientes = new javax.swing.JLabel();
         lblNPedidos = new javax.swing.JLabel();
         lblPratoDoDia = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        lblTituloFuncionarios = new javax.swing.JLabel();
-        lblListaMetres = new javax.swing.JLabel();
-        lblListaCaixas = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstMetres = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        lstCaixas = new javax.swing.JList<>();
-        btnCadastrarFuncionario = new javax.swing.JToggleButton();
-        btnExcluirFuncionario = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCookers");
@@ -811,80 +808,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/money.png")), pnlFinancas); // NOI18N
 
-        lblTituloFuncionarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloFuncionarios.setText("Funcionários");
-
-        lblListaMetres.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblListaMetres.setText("Metres");
-
-        lblListaCaixas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblListaCaixas.setText("Caixas");
-
-        jScrollPane2.setViewportView(lstMetres);
-
-        jScrollPane3.setViewportView(lstCaixas);
-
-        btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 255, 102));
-        btnCadastrarFuncionario.setText("Cadastrar funcionário");
-        btnCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarFuncionarioActionPerformed(evt);
-            }
-        });
-
-        btnExcluirFuncionario.setBackground(new java.awt.Color(255, 51, 51));
-        btnExcluirFuncionario.setText("Excluir funcionário");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(lblListaMetres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblListaCaixas)
-                .addGap(123, 123, 123))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTituloFuncionarios)
-                            .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(btnExcluirFuncionario)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lblTituloFuncionarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblListaCaixas)
-                    .addComponent(lblListaMetres))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluirFuncionario)
-                .addGap(44, 44, 44))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/waiter.png")), jPanel1); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -903,9 +826,80 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tabPaneStateChanged
 
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
+
+    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarItemActionPerformed
+
+    private void btnAdicionarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCardapioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarCardapioActionPerformed
+
+    private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa5ActionPerformed
+
+    private void btnMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa6ActionPerformed
+
+    private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa4ActionPerformed
+
+    private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa1ActionPerformed
+
+    private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa3ActionPerformed
+
+    private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMesa2ActionPerformed
+
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+
+        String u;
+        String senha;
+
+        u = txtUsuario.getText();
+        senha = String.valueOf(txtSenha.getPassword());
+
+        int res = baseController.autUsuario(u, senha);
+        if(res != 0){
+
+            if(res == 1){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Caixa");
+                PrepararTela(1);
+
+            }
+            else if(res == 2){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Metre");
+                PrepararTela(2);
+
+            }
+            else if(res == 3){
+                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Gerente");
+                PrepararTela(3);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
+        }
+
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void setLookAndFeel() {
         try {
@@ -949,85 +943,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }
     
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
-        String u;
-        String senha;
-        
-        u = txtUsuario.getText();
-        senha = String.valueOf(txtSenha.getPassword());
-
-        int res = baseController.autUsuario(u, senha);
-        if(res != 0){
-            
-            if(res == 1){
-                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Caixa");
-                PrepararTela(1);
-
-            }
-            else if(res == 2){
-                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Metre");
-                PrepararTela(2);
-                
-            }
-            else if(res == 3){
-                JOptionPane.showMessageDialog(null, "Voce logou! Voce é um Gerente");
-                PrepararTela(3);
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
-        }      
-        
-        
-    }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa2ActionPerformed
-
-    private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa3ActionPerformed
-
-    private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa1ActionPerformed
-
-    private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa4ActionPerformed
-
-    private void btnMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa6ActionPerformed
-
-    private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa5ActionPerformed
-
-    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarItemActionPerformed
-
-    private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
-
-    private void btnAdicionarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCardapioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarCardapioActionPerformed
-
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatorioActionPerformed
-
-    private void btnCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioActionPerformed
-        
-        CadastroFuncionario cf = new CadastroFuncionario(this.baseController);
-        cf.setVisible(true);
-        
-    }//GEN-LAST:event_btnCadastrarFuncionarioActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blTituloCardapio;
     private javax.swing.JLabel blTituloMesa;
@@ -1042,9 +957,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarCardapio;
     private javax.swing.JButton btnBuscarItem;
     private javax.swing.JButton btnBuscarProduto;
-    private javax.swing.JToggleButton btnCadastrarFuncionario;
     private javax.swing.JButton btnExcluirCardapio;
-    private javax.swing.JToggleButton btnExcluirFuncionario;
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnExcluirReserva;
@@ -1061,14 +974,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbContaMesas;
     private javax.swing.JFormattedTextField ftxtTotalConta;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblImagemCozinheiro;
-    private javax.swing.JLabel lblListaCaixas;
-    private javax.swing.JLabel lblListaMetres;
     private javax.swing.JLabel lblMesa1;
     private javax.swing.JLabel lblMesa2;
     private javax.swing.JLabel lblMesa3;
@@ -1084,7 +992,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloContas;
     private javax.swing.JLabel lblTituloEstoque;
     private javax.swing.JLabel lblTituloFinanceiro;
-    private javax.swing.JLabel lblTituloFuncionarios;
     private javax.swing.JLabel lblTituloItens;
     private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblTxtNClientes;
@@ -1092,8 +999,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValorReceita;
-    private javax.swing.JList<String> lstCaixas;
-    private javax.swing.JList<String> lstMetres;
     private javax.swing.JPanel pnlCardapio;
     private javax.swing.JPanel pnlContas;
     private javax.swing.JPanel pnlEstoque;
