@@ -25,8 +25,16 @@ public class PainelMesas extends javax.swing.JPanel {
         return new ReservaMesa();
     }
     
+    public ExcluirReserva getExcluirReservaFrame(){
+        return new ExcluirReserva();
+    }
+    
     public void addBtnReservarListener(ActionListener listener){
         this.btnReservarMesa.addActionListener(listener);
+    }
+    
+    public void addBtnExcluirListener(ActionListener listener){
+        this.btnExcluir.addActionListener(listener);
     }
     
     public void addBtnMesa1Listener(ActionListener listener){
@@ -187,7 +195,7 @@ public class PainelMesas extends javax.swing.JPanel {
         lblMesa1 = new javax.swing.JLabel();
         btnReservarMesa = new javax.swing.JButton();
         btnMesa3 = new javax.swing.JButton();
-        btnExcluirReserva = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnMesa1 = new javax.swing.JButton();
         blTituloMesa = new javax.swing.JLabel();
         btnMesa4 = new javax.swing.JButton();
@@ -215,7 +223,7 @@ public class PainelMesas extends javax.swing.JPanel {
         btnMesa3.setBackground(new java.awt.Color(255, 102, 102));
         btnMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
 
-        btnExcluirReserva.setText("Excluir reserva");
+        btnExcluir.setText("Excluir reserva");
 
         btnMesa1.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa1.setForeground(new java.awt.Color(102, 255, 102));
@@ -281,7 +289,7 @@ public class PainelMesas extends javax.swing.JPanel {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluirReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
@@ -292,7 +300,7 @@ public class PainelMesas extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExcluirReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -328,7 +336,7 @@ public class PainelMesas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blTituloMesa;
-    private javax.swing.JButton btnExcluirReserva;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnMesa1;
     private javax.swing.JButton btnMesa2;
     private javax.swing.JButton btnMesa3;

@@ -8,10 +8,13 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Reserva;
 import model.ReservaDAO;
+import view.ExcluirReserva;
 import view.PainelMesas;
 import view.ReservaMesa;
 
@@ -23,6 +26,7 @@ public class MesasController {
 
     private PainelMesas tela;
     private ReservaMesa telaReserva;
+    private ExcluirReserva telaExcluir;
 
     public MesasController(PainelMesas tela) {
 
@@ -34,10 +38,15 @@ public class MesasController {
         tela.addBtnMesa5Listener(new btnMesa5Listener());
         tela.addBtnMesa6Listener(new btnMesa6Listener());
         tela.addBtnReservarListener(new btnReservarListener());
+        tela.addBtnExcluirListener(new btnExcluirListener());
         this.telaReserva = this.tela.getReservaMesaFrame();
         this.telaReserva.addBtnConfirmarListener(new btnConfirmarReservaListener());
         this.telaReserva.addBtnCancelarListener(new btnCancelarReservaListener());
 
+        this.telaExcluir = this.tela.getExcluirReservaFrame();
+        this.telaExcluir.addBtnConfirmarListener(new btnConfirmarExcluirListener());
+        this.telaExcluir.addBtnCancelarListener(new btnCancelarExcluirListener());
+        
     }
 
     class btnReservarListener implements ActionListener{
@@ -45,6 +54,44 @@ public class MesasController {
         @Override
         public void actionPerformed(ActionEvent e) {
             telaReserva.setVisible(true);
+        }
+        
+    }
+    
+    class btnCancelarExcluirListener implements ActionListener{
+        
+        @Override
+        public void actionPerformed(ActionEvent e){
+            telaExcluir.dispose();
+        }
+    }
+    
+    class btnConfirmarExcluirListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ReservaDAO rDAO = ReservaDAO.getInstance();
+            List<Reserva> reservas = rDAO.retrieveGeneric("SELECT * FROM reserva WHERE dataEHorario LIKE '" + telaExcluir.getDataHora() + "' "
+            + "AND numMesa = " + telaExcluir.getMesa());
+            
+            if(!reservas.isEmpty()){
+                rDAO.delete(reservas.get(0));
+                JOptionPane.showMessageDialog(null, "Reserva excluída com sucesso.");
+                telaExcluir.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Não foi possível encontrar a reserva.");
+            }
+            
+        }
+        
+    }
+    
+    class btnExcluirListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            telaExcluir.setVisible(true);
         }
         
     }

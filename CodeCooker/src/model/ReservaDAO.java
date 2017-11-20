@@ -50,7 +50,7 @@ public class ReservaDAO extends DAO{
     private Reserva buildObject(ResultSet rs) {
         Reserva r = null;
         try {
-            r = new Reserva(rs.getInt("numMesa"), rs.getString("nome"), rs.getTime("dataEHorario"), rs.getInt("numPessoas"), rs.getString("telefone"));
+            r = new Reserva(rs.getInt("reservaID"), rs.getInt("numMesa"), rs.getString("nome"), rs.getTime("dataEHorario"), rs.getInt("numPessoas"), rs.getString("telefone"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -76,7 +76,7 @@ public class ReservaDAO extends DAO{
     }
     
     public List<Reserva> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM reserva ORDER BY idReserva");
+        return this.retrieveGeneric("SELECT * FROM reserva ORDER BY reservaID");
     }
     
     public List<Reserva> retrieveLike(String nome) {
@@ -85,7 +85,7 @@ public class ReservaDAO extends DAO{
     
     public Reserva retrieveById(int id) {
         Reserva reserva = null;
-        List<Reserva> reservas = this.retrieveGeneric("SELECT * FROM reserva WHERE id="+id);
+        List<Reserva> reservas = this.retrieveGeneric("SELECT * FROM reserva WHERE reservaID="+id);
         if(!reservas.isEmpty()){
             reserva = reservas.get(0);
         }
@@ -95,7 +95,7 @@ public class ReservaDAO extends DAO{
     public boolean update(Reserva r) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE reserva SET numMesa=?, nome=?, dataEHorario=?, numPessoas=?, telefone=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE reserva SET numMesa=?, nome=?, dataEHorario=?, numPessoas=?, telefone=? WHERE reservaID = ?");
             stmt.setInt(1, r.getNumPessoas());
             stmt.setString(2, r.getNome());
             stmt.setTime(3, r.getHorario());
@@ -115,11 +115,12 @@ public class ReservaDAO extends DAO{
     public void delete(Reserva r) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM reserva WHERE idReserva = ?");
+            stmt = myCONN.prepareStatement("DELETE FROM reserva WHERE reservaID = ?");
             stmt.setInt(1, r.getIdReserva());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
     
