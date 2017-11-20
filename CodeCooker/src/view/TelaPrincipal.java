@@ -41,12 +41,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         baseController = new CodeCookerController();
         setLookAndFeel();
         initComponents();
-        //tabPane.setEnabledAt(1, false);
-        
-        //tabPane.setEnabledAt(3, false);
-        //tabPane.setEnabledAt(4, false);
-        //tabPane.setEnabledAt(5, false);
-        //tabPane.setEnabledAt(6, false);
         
         CenteredFrame(this);
         lblBemVindo.setVisible(false);
@@ -59,7 +53,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
         tabPane.addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
-        //tabPane.setEnabledAt(7, false);
+        
+        tabPane.setEnabledAt(1, false);
+        tabPane.setEnabledAt(2, false);
+        tabPane.setEnabledAt(3, false);
+        tabPane.setEnabledAt(4, false);
+        tabPane.setEnabledAt(5, false);
+        tabPane.setEnabledAt(6, false);
+        tabPane.setEnabledAt(7, false);
         
     }
     

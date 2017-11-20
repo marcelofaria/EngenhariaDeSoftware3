@@ -21,6 +21,14 @@ public class PainelMesas extends javax.swing.JPanel {
         initComponents();
     }
 
+    public ReservaMesa getReservaMesaFrame(){
+        return new ReservaMesa();
+    }
+    
+    public void addBtnReservarListener(ActionListener listener){
+        this.btnReservarMesa.addActionListener(listener);
+    }
+    
     public void addBtnMesa1Listener(ActionListener listener){
         this.btnMesa1.addActionListener(listener);
     }
@@ -119,6 +127,44 @@ public class PainelMesas extends javax.swing.JPanel {
         else{
             this.btnMesa6.setForeground(new Color(102, 255, 102));
             this.btnMesa6.setBackground(new Color(102, 255, 102));
+        }
+        
+    }
+    
+    public void reservarMesa(int numMesa){
+        
+        switch(numMesa){
+            
+            case 1:
+                this.btnMesa1.setBackground(new Color(255,255,102));
+                this.btnMesa1.setForeground(new Color(255,255,102));
+                break;
+                
+            case 2:
+                this.btnMesa2.setBackground(new Color(255,255,102));
+                this.btnMesa2.setForeground(new Color(255,255,102));
+                break;
+                
+            case 3:
+                this.btnMesa3.setBackground(new Color(255,255,102));
+                this.btnMesa3.setForeground(new Color(255,255,102));
+                break;
+                
+            case 4:
+                this.btnMesa4.setBackground(new Color(255,255,102));
+                this.btnMesa4.setForeground(new Color(255,255,102));
+                break;
+                
+            case 5:
+                this.btnMesa5.setBackground(new Color(255, 255, 102));
+                this.btnMesa5.setForeground(new Color(255, 255, 102));
+                break;
+                
+            case 6:
+                this.btnMesa1.setBackground(new Color(255, 255, 102));
+                this.btnMesa1.setForeground(new Color(255, 255, 102));
+                break;
+                
         }
         
     }

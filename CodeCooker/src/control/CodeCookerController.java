@@ -17,6 +17,8 @@ import view.TelaPrincipal;
  */
 public class CodeCookerController {
     
+    private static int usuarioID;
+    
     public CodeCookerController(){
         
     }
@@ -24,6 +26,10 @@ public class CodeCookerController {
     public void start(){
         TelaPrincipal telaPrincipal = new TelaPrincipal();
         telaPrincipal.setVisible(true);
+    }
+    
+    public static int getUsuarioID(){
+        return CodeCookerController.usuarioID;
     }
     
     public int autUsuario(String u, String senha){
@@ -34,6 +40,7 @@ public class CodeCookerController {
         Usuario usuarioSenha = udao.retrieveByPass(senha);
            
         if(usuario != null && usuarioSenha != null){
+            CodeCookerController.usuarioID = usuario.getId();
             return usuario.getTipoUsuario();
           
         }else{

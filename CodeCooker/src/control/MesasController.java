@@ -7,8 +7,13 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.ReservaDAO;
 import view.PainelMesas;
+import view.ReservaMesa;
 
 /**
  *
@@ -17,6 +22,7 @@ import view.PainelMesas;
 public class MesasController {
 
     private PainelMesas tela;
+    private ReservaMesa telaReserva;
 
     public MesasController(PainelMesas tela) {
 
@@ -27,9 +33,50 @@ public class MesasController {
         tela.addBtnMesa4Listener(new btnMesa4Listener());
         tela.addBtnMesa5Listener(new btnMesa5Listener());
         tela.addBtnMesa6Listener(new btnMesa6Listener());
+        tela.addBtnReservarListener(new btnReservarListener());
+        this.telaReserva = this.tela.getReservaMesaFrame();
+        this.telaReserva.addBtnConfirmarListener(new btnConfirmarReservaListener());
+        this.telaReserva.addBtnCancelarListener(new btnCancelarReservaListener());
 
     }
 
+    class btnReservarListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            telaReserva.setVisible(true);
+        }
+        
+    }
+    
+    class btnConfirmarReservaListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                ReservaDAO rdao = ReservaDAO.getInstance();
+                rdao.create(telaReserva.getMesa(), CodeCookerController.getUsuarioID(), telaReserva.getNome(), telaReserva.getDataHora(), telaReserva.getPessoas(), telaReserva.getTelefone());
+                JOptionPane.showMessageDialog(null, "Reserva criada com sucesso.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Falha ao criar reserva. Cheque o formulário.");
+            }
+            
+            tela.reservarMesa(telaReserva.getMesa());
+            telaReserva.dispose();
+            
+        }
+        
+    }
+    
+    class btnCancelarReservaListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            telaReserva.dispose();
+        }
+        
+    }
+    
     class btnMesa1Listener implements ActionListener {
 
         @Override
