@@ -7,6 +7,7 @@ package view;
 
 import control.CodeCookerController;
 import control.FuncionarioController;
+import control.MesasController;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -40,21 +41,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         baseController = new CodeCookerController();
         setLookAndFeel();
         initComponents();
-        tabPane.setEnabledAt(1, false);
-        tabPane.setEnabledAt(2, false);
-        tabPane.setEnabledAt(3, false);
-        tabPane.setEnabledAt(4, false);
-        tabPane.setEnabledAt(5, false);
-        tabPane.setEnabledAt(6, false);
+        //tabPane.setEnabledAt(1, false);
+        
+        //tabPane.setEnabledAt(3, false);
+        //tabPane.setEnabledAt(4, false);
+        //tabPane.setEnabledAt(5, false);
+        //tabPane.setEnabledAt(6, false);
         
         CenteredFrame(this);
         lblBemVindo.setVisible(false);
         lblImagemCozinheiro.add(lblTitulo);
         
+        PainelMesas pm = new PainelMesas();
+        MesasController mesasControl = new MesasController(pm);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pm);
+        
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
         tabPane.addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
-        tabPane.setEnabledAt(7, false);
+        //tabPane.setEnabledAt(7, false);
         
     }
     
@@ -110,22 +115,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblImagemCozinheiro = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pnlMesas = new javax.swing.JPanel();
-        btnMesa2 = new javax.swing.JButton();
-        lblMesa1 = new javax.swing.JLabel();
-        btnMesa3 = new javax.swing.JButton();
-        btnMesa1 = new javax.swing.JButton();
-        btnMesa4 = new javax.swing.JButton();
-        btnMesa6 = new javax.swing.JButton();
-        btnMesa5 = new javax.swing.JButton();
-        lblMesa2 = new javax.swing.JLabel();
-        lblMesa3 = new javax.swing.JLabel();
-        lblMesa4 = new javax.swing.JLabel();
-        lblMesa5 = new javax.swing.JLabel();
-        lblMesa6 = new javax.swing.JLabel();
-        btnReservarMesa = new javax.swing.JButton();
-        btnExcluirReserva = new javax.swing.JButton();
-        blTituloMesa = new javax.swing.JLabel();
         pnlCardapio = new javax.swing.JPanel();
         blTituloCardapio = new javax.swing.JLabel();
         btnAdicionarCardapio = new javax.swing.JButton();
@@ -283,173 +272,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
-
-        pnlMesas.setBackground(new java.awt.Color(255, 255, 255));
-        pnlMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlMesas.setPreferredSize(new java.awt.Dimension(400, 400));
-
-        btnMesa2.setBackground(new java.awt.Color(102, 255, 102));
-        btnMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa2ActionPerformed(evt);
-            }
-        });
-
-        lblMesa1.setText("Mesa 1");
-
-        btnMesa3.setBackground(new java.awt.Color(255, 102, 102));
-        btnMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa3ActionPerformed(evt);
-            }
-        });
-
-        btnMesa1.setBackground(new java.awt.Color(102, 255, 102));
-        btnMesa1.setForeground(new java.awt.Color(102, 255, 102));
-        btnMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa1.setOpaque(true);
-        btnMesa1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa1ActionPerformed(evt);
-            }
-        });
-
-        btnMesa4.setBackground(new java.awt.Color(255, 102, 102));
-        btnMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa4ActionPerformed(evt);
-            }
-        });
-
-        btnMesa6.setBackground(new java.awt.Color(255, 255, 102));
-        btnMesa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa6ActionPerformed(evt);
-            }
-        });
-
-        btnMesa5.setBackground(new java.awt.Color(255, 102, 102));
-        btnMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        btnMesa5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMesa5ActionPerformed(evt);
-            }
-        });
-
-        lblMesa2.setText("Mesa 2");
-
-        lblMesa3.setText("Mesa 3");
-
-        lblMesa4.setText("Mesa 4");
-
-        lblMesa5.setText("Mesa 5");
-
-        lblMesa6.setText("Mesa 6");
-
-        btnReservarMesa.setBackground(new java.awt.Color(255, 153, 51));
-        btnReservarMesa.setText("Reservar mesa");
-
-        btnExcluirReserva.setText("Excluir reserva");
-
-        blTituloMesa.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        blTituloMesa.setText("Mesas");
-
-        javax.swing.GroupLayout pnlMesasLayout = new javax.swing.GroupLayout(pnlMesas);
-        pnlMesas.setLayout(pnlMesasLayout);
-        pnlMesasLayout.setHorizontalGroup(
-            pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMesasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMesasLayout.createSequentialGroup()
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlMesasLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblMesa4)))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(pnlMesasLayout.createSequentialGroup()
-                                .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlMesasLayout.createSequentialGroup()
-                                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMesasLayout.createSequentialGroup()
-                                        .addComponent(lblMesa5)
-                                        .addGap(58, 58, 58))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMesasLayout.createSequentialGroup()
-                                        .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlMesasLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lblMesa6))
-                                    .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(pnlMesasLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblMesa1)
-                        .addGap(62, 62, 62)
-                        .addComponent(lblMesa2)
-                        .addGap(69, 69, 69)
-                        .addComponent(lblMesa3)))
-                .addGap(44, 44, 44)
-                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluirReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
-            .addGroup(pnlMesasLayout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(blTituloMesa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlMesasLayout.setVerticalGroup(
-            pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMesasLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(blTituloMesa)
-                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMesasLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluirReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))
-                    .addGroup(pnlMesasLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMesa1)
-                            .addComponent(lblMesa2)
-                            .addComponent(lblMesa3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlMesasLayout.createSequentialGroup()
-                                .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMesasLayout.createSequentialGroup()
-                                .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMesa4)
-                            .addComponent(lblMesa5)
-                            .addComponent(lblMesa6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(42, Short.MAX_VALUE))))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pnlMesas); // NOI18N
 
         blTituloCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         blTituloCardapio.setText("Cardápio");
@@ -842,30 +664,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarCardapioActionPerformed
 
-    private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa5ActionPerformed
-
-    private void btnMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa6ActionPerformed
-
-    private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa4ActionPerformed
-
-    private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa1ActionPerformed
-
-    private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa3ActionPerformed
-
-    private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMesa2ActionPerformed
-
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -945,7 +743,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blTituloCardapio;
-    private javax.swing.JLabel blTituloMesa;
     private javax.swing.JButton btnAdicionarCardapio;
     private javax.swing.JButton btnAdicionarItem;
     private javax.swing.JButton btnAdicionarPedido;
@@ -960,29 +757,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirCardapio;
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnExcluirProduto;
-    private javax.swing.JButton btnExcluirReserva;
     private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnMesa1;
-    private javax.swing.JButton btnMesa2;
-    private javax.swing.JButton btnMesa3;
-    private javax.swing.JButton btnMesa4;
-    private javax.swing.JButton btnMesa5;
-    private javax.swing.JButton btnMesa6;
     private javax.swing.JButton btnRelatorio;
-    private javax.swing.JButton btnReservarMesa;
     private javax.swing.JComboBox<String> cmbContaMesas;
     private javax.swing.JFormattedTextField ftxtTotalConta;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblImagemCozinheiro;
-    private javax.swing.JLabel lblMesa1;
-    private javax.swing.JLabel lblMesa2;
-    private javax.swing.JLabel lblMesa3;
-    private javax.swing.JLabel lblMesa4;
-    private javax.swing.JLabel lblMesa5;
-    private javax.swing.JLabel lblMesa6;
     private javax.swing.JLabel lblNClientes;
     private javax.swing.JLabel lblNPedidos;
     private javax.swing.JLabel lblPratoDoDia;
@@ -1005,7 +788,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFinancas;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlItens;
-    private javax.swing.JPanel pnlMesas;
     private javax.swing.JTabbedPane tabPane;
     private javax.swing.JTable tblPedidosConta;
     private javax.swing.JPasswordField txtSenha;
