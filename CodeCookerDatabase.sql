@@ -33,7 +33,7 @@ CREATE TABLE usuario (
 	senha VARCHAR(100) NOT NULL,
 	tipoUsuario SMALLINT NOT NULL,
 	nome VARCHAR(150) NOT NULL,
-	cpf VARCHAR(11) NOT NULL,
+	cpf VARCHAR(14) NOT NULL,
 	cnpj VARCHAR(20),
 	PRIMARY KEY(usuarioID)
 );
