@@ -25,26 +25,28 @@ public class ItemDAO extends DAO{
     
     public static ItemDAO getInstance(){
         if(ItemDAO.instance == null){
-            instance = new ItemDAO();
-            return instance;
+            ItemDAO.instance = new ItemDAO();
+            ItemDAO.myCONN = ItemDAO.instance.getConnection();
+            return ItemDAO.instance;
         }
         else{
-            return instance;
+            return ItemDAO.instance;
         }
     }
     
     public void create(String nome, String tipo, float preco, String ingredientes, boolean disp){
         PreparedStatement createItem = null;
-        String query = "INSERT INTO item (nome, preco, ingredientes, disponibilidade, tipo) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO item (nome, tipo, preco, ingredientes, disponibilidade) VALUES (?, ?, ?, ?, ?)";
         try {
             createItem = ItemDAO.myCONN.prepareStatement(query);
             createItem.setString(1, nome);
-            createItem.setFloat(2, preco);
-            createItem.setString(3, ingredientes);
-            createItem.setBoolean(4, disp);
-            createItem.setString(5, tipo);
+            createItem.setString(2, tipo);
+            createItem.setFloat(3, preco);
+            createItem.setString(4, ingredientes);
+            createItem.setBoolean(5, disp);
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
