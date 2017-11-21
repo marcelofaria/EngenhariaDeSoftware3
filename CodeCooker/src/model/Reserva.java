@@ -16,7 +16,8 @@ public class Reserva {
      * @param numPessoas
      * @param telefone
      */
-    public Reserva(int numMesa, String nome, Time horario, int numPessoas, String telefone) {
+    public Reserva(int idReserva, int numMesa, String nome, Time horario, int numPessoas, String telefone) {
+        this.idReserva = idReserva;
         this.numMesa = numMesa;
         this.nome = nome;
         this.horario = horario;
