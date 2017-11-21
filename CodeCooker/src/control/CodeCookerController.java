@@ -5,7 +5,10 @@
  */
 package control;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Mesa;
+import model.MesaDAO;
 import model.Usuario;
 import model.UsuarioDAO;
 import view.AuthenticationView;
@@ -18,14 +21,15 @@ import view.TelaPrincipal;
 public class CodeCookerController {
     
     private static int usuarioID;
+    private TelaPrincipal tela;
     
     public CodeCookerController(){
         
     }
     
     public void start(){
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+        this.tela = new TelaPrincipal();
+        tela.setVisible(true);
     }
     
     public static int getUsuarioID(){

@@ -23,24 +23,24 @@ public class MesaDAO extends DAO{
     private static MesaDAO instance;
     private static Connection myCONN;
     
-    public MesaDAO getInstance(){
+    public static MesaDAO getInstance(){
         if(MesaDAO.instance == null){
-            instance = new MesaDAO();
-            return instance;
+            MesaDAO.instance = new MesaDAO();
+            MesaDAO.myCONN = MesaDAO.instance.getConnection();
+            return MesaDAO.instance;
         }
         else{
-            return instance;
+            return MesaDAO.instance;
         }
     }
     
-    public void create(int numMesa, boolean status){
-        Mesa m = new Mesa(numMesa, status);
+    public void create(int numMesa, int status){
         PreparedStatement createMesa = null;
         String query = "INSERT INTO mesa (numMesa, status) VALUES (?, ?)";
         try {
             createMesa = MesaDAO.myCONN.prepareStatement(query);
             createMesa.setInt(1, numMesa);
-            createMesa.setBoolean(2, status);
+            createMesa.setInt(2, status);
             this.executeUpdate(createMesa);
         } catch (SQLException ex) {
             Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,7 +50,7 @@ public class MesaDAO extends DAO{
     public Mesa BuildObject(ResultSet rs){
         Mesa m = null;
         try {
-            m = new Mesa(rs.getShort("numMesa"), rs.getBoolean("status"));
+            m = new Mesa(rs.getShort("numMesa"), rs.getInt("status"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -92,7 +92,7 @@ public class MesaDAO extends DAO{
         PreparedStatement stmt;
         try {
             stmt = myCONN.prepareStatement("UPDATE mesa SET status=? WHERE numMesa = ?");
-            stmt.setBoolean(1, m.getStatus());
+            stmt.setInt(1, m.getStatus());
             stmt.setInt(2, m.getNumMesa());
             int update = this.executeUpdate(stmt);
             if (update == 1) {

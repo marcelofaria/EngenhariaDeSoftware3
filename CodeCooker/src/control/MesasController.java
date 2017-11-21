@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Mesa;
+import model.MesaDAO;
 import model.Reserva;
 import model.ReservaDAO;
 import view.ExcluirReserva;
@@ -31,6 +33,8 @@ public class MesasController {
     public MesasController(PainelMesas tela) {
 
         this.tela = tela;
+        this.carregarStatusMesas();
+        
         tela.addBtnMesa1Listener(new btnMesa1Listener());
         tela.addBtnMesa2Listener(new btnMesa2Listener());
         tela.addBtnMesa3Listener(new btnMesa3Listener());
@@ -49,6 +53,22 @@ public class MesasController {
         
     }
 
+    public final void carregarStatusMesas(){
+        
+        MesaDAO mdao = MesaDAO.getInstance();
+        List<Mesa> mesas = mdao.RetrieveAll();
+        
+        for(Mesa m : mesas){
+            if(m.getStatus() == 1){
+                tela.switchMesaColor(m.getNumMesa());
+            }
+            else if(m.getStatus() == 2){
+                tela.reservarMesa(m.getNumMesa());
+            }
+        }        
+        
+    }
+    
     class btnReservarListener implements ActionListener{
 
         @Override
@@ -76,6 +96,9 @@ public class MesasController {
             
             if(!reservas.isEmpty()){
                 rDAO.delete(reservas.get(0));
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(telaExcluir.getMesa(), 0));
+                tela.liberarMesa(telaExcluir.getMesa());
                 JOptionPane.showMessageDialog(null, "Reserva excluída com sucesso.");
                 telaExcluir.dispose();
             }
@@ -103,14 +126,14 @@ public class MesasController {
             try {
                 ReservaDAO rdao = ReservaDAO.getInstance();
                 rdao.create(telaReserva.getMesa(), CodeCookerController.getUsuarioID(), telaReserva.getNome(), telaReserva.getDataHora(), telaReserva.getPessoas(), telaReserva.getTelefone());
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(telaReserva.getMesa(), 2));
+                tela.reservarMesa(telaReserva.getMesa());
+                telaReserva.dispose();
                 JOptionPane.showMessageDialog(null, "Reserva criada com sucesso.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Falha ao criar reserva. Cheque o formulário.");
             }
-            
-            tela.reservarMesa(telaReserva.getMesa());
-            telaReserva.dispose();
-            
         }
         
     }
@@ -135,7 +158,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa1Color();
+                int status = tela.switchMesa1Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(1, status));
             } else {
 
             }
@@ -155,7 +180,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa2Color();
+                int status = tela.switchMesa2Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(2, status));
             } else {
 
             }
@@ -175,7 +202,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa3Color();
+                int status = tela.switchMesa3Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(3, status));
             } else {
 
             }
@@ -195,7 +224,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa4Color();
+                int status = tela.switchMesa4Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(4, status));
             } else {
 
             }
@@ -215,7 +246,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa5Color();
+                int status = tela.switchMesa5Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(5, status));
             } else {
 
             }
@@ -235,7 +268,9 @@ public class MesasController {
                     JOptionPane.YES_NO_OPTION);
 
             if (resposta == JOptionPane.YES_OPTION) {
-                tela.switchMesa6Color();
+                int status = tela.switchMesa6Color();
+                MesaDAO mdao = MesaDAO.getInstance();
+                mdao.update(new Mesa(6, status));
             } else {
 
             }
@@ -243,5 +278,5 @@ public class MesasController {
         }
 
     }
-
+    
 }
