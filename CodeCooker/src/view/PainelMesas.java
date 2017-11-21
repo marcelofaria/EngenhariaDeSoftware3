@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,6 +78,12 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa1Color() {
 
         int status;
+        //255, 255, 102
+        if (this.btnMesa1.getForeground().getRed() == 255
+                && this.btnMesa1.getForeground().getGreen() == 255) {
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
 
         if (this.btnMesa1.getForeground().getRed() == 102) {
             status = 1;
@@ -95,6 +102,11 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa2Color() {
 
         int status;
+        if (this.btnMesa2.getForeground().getRed() == 255
+                && this.btnMesa2.getForeground().getGreen() == 255) {
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
 
         if (this.btnMesa2.getForeground().getRed() == 102) {
             status = 1;
@@ -113,6 +125,12 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa3Color() {
 
         int status;
+        if(this.btnMesa3.getForeground().getRed() == 255 &&
+           this.btnMesa3.getForeground().getGreen() == 255){
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
+            
 
         if (this.btnMesa3.getForeground().getRed() == 102) {
             status = 1;
@@ -131,7 +149,12 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa4Color() {
 
         int status;
-
+        if(this.btnMesa4.getForeground().getRed() == 255 &&
+           this.btnMesa4.getForeground().getGreen() == 255){
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
+        
         if (this.btnMesa4.getForeground().getRed() == 102) {
             status = 1;
             this.btnMesa4.setForeground(new Color(255, 102, 102));
@@ -149,7 +172,11 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa5Color() {
 
         int status;
-
+        if(this.btnMesa5.getForeground().getRed() == 255 &&
+           this.btnMesa5.getForeground().getGreen() == 255){
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
         if (this.btnMesa5.getForeground().getRed() == 102) {
             status = 1;
             this.btnMesa5.setForeground(new Color(255, 102, 102));
@@ -166,7 +193,12 @@ public class PainelMesas extends javax.swing.JPanel {
     public int switchMesa6Color() {
 
         int status;
-
+        if(this.btnMesa6.getForeground().getRed() == 255 &&
+           this.btnMesa6.getForeground().getGreen() == 255){
+            JOptionPane.showMessageDialog(null, "Essa mesa está reservada. Para excluir a reserva, clique no botão 'Excluir reserva'.");
+            return 3;
+        }
+        //255, 255, 102
         if (this.btnMesa6.getForeground().getRed() == 102) {
             status = 1;
             this.btnMesa6.setForeground(new Color(255, 102, 102));
@@ -182,25 +214,20 @@ public class PainelMesas extends javax.swing.JPanel {
     }
 
     public void switchMesaColor(int numMesa) {
-        
+
         if (numMesa == 1) {
             this.switchMesa1Color();
-        } 
-        else if (numMesa == 2) {
+        } else if (numMesa == 2) {
             this.switchMesa2Color();
-        } 
-        else if (numMesa == 3) {
+        } else if (numMesa == 3) {
             this.switchMesa3Color();
-        } 
-        else if (numMesa == 4) {
+        } else if (numMesa == 4) {
             this.switchMesa4Color();
-        } 
-        else if (numMesa == 5) {
+        } else if (numMesa == 5) {
             this.switchMesa5Color();
-        } 
-        else if (numMesa == 6) {
+        } else if (numMesa == 6) {
             this.switchMesa6Color();
-        } 
+        }
     }
 
     public void reservarMesa(int numMesa) {
