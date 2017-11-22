@@ -49,6 +49,7 @@ CREATE TABLE item (
 	itemID INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
 	tipo VARCHAR(50) NOT NULL,
+	preco FLOAT(10) NOT NULL,
 	ingredientes VARCHAR(500),
 	disponibilidade BOOLEAN NOT NULL,
 	PRIMARY KEY(itemID)
@@ -108,3 +109,4 @@ CREATE TABLE reserva (
 	FOREIGN KEY(usuarioID) REFERENCES usuario(usuarioID)
 );
 
+INSERT INTO mesa (numMesa, status) VALUES (1, 0), (2,0), (3,0), (4,0), (5,0), (6,0);
