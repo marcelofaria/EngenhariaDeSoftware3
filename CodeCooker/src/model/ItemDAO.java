@@ -25,26 +25,28 @@ public class ItemDAO extends DAO{
     
     public static ItemDAO getInstance(){
         if(ItemDAO.instance == null){
-            instance = new ItemDAO();
-            return instance;
+            ItemDAO.instance = new ItemDAO();
+            ItemDAO.myCONN = ItemDAO.instance.getConnection();
+            return ItemDAO.instance;
         }
         else{
-            return instance;
+            return ItemDAO.instance;
         }
     }
     
     public void create(String nome, String tipo, float preco, String ingredientes, boolean disp){
         PreparedStatement createItem = null;
-        String query = "INSERT INTO item (nome, preco, ingredientes, disponibilidade, tipo) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO item (nome, tipo, preco, ingredientes, disponibilidade) VALUES (?, ?, ?, ?, ?)";
         try {
             createItem = ItemDAO.myCONN.prepareStatement(query);
             createItem.setString(1, nome);
-            createItem.setFloat(2, preco);
-            createItem.setString(3, ingredientes);
-            createItem.setBoolean(4, disp);
-            createItem.setString(5, tipo);
+            createItem.setString(2, tipo);
+            createItem.setFloat(3, preco);
+            createItem.setString(4, ingredientes);
+            createItem.setBoolean(5, disp);
             this.executeUpdate(createItem);
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -53,7 +55,7 @@ public class ItemDAO extends DAO{
     public Item BuildObject(ResultSet rs){
         Item i = null;
         try {
-            i = new Item(rs.getInt("itemID"), rs.getString("nome"), Tipo.valueOf(rs.getString("tipo")), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
+            i = new Item(rs.getInt("itemID"), rs.getString("nome"), rs.getString("tipo"), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -103,6 +105,7 @@ public class ItemDAO extends DAO{
             stmt.setFloat(2, i.getPreco());
             stmt.setString(3, i.getIngredientes());
             stmt.setBoolean(4, i.getDisponibilidade());
+            stmt.setInt(5, i.getId());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -119,6 +122,18 @@ public class ItemDAO extends DAO{
         try {
             stmt = myCONN.prepareStatement("DELETE FROM item WHERE itemID = ?");
             stmt.setInt(1, i.getId());
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void delete(int itemID) {
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM item WHERE itemID = ?");
+            stmt.setInt(1, itemID);
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

@@ -5,8 +5,10 @@
  */
 package view;
 
+import view.itens.PainelItens;
 import control.CodeCookerController;
 import control.FuncionarioController;
+import control.ItensController;
 import control.MesasController;
 import java.awt.Color;
 import java.awt.Component;
@@ -49,6 +51,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelMesas pm = new PainelMesas();
         MesasController mesasControl = new MesasController(pm);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pm);
+        
+        PainelItens pi = new PainelItens();
+        ItensController itensControl = new ItensController(pi);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/sandwich.png")), pi);
         
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
@@ -122,12 +128,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnBuscarCardapio = new javax.swing.JButton();
         btnAlterarCardapio = new javax.swing.JButton();
         btnExcluirCardapio = new javax.swing.JButton();
-        pnlItens = new javax.swing.JPanel();
-        lblTituloItens = new javax.swing.JLabel();
-        btnAdicionarItem = new javax.swing.JButton();
-        btnBuscarItem = new javax.swing.JButton();
-        btnAlterarItem = new javax.swing.JButton();
-        btnExcluirItem = new javax.swing.JButton();
         pnlContas = new javax.swing.JPanel();
         lblTituloContas = new javax.swing.JLabel();
         cmbContaMesas = new javax.swing.JComboBox<>();
@@ -330,63 +330,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/menu.png")), pnlCardapio); // NOI18N
-
-        lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloItens.setText("Alimentos e Bebidas");
-
-        btnAdicionarItem.setBackground(new java.awt.Color(102, 255, 102));
-        btnAdicionarItem.setText("Adicionar");
-        btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarItemActionPerformed(evt);
-            }
-        });
-
-        btnBuscarItem.setText("Buscar");
-
-        btnAlterarItem.setText("Alterar");
-
-        btnExcluirItem.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirItem.setText("Excluir");
-
-        javax.swing.GroupLayout pnlItensLayout = new javax.swing.GroupLayout(pnlItens);
-        pnlItens.setLayout(pnlItensLayout);
-        pnlItensLayout.setHorizontalGroup(
-            pnlItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlItensLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(pnlItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlItensLayout.createSequentialGroup()
-                        .addComponent(btnBuscarItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnAlterarItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlItensLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTituloItens)
-                .addGap(141, 141, 141))
-        );
-        pnlItensLayout.setVerticalGroup(
-            pnlItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlItensLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(lblTituloItens)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(pnlItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlItensLayout.createSequentialGroup()
-                        .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(btnBuscarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnAlterarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(103, 103, 103))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/sandwich.png")), pnlItens); // NOI18N
 
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloContas.setText("Contas");
@@ -657,10 +600,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
-    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarItemActionPerformed
-
     private void btnAdicionarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCardapioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarCardapioActionPerformed
@@ -745,18 +684,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel blTituloCardapio;
     private javax.swing.JButton btnAdicionarCardapio;
-    private javax.swing.JButton btnAdicionarItem;
     private javax.swing.JButton btnAdicionarPedido;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnAlterarCardapio;
     private javax.swing.JButton btnAlterarConta;
-    private javax.swing.JButton btnAlterarItem;
     private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnBuscarCardapio;
-    private javax.swing.JButton btnBuscarItem;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnExcluirCardapio;
-    private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
@@ -776,7 +711,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloContas;
     private javax.swing.JLabel lblTituloEstoque;
     private javax.swing.JLabel lblTituloFinanceiro;
-    private javax.swing.JLabel lblTituloItens;
     private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblTxtNClientes;
     private javax.swing.JLabel lblTxtNPedidos;
@@ -788,7 +722,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlEstoque;
     private javax.swing.JPanel pnlFinancas;
     private javax.swing.JPanel pnlHome;
-    private javax.swing.JPanel pnlItens;
     private javax.swing.JTabbedPane tabPane;
     private javax.swing.JTable tblPedidosConta;
     private javax.swing.JPasswordField txtSenha;
