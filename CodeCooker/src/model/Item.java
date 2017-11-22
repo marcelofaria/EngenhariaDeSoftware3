@@ -2,20 +2,15 @@ package model;
 
 import java.util.*;
 
-/**
- * 
- */
-
-enum Tipo{
-    Prato, Bebida, Sobremesa, Porcao
-}
 
 public class Item {
 
     /**
      * Default constructor
+     * @param itemID
      */
-    public Item(int itemID, String nome, Tipo tipo, float preco, String ingredientes, boolean disp) {
+    public Item(int itemID, String nome, String tipo, float preco, String ingredientes, boolean disp) {
+        this.itemID = itemID;
         this.nome = nome;
         this.tipo = tipo;
         this.preco = preco;
@@ -50,7 +45,7 @@ public class Item {
     private boolean disponibilidade;
     
 
-    private Tipo tipo;
+    private String tipo;
 
     public String getNome() {
         return nome;
@@ -84,11 +79,11 @@ public class Item {
         this.disponibilidade = disponibilidade;
     }
 
-    public Tipo getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

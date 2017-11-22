@@ -55,7 +55,7 @@ public class ItemDAO extends DAO{
     public Item BuildObject(ResultSet rs){
         Item i = null;
         try {
-            i = new Item(rs.getInt("itemID"), rs.getString("nome"), Tipo.valueOf(rs.getString("tipo")), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
+            i = new Item(rs.getInt("itemID"), rs.getString("nome"), rs.getString("tipo"), rs.getFloat("preco"), rs.getString("ingredientes"), rs.getBoolean("disponibilidade"));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -105,6 +105,7 @@ public class ItemDAO extends DAO{
             stmt.setFloat(2, i.getPreco());
             stmt.setString(3, i.getIngredientes());
             stmt.setBoolean(4, i.getDisponibilidade());
+            stmt.setInt(5, i.getId());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -121,6 +122,18 @@ public class ItemDAO extends DAO{
         try {
             stmt = myCONN.prepareStatement("DELETE FROM item WHERE itemID = ?");
             stmt.setInt(1, i.getId());
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void delete(int itemID) {
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM item WHERE itemID = ?");
+            stmt.setInt(1, itemID);
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

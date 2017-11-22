@@ -9,10 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
+import javax.swing.table.DefaultTableModel;
+import model.Item;
 import model.ItemDAO;
 import view.itens.AdicionarItem;
+import view.itens.BuscarItem;
+import view.itens.EditarItem;
 import view.itens.MenuAdicionarItens;
 import view.itens.MenuAlterarItens;
 import view.itens.MenuBuscarItens;
@@ -84,7 +91,41 @@ public class ItensController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            BuscarItem bi = new BuscarItem("Busca de pratos");
+            bi.getBtnBuscar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ItemDAO idao = ItemDAO.getInstance();
+                    String busca = bi.getBusca();
+                    List<Item> itens = idao.retrieveGeneric("SELECT * FROM item WHERE tipo LIKE 'Prato' AND (nome LIKE '%" + busca + "%' OR ingredientes LIKE '%"
+                            + busca + "%' OR preco LIKE '%" + busca + "%')");
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    modeloTabela.setRowCount(0);
+                    for (Item i : itens) {
+                        modeloTabela.addRow(new Object[]{i.getId(), i.getNome(), i.getIngredientes(), i.getDisponibilidade(), i.getPreco()});
+                    }
+                }
+            });
+            bi.getBtnEditar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                    EditarItem ei = new EditarItem();
+                    ei.setVisible(true);
+                    ei.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowIconified(WindowEvent e) {
+                            ei.setVisible(false);
+                            ItemDAO idao = ItemDAO.getInstance();
+                            idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                            JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                        }
+                    });
+
+                }
+            });
+            bi.setVisible(true);
         }
     }
 
@@ -92,7 +133,41 @@ public class ItensController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            BuscarItem bi = new BuscarItem("Busca de pratos");
+            bi.setVisible(true);
+            bi.getBtnBuscar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ItemDAO idao = ItemDAO.getInstance();
+                    String busca = bi.getBusca();
+                    List<Item> itens = idao.retrieveGeneric("SELECT * FROM item WHERE tipo LIKE 'Prato' AND (nome LIKE '%" + busca + "%' OR ingredientes LIKE '%"
+                            + busca + "%' OR preco LIKE '%" + busca + "%')");
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    modeloTabela.setRowCount(0);
+                    for (Item i : itens) {
+                        modeloTabela.addRow(new Object[]{i.getId(), i.getNome(), i.getIngredientes(), i.getDisponibilidade(), i.getPreco()});
+                    }
+                }
+            });
+            bi.getBtnEditar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                    EditarItem ei = new EditarItem();
+                    ei.setVisible(true);
+                    ei.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowIconified(WindowEvent e) {
+                            ei.setVisible(false);
+                            ItemDAO idao = ItemDAO.getInstance();
+                            idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                            JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                        }
+                    });
+
+                }
+            });
         }
     }
 
@@ -100,7 +175,34 @@ public class ItensController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            BuscarItem bi = new BuscarItem("Busca de pratos");
+            bi.getBtnEditar().setText("Excluir");
+            bi.setVisible(true);
+            bi.getBtnBuscar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ItemDAO idao = ItemDAO.getInstance();
+                    String busca = bi.getBusca();
+                    List<Item> itens = idao.retrieveGeneric("SELECT * FROM item WHERE tipo LIKE 'Prato' AND (nome LIKE '%" + busca + "%' OR ingredientes LIKE '%"
+                            + busca + "%' OR preco LIKE '%" + busca + "%')");
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    modeloTabela.setRowCount(0);
+                    for (Item i : itens) {
+                        modeloTabela.addRow(new Object[]{i.getId(), i.getNome(), i.getIngredientes(), i.getDisponibilidade(), i.getPreco()});
+                    }
+                }
+            });
+            bi.getBtnEditar().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel modeloTabela = bi.getModeloTabela();
+                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                    ItemDAO idao = ItemDAO.getInstance();
+                    idao.delete(itemID);
+                    bi.dispose();
+                    JOptionPane.showMessageDialog(null, "Prato excluído com sucesso.");
+                }
+            });
         }
     }
 
