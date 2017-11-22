@@ -109,21 +109,26 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
-                        }
-                    });
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
 
                 }
+
             });
             bi.setVisible(true);
         }
@@ -152,19 +157,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
-                        }
-                    });
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
 
                 }
             });
@@ -195,12 +204,16 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    ItemDAO idao = ItemDAO.getInstance();
-                    idao.delete(itemID);
-                    bi.dispose();
-                    JOptionPane.showMessageDialog(null, "Prato excluído com sucesso.");
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        ItemDAO idao = ItemDAO.getInstance();
+                        idao.delete(itemID);
+                        bi.dispose();
+                        JOptionPane.showMessageDialog(null, "Prato excluído com sucesso.");
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
+                    }
                 }
             });
         }
@@ -247,19 +260,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
-                        }
-                    });
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
 
                 }
             });
@@ -290,19 +307,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
-                        }
-                    });
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
 
                 }
             });
@@ -333,12 +354,16 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    ItemDAO idao = ItemDAO.getInstance();
-                    idao.delete(itemID);
-                    bi.dispose();
-                    JOptionPane.showMessageDialog(null, "Porção excluída com sucesso.");
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        ItemDAO idao = ItemDAO.getInstance();
+                        idao.delete(itemID);
+                        bi.dispose();
+                        JOptionPane.showMessageDialog(null, "Porção excluída com sucesso.");
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
+                    }
                 }
             });
         }
@@ -385,20 +410,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
-                        }
-                    });
-
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
                 }
             });
             bi.setVisible(true);
@@ -428,20 +456,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
-                        }
-                    });
-
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
                 }
             });
         }
@@ -471,12 +502,16 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    ItemDAO idao = ItemDAO.getInstance();
-                    idao.delete(itemID);
-                    bi.dispose();
-                    JOptionPane.showMessageDialog(null, "Bebida excluída com sucesso.");
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        ItemDAO idao = ItemDAO.getInstance();
+                        idao.delete(itemID);
+                        bi.dispose();
+                        JOptionPane.showMessageDialog(null, "Bebida excluída com sucesso.");
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
+                    }
                 }
             });
         }
@@ -523,20 +558,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
-                        }
-                    });
-
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
                 }
             });
             bi.setVisible(true);
@@ -566,20 +604,23 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    EditarItem ei = new EditarItem();
-                    ei.setVisible(true);
-                    ei.addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            ei.setVisible(false);
-                            ItemDAO idao = ItemDAO.getInstance();
-                            idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                            JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
-                        }
-                    });
-
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        EditarItem ei = new EditarItem();
+                        ei.setVisible(true);
+                        ei.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowIconified(WindowEvent e) {
+                                ei.setVisible(false);
+                                ItemDAO idao = ItemDAO.getInstance();
+                                idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
+                                JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
+                            }
+                        });
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja editar.");
+                    }
                 }
             });
         }
@@ -609,12 +650,16 @@ public class ItensController {
             bi.getBtnEditar().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DefaultTableModel modeloTabela = bi.getModeloTabela();
-                    Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
-                    ItemDAO idao = ItemDAO.getInstance();
-                    idao.delete(itemID);
-                    bi.dispose();
-                    JOptionPane.showMessageDialog(null, "Sobremesa excluída com sucesso.");
+                    try {
+                        DefaultTableModel modeloTabela = bi.getModeloTabela();
+                        Integer itemID = Integer.parseInt(String.valueOf(modeloTabela.getDataVector().elementAt(bi.getTabela().getSelectedRow())).split("[\\[\\]]")[1].split(",")[0]);
+                        ItemDAO idao = ItemDAO.getInstance();
+                        idao.delete(itemID);
+                        bi.dispose();
+                        JOptionPane.showMessageDialog(null, "Sobremesa excluída com sucesso.");
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
+                    }
                 }
             });
         }
