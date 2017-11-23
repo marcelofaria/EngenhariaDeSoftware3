@@ -2,30 +2,26 @@ package model;
 
 import java.util.*;
 
-enum DiaDaSemana{
-    Segunda, Terca, Quarta, Quinta, Sexta, Sabado, Domingo
-}
-
 /**
  * 
  */
 public class Cardapio {
 
-    private DiaDaSemana dia;
+    private String dia;
     private ArrayList<Item> itens;
     /**
      * Default constructor
      */
-    public Cardapio(ArrayList<Item> itens, DiaDaSemana dia) {
+    public Cardapio(ArrayList<Item> itens, String dia) {
         this.setDia(dia);
         this.setItens(itens);
     }
 
-    public DiaDaSemana getDia(){
+    public String getDia(){
         return this.dia;
     }
     
-    public void setDia(DiaDaSemana dia){
+    public void setDia(String dia){
         this.dia = dia;
     }
 

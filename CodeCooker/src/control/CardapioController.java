@@ -15,10 +15,13 @@ import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Cardapio;
 import model.CardapioDAO;
 import model.Item;
 import model.ItemDAO;
 import view.cardapio.CriarCardapio;
+import view.cardapio.ExcluirCardapio;
+import view.cardapio.MostrarCardapio;
 import view.cardapio.PainelCardapio;
 
 /**
@@ -29,6 +32,8 @@ public class CardapioController {
 
     private PainelCardapio tela;
     private CriarCardapio telaCriar;
+    private MostrarCardapio telaMostrar;
+    private ExcluirCardapio telaExcluir;
 
     public CardapioController(PainelCardapio tela) {
 
@@ -44,6 +49,12 @@ public class CardapioController {
         telaCriar.addBtnLimparTudoListener(new BtnLimparTudoListener());
         telaCriar.addBtnCancelarListener(new BtnCancelarListener());
 
+        this.telaMostrar = new MostrarCardapio();
+        telaMostrar.addCmbDiaListener(new CmbDiaListener());
+        
+        this.telaExcluir = new ExcluirCardapio();
+        telaExcluir.addBtnExcluirListener(new BtnExcluirCardapioListener());
+
     }
 
     class BtnCriarListener implements ActionListener {
@@ -58,7 +69,17 @@ public class CardapioController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            telaMostrar.setVisible(true);
+            CardapioDAO cdao = CardapioDAO.getInstance();
+            if (cdao.existeCardapio(telaMostrar.getDia())) {
+                Cardapio c = cdao.retrieveByDia(telaMostrar.getDia());
+                ArrayList<Item> itensCardapio = c.getItens();
+                DefaultTableModel modelo = telaMostrar.getModeloTabela();
+                modelo.setNumRows(0);
+                for (Item i : itensCardapio) {
+                    modelo.addRow(new Object[]{i.getId(), i.getNome(), i.getTipo(), i.getPreco()});
+                }
+            }
         }
     }
 
@@ -74,7 +95,7 @@ public class CardapioController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            telaExcluir.setVisible(true);
         }
     }
 
@@ -106,8 +127,7 @@ public class CardapioController {
                         cdao.create(telaCriar.getDia(), itens);
                         JOptionPane.showMessageDialog(null, "Cardápio criado com sucesso.");
                         telaCriar.dispose();
-                    }
-                    else{
+                    } else {
                         telaCriar.dispose();
                     }
                 }
@@ -155,4 +175,47 @@ public class CardapioController {
         }
     }
 
+    // *********************
+    // Frame MostrarCardapio
+    // *********************
+    class CmbDiaListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            CardapioDAO cdao = CardapioDAO.getInstance();
+            if (cdao.existeCardapio(telaMostrar.getDia())) {
+                Cardapio c = cdao.retrieveByDia(telaMostrar.getDia());
+                ArrayList<Item> itensCardapio = c.getItens();
+                DefaultTableModel modelo = telaMostrar.getModeloTabela();
+                modelo.setNumRows(0);
+                for (Item i : itensCardapio) {
+                    modelo.addRow(new Object[]{i.getId(), i.getNome(), i.getTipo(), i.getPreco()});
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Não existe um cardápio para " + telaMostrar.getDia());
+            }
+        }
+    }
+
+    // *********************
+    // Frame ExcluirCardapio
+    // *********************
+    
+    class BtnExcluirCardapioListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            CardapioDAO cdao = CardapioDAO.getInstance();
+            if(cdao.existeCardapio(telaExcluir.getDia())){
+                cdao.excluirCardapio(telaExcluir.getDia());
+                JOptionPane.showMessageDialog(null, "Cardápio excluído com sucesso.");
+                telaExcluir.setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Um cardápio para " + telaExcluir.getDia() + " não existe.");
+            }
+        }
+        
+    }
+    
 }

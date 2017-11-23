@@ -74,6 +74,32 @@ public class CardapioDAO extends DAO {
         }
         return cardapio;
     }*/
+    
+    public Cardapio retrieveByDia(String dia){
+        
+        Cardapio c = null;
+        PreparedStatement stmt;
+        ResultSet rs;
+        ArrayList<Item> itens = new ArrayList<>();
+        try{
+            ItemDAO idao = ItemDAO.getInstance();
+            List<Integer> itensIDs = new ArrayList<>();
+            stmt = myCONN.prepareStatement("SELECT itemID FROM item_cardapio WHERE diaDaSemana LIKE '" +dia+ "';");
+            rs = this.getResultSet(stmt);
+            while(rs.next()){
+                itensIDs.add(rs.getInt("itemID"));
+            }
+            for(Integer id : itensIDs){
+                itens.add(idao.retrieveById(id));
+            }
+            c = new Cardapio(itens, dia);
+        } catch(SQLException ex){
+            
+        }
+        
+        return c;
+    }
+    
     public int getLastId() {
         int lastId = 0;
         try {
