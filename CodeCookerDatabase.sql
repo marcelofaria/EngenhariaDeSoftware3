@@ -76,7 +76,7 @@ CREATE TABLE item_pedido (
 CREATE TABLE item_cardapio (
 	item_cardapioID INT NOT NULL AUTO_INCREMENT,
 	itemID INT NOT NULL,
-	diaDaSemana SMALLINT NOT NULL,
+	diaDaSemana VARCHAR(15) NOT NULL,
 	PRIMARY KEY(item_cardapioID),
 	FOREIGN KEY(itemID) REFERENCES item(itemID)
 );
