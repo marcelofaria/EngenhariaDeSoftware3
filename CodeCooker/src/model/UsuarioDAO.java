@@ -94,7 +94,7 @@ public class UsuarioDAO extends DAO {
     }
     
     public List<Usuario> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM usuario WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM usuario WHERE nome LIKE '%" + nome + "%' ORDER BY nome");
     }
     
     public Usuario retrieveById(int id) {
@@ -105,6 +105,16 @@ public class UsuarioDAO extends DAO {
         }
         return usuario;
     }
+    
+    public Usuario retrieveByCpf(String cpf) {
+        Usuario usuario = null;
+        List<Usuario> usuarios = this.retrieveGeneric("SELECT * FROM usuario WHERE cpf="+cpf);
+        if(!usuarios.isEmpty()){
+            usuario = usuarios.get(0);
+        }
+        return usuario;
+    }
+    
     
     public Usuario retrieveByPass(String pass) {
         Usuario usu = null;
@@ -148,11 +158,13 @@ public class UsuarioDAO extends DAO {
     public void delete(Usuario u) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE usuarioID = ?");
-            stmt.setInt(1, u.getId());
+            stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE cpf=?");
+            stmt.setString(1, u.getCpf());
+            System.out.println(u.getCpf());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
+        } catch(NullPointerException e){
         }
     }
     
