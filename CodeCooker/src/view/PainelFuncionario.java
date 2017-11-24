@@ -6,6 +6,11 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.DefaultListModel;
+import model.Usuario;
+import model.UsuarioDAO;
 
 /**
  *
@@ -13,11 +18,31 @@ import java.awt.event.ActionListener;
  */
 public class PainelFuncionario extends javax.swing.JPanel {
 
+    DefaultListModel modelC = new DefaultListModel();
+    DefaultListModel modelM = new DefaultListModel();
+    DefaultListModel modelVoid = new DefaultListModel();
+    UsuarioDAO u = UsuarioDAO.getInstance();
+    List<Usuario> usuarios;
     /**
      * Creates new form PainelFuncionario
      */
     public PainelFuncionario() {
         initComponents();
+        
+        String nome = null;
+        usuarios = u.retrieveAll();
+        try{
+            int i = 0;
+            while(usuarios.get(i).getNome() != null){
+                nome = usuarios.get(i).getNome();
+                //System.out.println(nome);
+                setLstFuncionarios(i, nome);
+                i++;
+            }
+        } catch(IndexOutOfBoundsException e){
+            
+        }
+        
     }
     
     public void addBtnCadastrarFuncListener(ActionListener listener){
@@ -31,6 +56,52 @@ public class PainelFuncionario extends javax.swing.JPanel {
         return new CadastrarFuncionario();
     
     }
+    
+    public void addBtnExcluirFuncListener(ActionListener listener){
+    
+        btnExcluirFuncionario.addActionListener(listener);
+        
+    }
+    
+    public ExcluirFuncionario getExcluirFuncFrame(){
+    
+        return new ExcluirFuncionario();
+    
+    }
+    
+    public void setLstVoid(){
+        modelM.clear();
+        modelC.clear();
+    }
+    
+    public void relistar(){
+        String nome = null;
+        usuarios = u.retrieveAll();
+            try{
+                int i = 0;
+                while(usuarios.get(i).getNome() != null){
+                    nome = usuarios.get(i).getNome();
+                    //System.out.println(nome);
+                    setLstFuncionarios(i, nome);
+                    i++;
+                }
+            } catch(IndexOutOfBoundsException e){
+
+            }
+    
+    }
+    
+    public void setLstFuncionarios(int i, String nome){
+
+        if(usuarios.get(i).getTipoUsuario() == 2){
+            modelM.addElement(nome);
+            lstMetres.setModel(modelM);
+        }
+        else if(usuarios.get(i).getTipoUsuario() == 1){
+            modelC.addElement(nome);
+            lstCaixas.setModel(modelC);
+        }
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.

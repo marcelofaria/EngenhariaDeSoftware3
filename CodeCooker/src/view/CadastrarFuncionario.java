@@ -18,6 +18,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
      */
     public CadastrarFuncionario() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
     
     public void addBtnCancelarListener(ActionListener btnCancelarListener){
@@ -53,11 +55,35 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     }
     
     public String getCPF(){
-        return txtCPF.getText();
+        
+        String cpf;
+        String[] cpfTratado;
+        
+        cpf = txtCPF.getText();
+        
+        //System.out.println(CPF);
+        cpfTratado = cpf.split("\\.");
+        
+        String digito = cpfTratado[2];
+        String[] digitoE = digito.split("-");
+        
+        String CPFinal = cpfTratado[0] + cpfTratado[1] + digitoE[0] + digitoE[1];
+
+        return CPFinal;
     }
     
     public String getCNPJ(){
         return txtCNPJ.getText();
+    }
+    
+    public void setTextVoid(){
+    
+        txtNomeCompleto.setText("");
+        txtCNPJ.setText("");
+        txtCPF.setText("");
+        txtSenha.setText("");
+        txtUsuario.setText("");
+    
     }
 
     /**
