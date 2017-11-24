@@ -110,3 +110,6 @@ CREATE TABLE reserva (
 );
 
 INSERT INTO mesa (numMesa, status) VALUES (1, 0), (2,0), (3,0), (4,0), (5,0), (6,0);
+
+CREATE TRIGGER `deletarItemDeCardapios` AFTER DELETE ON `item`
+ FOR EACH ROW DELETE FROM item_cardapio WHERE itemID = old.itemID
