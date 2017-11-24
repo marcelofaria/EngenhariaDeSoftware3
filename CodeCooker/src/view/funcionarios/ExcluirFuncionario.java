@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.funcionarios;
 
+import view.funcionarios.ConfirmaExcluirFuncionario;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,7 +23,9 @@ import model.UsuarioDAO;
  */
 public class ExcluirFuncionario extends javax.swing.JFrame {
     
-    DefaultListModel model = new DefaultListModel();
+    DefaultListModel modelM = new DefaultListModel();
+    DefaultListModel modelC = new DefaultListModel();
+    DefaultListModel modelG = new DefaultListModel();
     UsuarioDAO u = UsuarioDAO.getInstance();
     List<Usuario> usuarios;
         
@@ -44,16 +47,46 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
             
         }*/   
     }
+    
+    public void addcmbSeletorListener(ActionListener cmbSeletorListener){
+        this.cmbSeletor.addActionListener(cmbSeletorListener);
+    }
 
     public void addBtnCancelarListener(ActionListener btnCancelarListener){
         this.btnCancelar.addActionListener(btnCancelarListener);
     }
     
-    public void setLstFuncionarios(String nome){
-        
-        model.addElement(nome);
-        lstFuncionarios.setModel(model);
+    public void setLstFuncionariosByCmb(){
+        String nome = null;
+        usuarios = u.retrieveAll();
+            try{
+                int i = 0;
+                while(usuarios.get(i).getNome() != null){
+                    nome = usuarios.get(i).getNome();
+                    //System.out.println(nome);
+                    setLstFuncionarios(i, nome);
+                    i++;
+                }
+            } catch(IndexOutOfBoundsException e){
 
+            }
+    
+    }
+    
+    public void setLstFuncionarios(int i, String nome){
+
+        if(cmbSeletor.getSelectedItem() == "Gerente" && usuarios.get(i).getTipoUsuario() == 3){
+            modelG.addElement(nome);
+            lstFuncionarios.setModel(modelG);       
+        }
+        if(cmbSeletor.getSelectedItem() == "Caixa" && usuarios.get(i).getTipoUsuario() == 1){
+            modelC.addElement(nome);
+            lstFuncionarios.setModel(modelC);       
+        }
+        if(cmbSeletor.getSelectedItem() == "Metre" && usuarios.get(i).getTipoUsuario() == 2){
+            modelM.addElement(nome);
+            lstFuncionarios.setModel(modelM);       
+        }
     }
     
     public ConfirmaExcluirFuncionario getConfirmaExcluirFuncFrame(){
@@ -69,7 +102,9 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
     }
     
     public void setLstVoid(){
-        model.clear();
+        modelM.clear();
+        modelC.clear();
+        modelG.clear();
     }
     
     public void relistar(){
@@ -80,7 +115,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
                 while(usuarios.get(i).getNome() != null){
                     nome = usuarios.get(i).getNome();
                     //System.out.println(nome);
-                    setLstFuncionarios(nome);
+                    setLstFuncionarios(i, nome);
                     i++;
                 }
             } catch(IndexOutOfBoundsException e){
@@ -125,6 +160,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstFuncionarios = new javax.swing.JList<>();
         btnCancelar = new javax.swing.JButton();
+        cmbSeletor = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +178,8 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
+        cmbSeletor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Caixa", "Gerente", "Metre" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,11 +190,13 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(lblDemitirFuncionario))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
-                        .addComponent(btnCancelar)))
+                        .addComponent(btnCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(cmbSeletor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -165,7 +205,9 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDemitirFuncionario)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbSeletor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -183,6 +225,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cmbSeletor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDemitirFuncionario;
     private javax.swing.JList<String> lstFuncionarios;

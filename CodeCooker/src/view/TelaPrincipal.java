@@ -7,6 +7,7 @@ package view;
 
 import view.mesas.PainelMesas;
 import control.CardapioController;
+import view.funcionarios.PainelFuncionario;
 import view.itens.PainelItens;
 import control.CodeCookerController;
 import control.FuncionarioController;
