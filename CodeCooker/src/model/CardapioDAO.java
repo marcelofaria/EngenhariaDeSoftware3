@@ -133,6 +133,23 @@ public class CardapioDAO extends DAO {
 
         return false;
     }
+    
+     public String existeCardapio() {
+        String query = "SELECT * FROM item_cardapio";
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement(query);
+            ResultSet rs = this.getResultSet(stmt);
+            if (rs.next()) {
+                return rs.getString("diaDaSemana");
+            } else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CardapioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return null;
+     }
 
     public void excluirCardapio(String diaDaSemana) {
         PreparedStatement stmt;
