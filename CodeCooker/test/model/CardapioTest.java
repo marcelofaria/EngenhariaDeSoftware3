@@ -40,9 +40,9 @@ public class CardapioTest {
     @Test
     public void testGetDia() {
         System.out.println("getDia");
-        Cardapio cardapio = new Cardapio(null, DiaDaSemana.Domingo);
+        Cardapio cardapio = new Cardapio(null, "Domingo");
         
-        assertEquals(DiaDaSemana.Domingo, cardapio.getDia());
+        assertEquals("Domingo", cardapio.getDia());
     }
 
     /**
@@ -51,10 +51,10 @@ public class CardapioTest {
     @Test
     public void testSetDia() {
         System.out.println("setDia");
-        Cardapio cardapio = new Cardapio(null, DiaDaSemana.Terca);
-        cardapio.setDia(DiaDaSemana.Quarta);
+        Cardapio cardapio = new Cardapio(null, "Domingo");
+        cardapio.setDia("Quarta");
         
-        assertEquals(DiaDaSemana.Quarta, cardapio.getDia());
+        assertEquals("Quarta", cardapio.getDia());
         //System.out. println(cardapio.getDia());
     }
 
@@ -68,7 +68,7 @@ public class CardapioTest {
         ArrayList<Item> itens = new ArrayList<>();
         Item i = new Item(1, "Farofa", "Prato", 12, "Mandioca, linguica", true);
         itens.add(i);
-        Cardapio cardapio = new Cardapio(itens, DiaDaSemana.Domingo);
+        Cardapio cardapio = new Cardapio(itens, "Quarta");
         ArrayList<Item> itens2 = cardapio.getItens();
         
         for(Item x : itens2){
@@ -92,7 +92,7 @@ public class CardapioTest {
         ArrayList<Item> itens = new ArrayList<>();
         Item item1 = new Item(1, "Farofa", "Prato", 12, "Mandioca, linguica", true);
         itens.add(item1);
-        Cardapio c1 = new Cardapio(itens , DiaDaSemana.Segunda);
+        Cardapio c1 = new Cardapio(itens , "Segunda");
         ArrayList<Item> itens2 = new ArrayList<>();
         
         Item item2 = new Item(2, "Arroz", "Prato", 15, "Arroz", true);

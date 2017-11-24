@@ -86,7 +86,7 @@ public class ItemDAO extends DAO{
     
     public Item retrieveById(int idItem) {
         Item i = null;
-        List<Item> itens = this.retrieveGeneric("SELECT * FROM item WHERE id = " + idItem);
+        List<Item> itens = this.retrieveGeneric("SELECT * FROM item WHERE itemID = " + idItem);
         if(!itens.isEmpty()){
             i = itens.get(0);
         }

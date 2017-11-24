@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.CardapioController;
 import view.itens.PainelItens;
 import control.CodeCookerController;
 import control.FuncionarioController;
@@ -25,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
+import view.cardapio.PainelCardapio;
 
 /**
  *
@@ -47,6 +49,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CenteredFrame(this);
         lblBemVindo.setVisible(false);
         lblImagemCozinheiro.add(lblTitulo);
+        
+        PainelCardapio pc = new PainelCardapio();
+        CardapioController cardapioControl = new CardapioController(pc);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/menu.png")), pc);
         
         PainelMesas pm = new PainelMesas();
         MesasController mesasControl = new MesasController(pm);
@@ -122,12 +128,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblImagemCozinheiro = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pnlCardapio = new javax.swing.JPanel();
-        blTituloCardapio = new javax.swing.JLabel();
-        btnAdicionarCardapio = new javax.swing.JButton();
-        btnBuscarCardapio = new javax.swing.JButton();
-        btnAlterarCardapio = new javax.swing.JButton();
-        btnExcluirCardapio = new javax.swing.JButton();
         pnlContas = new javax.swing.JPanel();
         lblTituloContas = new javax.swing.JLabel();
         cmbContaMesas = new javax.swing.JComboBox<>();
@@ -234,7 +234,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(pnlHomeLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(lblTitulo)))
-                        .addGap(0, 16, Short.MAX_VALUE))
+                        .addGap(0, 31, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblBemVindo)))
@@ -273,63 +273,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
-
-        blTituloCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        blTituloCardapio.setText("Cardápio");
-
-        btnAdicionarCardapio.setBackground(new java.awt.Color(102, 255, 102));
-        btnAdicionarCardapio.setText("Adicionar");
-        btnAdicionarCardapio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarCardapioActionPerformed(evt);
-            }
-        });
-
-        btnBuscarCardapio.setText("Buscar");
-
-        btnAlterarCardapio.setText("Alterar");
-
-        btnExcluirCardapio.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirCardapio.setText("Excluir");
-
-        javax.swing.GroupLayout pnlCardapioLayout = new javax.swing.GroupLayout(pnlCardapio);
-        pnlCardapio.setLayout(pnlCardapioLayout);
-        pnlCardapioLayout.setHorizontalGroup(
-            pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCardapioLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCardapioLayout.createSequentialGroup()
-                        .addGroup(pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlCardapioLayout.createSequentialGroup()
-                                .addComponent(btnBuscarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnAlterarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnExcluirCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAdicionarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCardapioLayout.createSequentialGroup()
-                        .addComponent(blTituloCardapio)
-                        .addGap(211, 211, 211))))
-        );
-        pnlCardapioLayout.setVerticalGroup(
-            pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCardapioLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(blTituloCardapio)
-                .addGap(90, 90, 90)
-                .addComponent(btnAdicionarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBuscarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAlterarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnExcluirCardapio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/menu.png")), pnlCardapio); // NOI18N
 
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloContas.setText("Contas");
@@ -600,10 +543,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
-    private void btnAdicionarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCardapioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarCardapioActionPerformed
-
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -682,16 +621,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel blTituloCardapio;
-    private javax.swing.JButton btnAdicionarCardapio;
     private javax.swing.JButton btnAdicionarPedido;
     private javax.swing.JButton btnAdicionarProduto;
-    private javax.swing.JButton btnAlterarCardapio;
     private javax.swing.JButton btnAlterarConta;
     private javax.swing.JButton btnAlterarProduto;
-    private javax.swing.JButton btnBuscarCardapio;
     private javax.swing.JButton btnBuscarProduto;
-    private javax.swing.JButton btnExcluirCardapio;
     private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
@@ -717,7 +651,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValorReceita;
-    private javax.swing.JPanel pnlCardapio;
     private javax.swing.JPanel pnlContas;
     private javax.swing.JPanel pnlEstoque;
     private javax.swing.JPanel pnlFinancas;

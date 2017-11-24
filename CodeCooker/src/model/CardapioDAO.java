@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,43 +25,142 @@ public class CardapioDAO extends DAO {
     private static CardapioDAO instance;
     private static Connection myCONN;
 
-    public CardapioDAO getInstance() {
-        if (this.instance == null) {
-            instance = new CardapioDAO();
-            return instance;
+    public static CardapioDAO getInstance() {
+        if (CardapioDAO.instance == null) {
+            CardapioDAO.instance = new CardapioDAO();
+            CardapioDAO.myCONN = CardapioDAO.instance.getConnection();
+            return CardapioDAO.instance;
         } else {
-            return instance;
+            return CardapioDAO.instance;
         }
     }
 
-    public void create(DiaDaSemana dia, Collection<Item> itens) {
+    public void create(String dia, Collection<Integer> itens) throws SQLException {
         PreparedStatement stmt;
-        try {
-            stmt = myCONN.prepareStatement("INSERT INTO item_cardapio (itemID, diaDaSemana) VALUES (?, ?)");
-            stmt.setString(1, dia.toString());
-            int lastId = this.getLastId();
-            for(Item i : itens){
-                lastId++;
-                stmt.setInt(1, lastId);
-                stmt.setInt(2, i.getId());
-                this.executeUpdate(stmt);
-            }
+        stmt = myCONN.prepareStatement("INSERT INTO item_cardapio (itemID, diaDaSemana) VALUES (?, ?)");
+        stmt.setString(2, dia);
+        for (Integer i : itens) {
+            stmt.setInt(1, i);
             this.executeUpdate(stmt);
+        }
+        stmt.close();
+    }
+
+    /*public Cardapio BuildObject(ResultSet rs){
+        Cardapio i = null;
+        try {
+            //item_cardapioID
+            //itemID
+            //diaDaSemana
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return i;
+    }*/
+ /*public List<Cardapio> retrieveGeneric(String query) {
+        PreparedStatement stmt;
+        List<Cardapio> cardapio = new ArrayList<>();
+        ResultSet rs;
+        try {
+            stmt = myCONN.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                cardapio.add(this.BuildObject(rs));
+            }
+            rs.close();
             stmt.close();
         } catch (SQLException ex) {
         }
+        return cardapio;
+    }*/
+    
+    public Cardapio retrieveByDia(String dia){
+        
+        Cardapio c = null;
+        PreparedStatement stmt;
+        ResultSet rs;
+        ArrayList<Item> itens = new ArrayList<>();
+        try{
+            ItemDAO idao = ItemDAO.getInstance();
+            List<Integer> itensIDs = new ArrayList<>();
+            stmt = myCONN.prepareStatement("SELECT itemID FROM item_cardapio WHERE diaDaSemana LIKE '" +dia+ "';");
+            rs = this.getResultSet(stmt);
+            while(rs.next()){
+                itensIDs.add(rs.getInt("itemID"));
+            }
+            for(Integer id : itensIDs){
+                itens.add(idao.retrieveById(id));
+            }
+            c = new Cardapio(itens, dia);
+        } catch(SQLException ex){
+            
+        }
+        
+        return c;
     }
     
-    public int getLastId(){
+    public int getLastId() {
         int lastId = 0;
         try {
             ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT COUNT(*) AS id FROM item_cardapio"));
-            lastId = rs.getInt("item_cardapioID");
-            return lastId;
+            if (rs.next()) {
+                lastId = rs.getInt("id");
+                return lastId;
+            } else {
+                return 0;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lastId;
+    }
+
+    public boolean existeCardapio(String diaDaSemana) {
+        String query = "SELECT * FROM item_cardapio WHERE diaDaSemana LIKE '" + diaDaSemana + "';";
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement(query);
+            ResultSet rs = this.getResultSet(stmt);
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CardapioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+    
+     public String existeCardapio() {
+        String query = "SELECT * FROM item_cardapio";
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement(query);
+            ResultSet rs = this.getResultSet(stmt);
+            if (rs.next()) {
+                return rs.getString("diaDaSemana");
+            } else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CardapioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return null;
+     }
+
+    public void excluirCardapio(String diaDaSemana) {
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM item_cardapio WHERE diaDaSemana LIKE ?");
+            stmt.setString(1, diaDaSemana);
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CardapioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /*
