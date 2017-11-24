@@ -10,6 +10,7 @@ import control.CardapioController;
 import view.funcionarios.PainelFuncionario;
 import view.itens.PainelItens;
 import control.CodeCookerController;
+import control.EstoqueController;
 import control.FuncionarioController;
 import control.ItensController;
 import control.MesasController;
@@ -29,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import view.cardapio.PainelCardapio;
+import view.estoque.PainelEstoque;
 
 /**
  *
@@ -60,6 +62,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MesasController mesasControl = new MesasController(pm);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pm);
         
+        PainelEstoque pe = new PainelEstoque();
+        EstoqueController estoqueControl = new EstoqueController(pe);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pe);
+        
         PainelItens pi = new PainelItens();
         ItensController itensControl = new ItensController(pi);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/sandwich.png")), pi);
@@ -67,6 +73,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
         tabPane.addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
+        
         
         tabPane.setEnabledAt(1, false);
         tabPane.setEnabledAt(2, false);
