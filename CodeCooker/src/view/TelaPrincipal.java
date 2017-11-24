@@ -5,6 +5,7 @@
  */
 package view;
 
+import view.mesas.PainelMesas;
 import control.CardapioController;
 import view.itens.PainelItens;
 import control.CodeCookerController;

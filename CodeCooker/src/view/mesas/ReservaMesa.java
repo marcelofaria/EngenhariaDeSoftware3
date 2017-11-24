@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.mesas;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -80,7 +80,7 @@ public class ReservaMesa extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblTelefone = new javax.swing.JLabel();
-        txtTelefone = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reserva de Mesa");
@@ -111,12 +111,6 @@ public class ReservaMesa extends javax.swing.JFrame {
 
         lblTelefone.setText("Telefone");
 
-        try {
-            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +121,7 @@ public class ReservaMesa extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCancelar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblNome)
                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +145,7 @@ public class ReservaMesa extends javax.swing.JFrame {
                                     .addGap(61, 61, 61)
                                     .addComponent(lblTelefone)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtTelefone)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel1)))
@@ -204,6 +198,6 @@ public class ReservaMesa extends javax.swing.JFrame {
     private javax.swing.JSpinner spnPessoas;
     private javax.swing.JFormattedTextField txtDataHora;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JFormattedTextField txtTelefone;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

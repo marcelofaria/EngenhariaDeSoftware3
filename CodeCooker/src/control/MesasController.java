@@ -16,9 +16,9 @@ import model.Mesa;
 import model.MesaDAO;
 import model.Reserva;
 import model.ReservaDAO;
-import view.ExcluirReserva;
-import view.PainelMesas;
-import view.ReservaMesa;
+import view.mesas.ExcluirReserva;
+import view.mesas.PainelMesas;
+import view.mesas.ReservaMesa;
 
 /**
  *

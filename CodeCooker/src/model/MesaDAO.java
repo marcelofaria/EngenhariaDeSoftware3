@@ -43,7 +43,7 @@ public class MesaDAO extends DAO{
             createMesa.setInt(2, status);
             this.executeUpdate(createMesa);
         } catch (SQLException ex) {
-            Logger.getLogger(MesaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
     
