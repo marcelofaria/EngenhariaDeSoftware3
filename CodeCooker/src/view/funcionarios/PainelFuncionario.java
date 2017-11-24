@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.funcionarios;
 
+import view.funcionarios.ExcluirFuncionario;
+import view.funcionarios.CadastrarFuncionario;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;

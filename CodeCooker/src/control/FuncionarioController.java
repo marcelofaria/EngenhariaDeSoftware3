@@ -12,10 +12,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import model.Usuario;
 import model.UsuarioDAO;
-import view.CadastrarFuncionario;
-import view.ConfirmaExcluirFuncionario;
-import view.ExcluirFuncionario;
-import view.PainelFuncionario;
+import view.funcionarios.CadastrarFuncionario;
+import view.funcionarios.ConfirmaExcluirFuncionario;
+import view.funcionarios.ExcluirFuncionario;
+import view.funcionarios.PainelFuncionario;
 
 /**
  *
@@ -42,7 +42,19 @@ public class FuncionarioController {
         cadFunc.addBtnCancelarListener(new BtnCancelarListener());
         painelFunc.addBtnExcluirFuncListener(new BtnAbrirExcluirListener());
         excFunc.addBtnCancelarListener(new btnCancelarEListener());
+        excFunc.addcmbSeletorListener(new CmbSeletorListener());
 
+    }
+    
+    class CmbSeletorListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            excFunc.setLstVoid();
+            excFunc.setLstFuncionariosByCmb();
+        }
+    
+    
     }
 
     class btnCancelarEListener implements ActionListener {
@@ -51,7 +63,6 @@ public class FuncionarioController {
         public void actionPerformed(ActionEvent ae) {
             excFunc.dispose();
             painelFunc.setLstVoid();
-            
             painelFunc.relistar();
         }
     }
@@ -64,7 +75,6 @@ public class FuncionarioController {
             
             excFunc.setVisible(true);
             excFunc.setLstVoid();
-            
             excFunc.relistar();
             
         }

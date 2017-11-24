@@ -5,6 +5,7 @@
  */
 package view;
 
+import view.funcionarios.PainelFuncionario;
 import view.itens.PainelItens;
 import control.CodeCookerController;
 import control.FuncionarioController;
