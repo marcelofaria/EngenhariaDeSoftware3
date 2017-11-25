@@ -117,18 +117,14 @@ public class ContaDAO extends DAO{
             stmt.setInt(1, numMesa);
             rs = this.getResultSet(stmt);
             if(rs.next()){
-                System.out.println("EXISTE");
                 return true;
-                
             }
             else{
-                System.out.println("N EXISTE");
                 return false;
             }
         } catch (SQLException ex){
             System.out.println(ex.getMessage());
         }
-        System.out.println("N EXISTE");
         return false;
     }
     

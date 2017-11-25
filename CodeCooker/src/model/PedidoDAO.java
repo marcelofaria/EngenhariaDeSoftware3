@@ -118,4 +118,15 @@ public class PedidoDAO extends DAO{
         return pedidos;
     }
     
+    public void delete(int pedidoID){
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM pedido WHERE pedidoID = ?");
+            stmt.setInt(1, pedidoID);
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+    }
+    
 }

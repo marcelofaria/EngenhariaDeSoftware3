@@ -23,6 +23,7 @@ import model.ItemPedidoDAO;
 import model.Pedido;
 import model.PedidoDAO;
 import view.contas.AdicionarPedido;
+import view.contas.AlterarConta;
 import view.contas.MenuAdicionarPedido;
 import view.contas.PainelContas;
 import view.itens.BuscarItem;
@@ -36,6 +37,7 @@ public class ContasController {
 
     private PainelContas tela;
     private MenuAdicionarPedido telaMenu;
+    private AlterarConta telaAlterar;
 
     public ContasController(PainelContas tela) {
 
@@ -52,6 +54,9 @@ public class ContasController {
         this.telaMenu.addBebidaListener(new BtnBebidaListener());
         this.telaMenu.addSobremesaListener(new BtnSobremesaListener());
 
+        this.telaAlterar = new AlterarConta();
+        this.telaAlterar.addBtnSalvarListener(new BtnSalvarAlteracaoListener());
+
     }
 
     public void carregarContaMesa(int numMesa) {
@@ -63,14 +68,12 @@ public class ContasController {
             pedidos = this.getPedidos(numMesa);
             if (pedidos != null) {
                 ItemDAO idao = ItemDAO.getInstance();
-                System.out.println("TAMNHO: " + pedidos.size());
                 for (ItemPedido i : pedidos) {
                     model.addRow(new Object[]{i.getItem().getId(), i.getPedidoID(), i.getItem().getNome(), i.getQtd(), i.getValor()});
                     precoTotal += i.getValor();
                 }
             }
-        }
-        else{
+        } else {
             model.setRowCount(0);
         }
         DecimalFormat df = new DecimalFormat("0.00");
@@ -108,24 +111,23 @@ public class ContasController {
         public void actionPerformed(ActionEvent e) {
             int numMesa = tela.getNumMesa();
             DefaultTableModel model = tela.getModeloTabela();
-            if(model.getRowCount() != 0){
+            if (model.getRowCount() != 0) {
                 int resposta = JOptionPane.showConfirmDialog(
                         null,
-                        "Você realmente deseja fechar a conta da mesa " +numMesa+"?",
+                        "Você realmente deseja fechar a conta da mesa " + numMesa + "?",
                         "Fechamento de conta",
                         JOptionPane.YES_NO_OPTION);
 
-                if(resposta == JOptionPane.YES_OPTION){
+                if (resposta == JOptionPane.YES_OPTION) {
                     ContaDAO cdao = ContaDAO.getInstance();
-                    List<Conta> conta = cdao.retrieveGeneric("SELECT * FROM conta WHERE (numMesa = " +numMesa+ " AND status = 1)");
-                    if(!conta.isEmpty()){
+                    List<Conta> conta = cdao.retrieveGeneric("SELECT * FROM conta WHERE (numMesa = " + numMesa + " AND status = 1)");
+                    if (!conta.isEmpty()) {
                         cdao.updateStatus(conta.get(0).getId(), false);
                         model.setRowCount(0);
                         carregarContaMesa(numMesa);
                     }
                 }
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Não existe uma conta para a mesa " + numMesa + ".");
             }
         }
@@ -136,7 +138,23 @@ public class ContasController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ContaDAO cdao = ContaDAO.getInstance();
+            if (cdao.existeConta(tela.getNumMesa())) {
+                DefaultTableModel model = telaAlterar.getModeloTabela();
+                model.setRowCount(0);
+                List<ItemPedido> pedidos;
+                pedidos = getPedidos(tela.getNumMesa());
+                if (pedidos != null) {
+                    ItemDAO idao = ItemDAO.getInstance();
+                    for (ItemPedido i : pedidos) {
+                        model.addRow(new Object[]{i.getItem().getId(), i.getPedidoID(), i.getItem().getNome(), i.getQtd(), false});
+                    }
+                }
+                telaAlterar.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Não existe uma conta para a mesa " + tela.getNumMesa() + ".");
+            }
         }
 
     }
@@ -200,11 +218,16 @@ public class ContasController {
                                 Pedido ultimoPedido = pdao.getLastPedido();
                                 ItemDAO idao = ItemDAO.getInstance();
                                 Item i = idao.retrieveById(itemID);
-                                if(i == null)
+                                if (i == null) {
                                     System.out.println("EH O ITEM");
-                                if(ultimoPedido == null)
+                                }
+                                if (ultimoPedido == null) {
                                     System.out.println("ULTIMOPEDIDO");
+                                }
                                 ipdao.create(i, ultimoPedido.getId(), ap.getQtd());
+                                DefaultTableModel model = tela.getModeloTabela();
+                                model.setRowCount(0);
+                                carregarContaMesa(tela.getNumMesa());
                                 JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
@@ -266,6 +289,9 @@ public class ContasController {
                                 ItemDAO idao = ItemDAO.getInstance();
                                 Item i = idao.retrieveById(itemID);
                                 ipdao.create(i, ultimoPedido.getId(), ap.getQtd());
+                                DefaultTableModel model = tela.getModeloTabela();
+                                model.setRowCount(0);
+                                carregarContaMesa(tela.getNumMesa());
                                 JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
@@ -327,6 +353,9 @@ public class ContasController {
                                 ItemDAO idao = ItemDAO.getInstance();
                                 Item i = idao.retrieveById(itemID);
                                 ipdao.create(i, ultimoPedido.getId(), ap.getQtd());
+                                DefaultTableModel model = tela.getModeloTabela();
+                                model.setRowCount(0);
+                                carregarContaMesa(tela.getNumMesa());
                                 JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
@@ -388,6 +417,9 @@ public class ContasController {
                                 ItemDAO idao = ItemDAO.getInstance();
                                 Item i = idao.retrieveById(itemID);
                                 ipdao.create(i, ultimoPedido.getId(), ap.getQtd());
+                                DefaultTableModel model = tela.getModeloTabela();
+                                model.setRowCount(0);
+                                carregarContaMesa(tela.getNumMesa());
                                 JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
@@ -398,6 +430,27 @@ public class ContasController {
 
             });
             bi.setVisible(true);
+        }
+
+    }
+
+    class BtnSalvarAlteracaoListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DefaultTableModel model = telaAlterar.getModeloTabela();
+            PedidoDAO pdao = PedidoDAO.getInstance();
+            ItemPedidoDAO ipdao = ItemPedidoDAO.getInstance();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                ipdao.update((Integer) model.getValueAt(i, 0), (Integer) model.getValueAt(i, 1), (Integer) model.getValueAt(i, 3));
+                if ((Boolean) model.getValueAt(i, 4)) {
+                    pdao.delete((Integer) model.getValueAt(i, 1));
+                }
+            }
+            telaAlterar.setVisible(false);
+            DefaultTableModel modeloConta = tela.getModeloTabela();
+            modeloConta.setRowCount(0);
+            carregarContaMesa(tela.getNumMesa());
         }
 
     }
