@@ -169,6 +169,10 @@ public class BuscarItem extends javax.swing.JFrame {
         objFrame.setLocation(iCoordX, iCoordY);
     } 
     
+    public void setBtnEditarText(String text){
+        this.btnEditar.setText(text);
+    }
+    
     public JButton getBtnBuscar(){
         return this.btnBuscar;
     }

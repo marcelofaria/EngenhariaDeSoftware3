@@ -192,29 +192,17 @@ public class EditarItem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAdicionar1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblIngredientes;
     private javax.swing.JLabel lblIngredientes1;
-    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
-    private javax.swing.JLabel lblPreco;
     private javax.swing.JLabel lblPreco1;
-    private javax.swing.JRadioButton radDisponivel;
     private javax.swing.JRadioButton radDisponivel1;
-    private javax.swing.JRadioButton radIndisponivel;
     private javax.swing.JRadioButton radIndisponivel1;
-    private javax.swing.JTextField txtIngredientes;
     private javax.swing.JTextField txtIngredientes1;
-    private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNome1;
-    private javax.swing.JFormattedTextField txtPreco;
     private javax.swing.JFormattedTextField txtPreco1;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,10 +25,11 @@ public class ItemPedidoDAO extends DAO{
 
     public static ItemPedidoDAO getInstance() {
         if (ItemPedidoDAO.instance == null) {
-            instance = new ItemPedidoDAO();
-            return instance;
+            ItemPedidoDAO.instance = new ItemPedidoDAO();
+            ItemPedidoDAO.myCONN = ItemPedidoDAO.instance.getConnection();
+            return ItemPedidoDAO.instance;
         } else {
-            return instance;
+            return ItemPedidoDAO.instance;
         }
     }
     

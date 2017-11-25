@@ -9,6 +9,7 @@ import view.mesas.PainelMesas;
 import control.CardapioController;
 import view.itens.PainelItens;
 import control.CodeCookerController;
+import control.ContasController;
 import control.FuncionarioController;
 import control.ItensController;
 import control.MesasController;
@@ -28,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import view.cardapio.PainelCardapio;
+import view.contas.PainelContas;
 
 /**
  *
@@ -54,6 +56,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelCardapio pc = new PainelCardapio();
         CardapioController cardapioControl = new CardapioController(pc);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/menu.png")), pc);
+        
+        PainelContas pcontas = new PainelContas();
+        ContasController cc = new ContasController(pcontas);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/conta.png")), pcontas);
         
         PainelMesas pm = new PainelMesas();
         MesasController mesasControl = new MesasController(pm);
@@ -129,16 +135,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblImagemCozinheiro = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pnlContas = new javax.swing.JPanel();
-        lblTituloContas = new javax.swing.JLabel();
-        cmbContaMesas = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPedidosConta = new javax.swing.JTable();
-        lblTotalConta = new javax.swing.JLabel();
-        ftxtTotalConta = new javax.swing.JFormattedTextField();
-        btnFecharConta = new javax.swing.JButton();
-        btnAdicionarPedido = new javax.swing.JButton();
-        btnAlterarConta = new javax.swing.JButton();
         pnlEstoque = new javax.swing.JPanel();
         lblTituloEstoque = new javax.swing.JLabel();
         btnAdicionarProduto = new javax.swing.JButton();
@@ -274,110 +270,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
-
-        lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloContas.setText("Contas");
-
-        cmbContaMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6" }));
-
-        tblPedidosConta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Pedidos", "Qtd", "Valor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblPedidosConta.setColumnSelectionAllowed(true);
-        tblPedidosConta.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblPedidosConta);
-        tblPedidosConta.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (tblPedidosConta.getColumnModel().getColumnCount() > 0) {
-            tblPedidosConta.getColumnModel().getColumn(0).setResizable(false);
-            tblPedidosConta.getColumnModel().getColumn(0).setPreferredWidth(70);
-            tblPedidosConta.getColumnModel().getColumn(1).setResizable(false);
-            tblPedidosConta.getColumnModel().getColumn(2).setResizable(false);
-        }
-
-        lblTotalConta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTotalConta.setText("Total");
-
-        ftxtTotalConta.setEditable(false);
-        ftxtTotalConta.setBackground(new java.awt.Color(102, 255, 102));
-        ftxtTotalConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
-        btnFecharConta.setText("Fechar conta");
-
-        btnAdicionarPedido.setText("Adicionar pedido");
-
-        btnAlterarConta.setText("Alterar conta");
-
-        javax.swing.GroupLayout pnlContasLayout = new javax.swing.GroupLayout(pnlContas);
-        pnlContas.setLayout(pnlContasLayout);
-        pnlContasLayout.setHorizontalGroup(
-            pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlContasLayout.createSequentialGroup()
-                .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlContasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTotalConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ftxtTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlContasLayout.createSequentialGroup()
-                            .addGap(226, 226, 226)
-                            .addComponent(lblTituloContas))
-                        .addGroup(pnlContasLayout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                .addComponent(cmbContaMesas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFecharConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterarConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-        pnlContasLayout.setVerticalGroup(
-            pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlContasLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(lblTituloContas)
-                .addGap(34, 34, 34)
-                .addComponent(cmbContaMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlContasLayout.createSequentialGroup()
-                        .addComponent(btnFecharConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlContasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtTotalConta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalConta))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/conta.png")), pnlContas); // NOI18N
 
         lblTituloEstoque.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloEstoque.setText("Controle de Estoque");
@@ -622,19 +514,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionarPedido;
     private javax.swing.JButton btnAdicionarProduto;
-    private javax.swing.JButton btnAlterarConta;
     private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnExcluirProduto;
-    private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRelatorio;
-    private javax.swing.JComboBox<String> cmbContaMesas;
-    private javax.swing.JFormattedTextField ftxtTotalConta;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblImagemCozinheiro;
     private javax.swing.JLabel lblNClientes;
@@ -643,21 +529,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblReceita;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTituloContas;
     private javax.swing.JLabel lblTituloEstoque;
     private javax.swing.JLabel lblTituloFinanceiro;
-    private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblTxtNClientes;
     private javax.swing.JLabel lblTxtNPedidos;
     private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValorReceita;
-    private javax.swing.JPanel pnlContas;
     private javax.swing.JPanel pnlEstoque;
     private javax.swing.JPanel pnlFinancas;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JTabbedPane tabPane;
-    private javax.swing.JTable tblPedidosConta;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
