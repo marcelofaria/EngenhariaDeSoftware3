@@ -5,6 +5,8 @@
  */
 package view.estoque;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Talita-csl
@@ -17,7 +19,39 @@ public class PainelEstoque extends javax.swing.JPanel {
     public PainelEstoque() {
         initComponents();
     }
-
+    
+    public void addBtnAdicionarProdutoListener(ActionListener adicionarListener){
+        this.btnAdicionarProduto.addActionListener(adicionarListener);
+    }
+    
+    public void addBtnBuscarProdutoListener(ActionListener buscarListener){
+        this.btnBuscarProduto.addActionListener(buscarListener);
+    }
+    
+    public void addBtnAlterarProdutoListener(ActionListener alterarListener){
+        this.btnAlterarProduto.addActionListener(alterarListener);
+    }
+    
+    public void addBtnExcluirProdutoListener(ActionListener excluirListener){
+        this.btnExcluirProduto.addActionListener(excluirListener);
+    }
+    
+    public PainelAdicionarProduto getPainelAdicionar(){
+        return new PainelAdicionarProduto();
+    }
+    
+    public PainelBuscarProduto getPainelBuscar(){
+        return new PainelBuscarProduto();
+    }
+    
+    public PainelEditarProduto getPainelEditar(){
+        return new PainelEditarProduto();
+    }
+    
+    public PainelExcluirProduto getPainelExcluirProduto(){
+        return new PainelExcluirProduto();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +67,7 @@ public class PainelEstoque extends javax.swing.JPanel {
         btnAdicionarProduto = new javax.swing.JButton();
         btnBuscarProduto = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(535, 531));
+        setPreferredSize(new java.awt.Dimension(535, 362));
 
         btnAlterarProduto.setText("Alterar");
 
@@ -45,11 +79,6 @@ public class PainelEstoque extends javax.swing.JPanel {
 
         btnAdicionarProduto.setBackground(new java.awt.Color(102, 255, 102));
         btnAdicionarProduto.setText("Adicionar");
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarProdutoActionPerformed(evt);
-            }
-        });
 
         btnBuscarProduto.setText("Buscar");
 
@@ -90,10 +119,6 @@ public class PainelEstoque extends javax.swing.JPanel {
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

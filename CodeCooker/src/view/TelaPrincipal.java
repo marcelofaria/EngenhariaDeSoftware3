@@ -147,12 +147,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnFecharConta = new javax.swing.JButton();
         btnAdicionarPedido = new javax.swing.JButton();
         btnAlterarConta = new javax.swing.JButton();
-        pnlEstoque = new javax.swing.JPanel();
-        lblTituloEstoque = new javax.swing.JLabel();
-        btnAdicionarProduto = new javax.swing.JButton();
-        btnBuscarProduto = new javax.swing.JButton();
-        btnAlterarProduto = new javax.swing.JButton();
-        btnExcluirProduto = new javax.swing.JButton();
         pnlFinancas = new javax.swing.JPanel();
         lblTituloFinanceiro = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JButton();
@@ -387,63 +381,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/conta.png")), pnlContas); // NOI18N
 
-        lblTituloEstoque.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloEstoque.setText("Controle de Estoque");
-
-        btnAdicionarProduto.setBackground(new java.awt.Color(102, 255, 102));
-        btnAdicionarProduto.setText("Adicionar");
-        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarProdutoActionPerformed(evt);
-            }
-        });
-
-        btnBuscarProduto.setText("Buscar");
-
-        btnAlterarProduto.setText("Alterar");
-
-        btnExcluirProduto.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirProduto.setText("Excluir");
-
-        javax.swing.GroupLayout pnlEstoqueLayout = new javax.swing.GroupLayout(pnlEstoque);
-        pnlEstoque.setLayout(pnlEstoqueLayout);
-        pnlEstoqueLayout.setHorizontalGroup(
-            pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEstoqueLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlEstoqueLayout.createSequentialGroup()
-                        .addComponent(btnBuscarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEstoqueLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTituloEstoque)
-                .addGap(141, 141, 141))
-        );
-        pnlEstoqueLayout.setVerticalGroup(
-            pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEstoqueLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(lblTituloEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlEstoqueLayout.createSequentialGroup()
-                        .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(103, 103, 103))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pnlEstoque); // NOI18N
-
         lblTituloFinanceiro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloFinanceiro.setText("Financeiro");
 
@@ -548,10 +485,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRelatorioActionPerformed
 
-    private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
-
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -584,7 +517,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Voce nao foi identificado");
         }
-
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void setLookAndFeel() {
@@ -631,11 +563,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPedido;
-    private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnAlterarConta;
-    private javax.swing.JButton btnAlterarProduto;
-    private javax.swing.JButton btnBuscarProduto;
-    private javax.swing.JButton btnExcluirProduto;
     private javax.swing.JButton btnFecharConta;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRelatorio;
@@ -652,7 +580,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloContas;
-    private javax.swing.JLabel lblTituloEstoque;
     private javax.swing.JLabel lblTituloFinanceiro;
     private javax.swing.JLabel lblTotalConta;
     private javax.swing.JLabel lblTxtNClientes;
@@ -661,7 +588,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValorReceita;
     private javax.swing.JPanel pnlContas;
-    private javax.swing.JPanel pnlEstoque;
     private javax.swing.JPanel pnlFinancas;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JTabbedPane tabPane;
