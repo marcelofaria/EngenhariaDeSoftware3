@@ -114,31 +114,31 @@ CREATE TABLE reserva (
 INSERT INTO mesa (numMesa, status) VALUES (1, 0), (2,0), (3,0), (4,0), (5,0), (6,0);
 
 CREATE TRIGGER `deletarItemDeCardapios` AFTER DELETE ON `item`
- FOR EACH ROW DELETE FROM item_cardapio WHERE itemID = old.itemID
+ FOR EACH ROW DELETE FROM item_cardapio WHERE itemID = old.itemID;
 
 CREATE TRIGGER `deletarItemPedidos` AFTER DELETE ON `pedido`
- FOR EACH ROW DELETE FROM item_pedido WHERE item_pedido.pedidoID = old.pedidoID
+ FOR EACH ROW DELETE FROM item_pedido WHERE item_pedido.pedidoID = old.pedidoID;
 
 CREATE TRIGGER `updateValorTotalConta` AFTER INSERT ON `item_pedido`
  FOR EACH ROW UPDATE conta
 JOIN pedido ON pedido.contaID = conta.contaID
 SET conta.valorTotal = conta.valorTotal + new.Valor
-WHERE pedido.pedidoID = new.pedidoID
+WHERE pedido.pedidoID = new.pedidoID;
 
 CREATE TRIGGER `updateValorTotalContaAfterUpdate` AFTER UPDATE ON `item_pedido`
  FOR EACH ROW UPDATE conta
 JOIN pedido ON pedido.contaID = conta.contaID
 SET conta.valorTotal = conta.valorTotal + new.Valor
-WHERE pedido.pedidoID = new.pedidoID
+WHERE pedido.pedidoID = new.pedidoID;
 
 CREATE TRIGGER `updateValorTotalContaBeforeUpdate` BEFORE UPDATE ON `item_pedido`
  FOR EACH ROW UPDATE conta
 JOIN pedido ON pedido.contaID = conta.contaID
 SET conta.valorTotal = conta.valorTotal - old.Valor
-WHERE pedido.pedidoID = new.pedidoID
+WHERE pedido.pedidoID = new.pedidoID;
 
 CREATE TRIGGER `updateValorTotalContaAfterDelete` AFTER DELETE ON `item_pedido`
  FOR EACH ROW UPDATE conta
 JOIN pedido ON pedido.contaID = conta.contaID
 SET conta.valorTotal = conta.valorTotal - old.Valor
-WHERE pedido.pedidoID = old.pedidoID
+WHERE pedido.pedidoID = old.pedidoID;
