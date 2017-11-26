@@ -116,8 +116,9 @@ INSERT INTO mesa (numMesa, status) VALUES (1, 0), (2,0), (3,0), (4,0), (5,0), (6
 CREATE TRIGGER `deletarItemDeCardapios` AFTER DELETE ON `item`
  FOR EACH ROW DELETE FROM item_cardapio WHERE itemID = old.itemID;
 
-CREATE TRIGGER `deletarItemPedidos` AFTER DELETE ON `pedido`
- FOR EACH ROW DELETE FROM item_pedido WHERE item_pedido.pedidoID = old.pedidoID;
+CREATE TRIGGER `deletarPedido` AFTER DELETE ON `item_pedido`
+ FOR EACH ROW DELETE FROM pedido
+WHERE pedido.pedidoID = old.pedidoID
 
 CREATE TRIGGER `updateValorTotalConta` AFTER INSERT ON `item_pedido`
  FOR EACH ROW UPDATE conta
