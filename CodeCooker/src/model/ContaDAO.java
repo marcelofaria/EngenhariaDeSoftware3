@@ -47,8 +47,9 @@ public class ContaDAO extends DAO{
         try {
             Calendar cal = Calendar.getInstance();
             cal.setTime(rs.getDate("dataConta"));
-            conta = new Conta(rs.getInt("contaID"), rs.getInt("numMesa"), cal, rs.getBoolean("status"));
+            conta = new Conta(rs.getInt("contaID"), rs.getInt("numMesa"), rs.getDouble("valorTotal"), cal, rs.getBoolean("status"));
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
         return conta;
     }
@@ -97,6 +98,23 @@ public class ContaDAO extends DAO{
         try{
             stmt = myCONN.prepareStatement("UPDATE conta SET status = ? WHERE contaID = ?");
             stmt.setBoolean(1, status);
+            stmt.setInt(2, contaID);
+            int update = this.executeUpdate(stmt);
+            if (update == 1) {
+                return true;
+            }
+            stmt.close();
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());     
+        }
+        return false;
+    }
+    
+    public boolean updateValorTotal(int contaID, double valor){
+        PreparedStatement stmt;
+        try{
+            stmt = myCONN.prepareStatement("UPDATE conta SET valorTotal = ? WHERE contaID = ?");
+            stmt.setDouble(1, valor);
             stmt.setInt(2, contaID);
             int update = this.executeUpdate(stmt);
             if (update == 1) {

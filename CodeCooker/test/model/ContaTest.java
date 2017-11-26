@@ -45,7 +45,7 @@ public class ContaTest {
 
         System.out.println("getID");
         Calendar cal = Calendar.getInstance();
-        Conta conta = new Conta(0, 0, cal, true);
+        Conta conta = new Conta(0, 0, 1.0, cal, true);
         
         assertEquals(0, conta.getId());
     }
@@ -66,7 +66,7 @@ public class ContaTest {
     public void testSetData() {
         System.out.println("setData");
         Calendar cal = Calendar.getInstance();
-        Conta conta = new Conta(0, 0, cal, true);
+        Conta conta = new Conta(0, 0, 1.0, cal, true);
         try {
             TimeUnit.SECONDS.sleep(1);
             Calendar cal2 = Calendar.getInstance();

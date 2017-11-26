@@ -11,12 +11,20 @@ public class Conta {
     private Calendar data;
     private int numMesa;
     private boolean status;
+    private double valorTotal;
 
-    public Conta(int ID, int numMesa, Calendar data, boolean status) {
+    public Conta(int ID, int numMesa, double valorTotal, Calendar data, boolean status) {
         this.ID = ID;
+        this.numMesa = numMesa;
+        this.status = status;
+        this.valorTotal = valorTotal;
         this.data = data;
     }
-    
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
     public int getId() {
         return ID;
     }

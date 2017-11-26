@@ -439,11 +439,20 @@ public class ContasController {
         @Override
         public void actionPerformed(ActionEvent e) {
             DefaultTableModel model = telaAlterar.getModeloTabela();
+            DefaultTableModel modelTblItens = tela.getModeloTabela();
             PedidoDAO pdao = PedidoDAO.getInstance();
             ItemPedidoDAO ipdao = ItemPedidoDAO.getInstance();
             for (int i = 0; i < model.getRowCount(); i++) {
                 ipdao.update((Integer) model.getValueAt(i, 0), (Integer) model.getValueAt(i, 1), (Integer) model.getValueAt(i, 3));
                 if ((Boolean) model.getValueAt(i, 4)) {
+                    for (int j = 0; j < modelTblItens.getRowCount(); j++) {
+                        if((Integer) modelTblItens.getValueAt(j, 1) == (Integer) model.getValueAt(i, 1)){
+                            ContaDAO cdao = ContaDAO.getInstance();
+                            String query = "SELECT * FROM conta INNER JOIN pedido ON pedido.contaID = conta.contaID WHERE pedido.pedidoID = " + (Integer) modelTblItens.getValueAt(j, 1);
+                            Conta c = cdao.retrieveGeneric(query).get(0);
+                            cdao.updateValorTotal(c.getId(), (Double.parseDouble(String.valueOf(c.getValorTotal())) - Double.parseDouble(String.valueOf(modelTblItens.getValueAt(j, 4)))));
+                        }
+                    }
                     pdao.delete((Integer) model.getValueAt(i, 1));
                 }
             }
