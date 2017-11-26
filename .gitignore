@@ -2,3 +2,4 @@ DAO.java
 CodeCooker/build
 *.class
 *.orig
+/CodeCooker/dist/
