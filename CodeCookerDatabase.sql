@@ -40,9 +40,12 @@ CREATE TABLE usuario (
 
 CREATE TABLE conta (
 	contaID INT NOT NULL AUTO_INCREMENT,
+	numMesa INT NOT NULL,
 	valorTotal DOUBLE(10, 2) NOT NULL,
 	dataConta DATE NOT NULL,
-	PRIMARY KEY(contaID)
+	status BOOLEAN NOT NULL,
+	PRIMARY KEY(contaID, numMesa),
+	FOREIGN KEY(numMesa) REFERENCES mesa(numMesa)
 );
 
 CREATE TABLE item (
@@ -58,7 +61,6 @@ CREATE TABLE item (
 CREATE TABLE pedido (
 	pedidoID INT NOT NULL AUTO_INCREMENT,
 	contaID INT NOT NULL,
-	valor DOUBLE(10, 2),
 	PRIMARY KEY(pedidoID),
 	FOREIGN KEY(contaID) REFERENCES conta(contaID)
 );
@@ -113,3 +115,30 @@ INSERT INTO mesa (numMesa, status) VALUES (1, 0), (2,0), (3,0), (4,0), (5,0), (6
 
 CREATE TRIGGER `deletarItemDeCardapios` AFTER DELETE ON `item`
  FOR EACH ROW DELETE FROM item_cardapio WHERE itemID = old.itemID
+
+CREATE TRIGGER `deletarItemPedidos` AFTER DELETE ON `pedido`
+ FOR EACH ROW DELETE FROM item_pedido WHERE item_pedido.pedidoID = old.pedidoID
+
+CREATE TRIGGER `updateValorTotalConta` AFTER INSERT ON `item_pedido`
+ FOR EACH ROW UPDATE conta
+JOIN pedido ON pedido.contaID = conta.contaID
+SET conta.valorTotal = conta.valorTotal + new.Valor
+WHERE pedido.pedidoID = new.pedidoID
+
+CREATE TRIGGER `updateValorTotalContaAfterUpdate` AFTER UPDATE ON `item_pedido`
+ FOR EACH ROW UPDATE conta
+JOIN pedido ON pedido.contaID = conta.contaID
+SET conta.valorTotal = conta.valorTotal + new.Valor
+WHERE pedido.pedidoID = new.pedidoID
+
+CREATE TRIGGER `updateValorTotalContaBeforeUpdate` BEFORE UPDATE ON `item_pedido`
+ FOR EACH ROW UPDATE conta
+JOIN pedido ON pedido.contaID = conta.contaID
+SET conta.valorTotal = conta.valorTotal - old.Valor
+WHERE pedido.pedidoID = new.pedidoID
+
+CREATE TRIGGER `updateValorTotalContaAfterDelete` AFTER DELETE ON `item_pedido`
+ FOR EACH ROW UPDATE conta
+JOIN pedido ON pedido.contaID = conta.contaID
+SET conta.valorTotal = conta.valorTotal - old.Valor
+WHERE pedido.pedidoID = old.pedidoID

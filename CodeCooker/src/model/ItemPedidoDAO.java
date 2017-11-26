@@ -25,10 +25,11 @@ public class ItemPedidoDAO extends DAO{
 
     public static ItemPedidoDAO getInstance() {
         if (ItemPedidoDAO.instance == null) {
-            instance = new ItemPedidoDAO();
-            return instance;
+            ItemPedidoDAO.instance = new ItemPedidoDAO();
+            ItemPedidoDAO.myCONN = ItemPedidoDAO.instance.getConnection();
+            return ItemPedidoDAO.instance;
         } else {
-            return instance;
+            return ItemPedidoDAO.instance;
         }
     }
     
@@ -92,14 +93,16 @@ public class ItemPedidoDAO extends DAO{
         return ip;
     }
     
-    public boolean update(ItemPedido ip) {
+    public boolean update(int itemID, int pedidoID, int qtd) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE item_pedido SET quantidade=?, valor=? WHERE itemID = ? AND pedidoID = ?");
-            stmt.setInt(1, ip.getQtd());
-            stmt.setFloat(2, ip.getValor());
-            stmt.setInt(3, ip.getItem().getId());
-            stmt.setInt(4, ip.getPedido().getId());
+            stmt = myCONN.prepareStatement("UPDATE item_pedido SET Quantidade = ?, Valor = ? WHERE (itemID = ? AND pedidoID = ?)");
+            ItemDAO idao = ItemDAO.getInstance();
+            Item item = idao.retrieveById(itemID);
+            stmt.setInt(1, qtd);
+            stmt.setDouble(2, new Double((qtd * item.getPreco())));
+            stmt.setInt(3, itemID);
+            stmt.setInt(4, pedidoID);
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;

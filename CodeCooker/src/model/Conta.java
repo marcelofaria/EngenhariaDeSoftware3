@@ -7,38 +7,26 @@ import java.util.*;
  */
 public class Conta {
 
-    private int ID;
-    private double valorTotal;
+    private final int ID;
     private Calendar data;
-    private Collection<Pedido> pedidos;
+    private int numMesa;
+    private boolean status;
+    private double valorTotal;
 
-
-    public Conta(int ID, Collection<Pedido> pedidos, Calendar data) {
+    public Conta(int ID, int numMesa, double valorTotal, Calendar data, boolean status) {
         this.ID = ID;
-        this.pedidos = pedidos;
+        this.numMesa = numMesa;
+        this.status = status;
+        this.valorTotal = valorTotal;
         this.data = data;
-        this.getValorTotal();
-    }
-
-    public Collection<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Collection<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-    
-    public int getId() {
-        return ID;
     }
 
     public double getValorTotal() {
-        this.calcularValorTotal();
         return valorTotal;
     }
 
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
+    public int getId() {
+        return ID;
     }
 
     public Calendar getData() {
@@ -49,11 +37,20 @@ public class Conta {
         this.data = data;
     }
 
-    public void calcularValorTotal() {
-        this.valorTotal = 0;
-        for(Pedido p : this.pedidos){
-            this.valorTotal += p.getValor();
-        }
+    public int getNumMesa() {
+        return numMesa;
     }
 
+    public void setNumMesa(int numMesa) {
+        this.numMesa = numMesa;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
 }

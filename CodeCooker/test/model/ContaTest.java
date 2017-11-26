@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -43,46 +44,19 @@ public class ContaTest {
     public void testGetID() {
 
         System.out.println("getID");
-        Conta conta = new Conta(0, null, null);
+        Calendar cal = Calendar.getInstance();
+        Conta conta = new Conta(0, 0, 1.0, cal, true);
         
         assertEquals(0, conta.getId());
     }
 
-    /**
-     * Test of getValorTotal method, of class Conta.
-     */
-    @Test
-    public void testGetValorTotal() {
-        System.out.println("getValorTotal");
-        Conta conta = new Conta(0, null, null);
-        
-        
-        assertEquals(100, conta.getValorTotal(), 0.0);
-    }
-
-    /**
-     * Test of setValorTotal method, of class Conta.
-     */
-    @Test
-    public void testSetValorTotal() {
-        System.out.println("setValorTotal");
-        Conta conta = new Conta(0, null, null);
-        conta.setValorTotal(250);
-        
-        assertEquals(250, conta.getValorTotal(), 0.0);
-    }
 
     /**
      * Test of getData method, of class Conta.
      */
     @Test
     public void testGetData() {
-        System.out.println("getData");
-        Date data = new Date();
-        
-        Conta conta = new Conta(0, null, null);
 
-        assertEquals(data.toString(), conta.getData().toString());
     }
 
     /**
@@ -91,26 +65,17 @@ public class ContaTest {
     @Test
     public void testSetData() {
         System.out.println("setData");
-        Date data = new Date();
-        Conta conta = new Conta(0, null, null);
+        Calendar cal = Calendar.getInstance();
+        Conta conta = new Conta(0, 0, 1.0, cal, true);
         try {
             TimeUnit.SECONDS.sleep(1);
-            Date data2 = new Date();
-            //conta.setData(data2);
+            Calendar cal2 = Calendar.getInstance();
+            conta.setData(cal2);
             
-            assertEquals(data2.toString(), conta.getData().toString());
+            assertEquals(cal2.getTime(), conta.getData().getTime());
         } catch (InterruptedException ex) {
             Logger.getLogger(ContaTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * Test of calcularValorTotal method, of class Conta.
-     */
-    @Test
-    public void testCalcularValorTotal() {
-        System.out.println("calcularValorTotal");
-        Conta conta = new Conta(0, null, null);
-        conta.calcularValorTotal();
-    }
 }

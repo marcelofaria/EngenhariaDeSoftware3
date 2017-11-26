@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CriarCardapio extends javax.swing.JFrame {
 
-    private static HashSet<Integer> selectedItems;
+    public static HashSet<Integer> selectedItems;
     
     /**
      * Creates new form CriarCardapio

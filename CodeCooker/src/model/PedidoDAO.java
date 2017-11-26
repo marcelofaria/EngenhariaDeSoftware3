@@ -26,42 +26,30 @@ public class PedidoDAO extends DAO{
 
     public static PedidoDAO getInstance() {
         if (PedidoDAO.instance == null) {
-            instance = new PedidoDAO();
+            PedidoDAO.instance = new PedidoDAO();
+            PedidoDAO.myCONN = PedidoDAO.instance.getConnection();
             return instance;
         } else {
             return instance;
         }
     }
     
-    public void create(List<ItemPedido> itens, int contaID, float valor) {
+    public void create(int contaID) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO pedido (contaID, valor) VALUES (?, ?)");
-            for(ItemPedido i : itens){
-                ItemPedidoDAO ipDAO = ItemPedidoDAO.getInstance();
-                ipDAO.create(i.getItem(), i.getPedidoID(), 0);
-                stmt.setInt(1, contaID);
-                stmt.setFloat(2, valor);
-                this.executeUpdate(stmt);
-            }
+            stmt = myCONN.prepareStatement("INSERT INTO pedido (contaID) VALUES (?)");
+            stmt.setInt(1, contaID);
+            this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
     
     private Pedido buildObject(ResultSet rs) {
         Pedido p = null;
-        List<ItemPedido> itens;
-        Array idsArray;
-        int[] ids;
         try {
-            idsArray = rs.getArray("pedidoID");
-            ids = (int[]) idsArray.getArray();
-            itens = new ArrayList<>();
-            for(int x : ids){
-                itens.add(ItemPedidoDAO.getInstance().retrieveById(x));
-            }
-            p = new Pedido(rs.getInt("pedidoID"), itens);
+            p = new Pedido(rs.getInt("pedidoID"), rs.getInt("contaID"));
         } catch (SQLException e) {
         }
         return p;
@@ -70,13 +58,32 @@ public class PedidoDAO extends DAO{
     public int getLastId(){
         int lastId = 0;
         try {
-            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT COUNT(*) AS id FROM pedido"));
-            lastId = rs.getInt("pedidoID");
+            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT pedidoID AS id FROM pedido ORDER BY pedidoID DESC"));
+            if(rs.next())
+                lastId = rs.getInt("id");
+            
             return lastId;
         } catch (SQLException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lastId;
+    }
+    
+    public Pedido getLastPedido(){
+        Pedido p = null;
+        
+        try{
+            int lastId = this.getLastId();
+            ResultSet rs = this.getResultSet(myCONN.prepareStatement("SELECT * FROM pedido WHERE pedidoID = " + lastId));
+            if(rs.next())
+                p = new Pedido(rs.getInt("pedidoID"), rs.getInt("contaID"));
+            else
+                return null;
+        } catch(SQLException ex){
+            
+        }
+        
+        return p;
     }
     
     public List<Pedido> retrieveAll() {
@@ -109,6 +116,17 @@ public class PedidoDAO extends DAO{
             System.out.println(ex.getMessage());
         }
         return pedidos;
+    }
+    
+    public void delete(int pedidoID){
+        PreparedStatement stmt;
+        try {
+            stmt = myCONN.prepareStatement("DELETE FROM pedido WHERE pedidoID = ?");
+            stmt.setInt(1, pedidoID);
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+        }
     }
     
 }

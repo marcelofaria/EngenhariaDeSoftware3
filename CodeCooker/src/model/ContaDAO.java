@@ -20,19 +20,22 @@ public class ContaDAO extends DAO{
 
     public static ContaDAO getInstance() {
         if (ContaDAO.instance == null) {
-            instance = new ContaDAO();
+            ContaDAO.instance = new ContaDAO();
+            ContaDAO.myCONN = ContaDAO.instance.getConnection();
             return instance;
         } else {
             return instance;
         }
     }
     
-    public void create(double valorTotal, Date data) {
+    public void create(double valorTotal, int numMesa, Date data, boolean status) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("INSERT INTO conta (valorTotal, dataConta) VALUES (?,?)");
+            stmt = myCONN.prepareStatement("INSERT INTO conta (valorTotal, numMesa, dataConta, status) VALUES (?, ?, ?, ?)");
             stmt.setDouble(1, valorTotal);
-            stmt.setDate(2, data);
+            stmt.setInt(2, numMesa);
+            stmt.setDate(3, data);
+            stmt.setBoolean(4, status);
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
@@ -42,12 +45,11 @@ public class ContaDAO extends DAO{
     private Conta buildObject(ResultSet rs) {
         Conta conta = null;
         try {
-            PedidoDAO pDAO = PedidoDAO.getInstance();
-            List<Pedido> pedido = pDAO.retrieveGeneric("SELECT * FROM pedido WHERE contaID =" + rs.getInt("contaID"));
             Calendar cal = Calendar.getInstance();
-            cal.setTime(rs.getDate("data"));
-            conta = new Conta(rs.getInt("contaID"), pedido, cal);
+            cal.setTime(rs.getDate("dataConta"));
+            conta = new Conta(rs.getInt("contaID"), rs.getInt("numMesa"), rs.getDouble("valorTotal"), cal, rs.getBoolean("status"));
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
         return conta;
     }
@@ -70,21 +72,76 @@ public class ContaDAO extends DAO{
     }
     
     public List<Conta> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM conta ORDER BY valortotal");
+        return this.retrieveGeneric("SELECT * FROM conta ORDER BY dataConta");
     }
     
     public boolean update(Conta conta) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE conta SET valorTotal=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE conta SET numMesa=? dataConta=? status=? WHERE contaID = ?");
             //PedidoDAO.update(...)
-            stmt.setDouble(1, conta.getValorTotal());
+            stmt.setInt(1, conta.getId());
+            stmt.setDate(2, (Date) conta.getData().getTime());
+            stmt.setBoolean(3, conta.getStatus());
+            int update = this.executeUpdate(stmt);
+            stmt.close();
+            if (update == 1) {
+                return true;
+            }
+        } catch (SQLException ex) {
+        }
+        return false;
+    }
+    
+    public boolean updateStatus(int contaID, boolean status){
+        PreparedStatement stmt;
+        try{
+            stmt = myCONN.prepareStatement("UPDATE conta SET status = ? WHERE contaID = ?");
+            stmt.setBoolean(1, status);
+            stmt.setInt(2, contaID);
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
             }
             stmt.close();
-        } catch (SQLException ex) {
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());     
+        }
+        return false;
+    }
+    
+    public boolean updateValorTotal(int contaID, double valor){
+        PreparedStatement stmt;
+        try{
+            stmt = myCONN.prepareStatement("UPDATE conta SET valorTotal = ? WHERE contaID = ?");
+            stmt.setDouble(1, valor);
+            stmt.setInt(2, contaID);
+            int update = this.executeUpdate(stmt);
+            if (update == 1) {
+                return true;
+            }
+            stmt.close();
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());     
+        }
+        return false;
+    }
+    
+    public boolean existeConta(int numMesa){
+        PreparedStatement stmt;
+        ResultSet rs;
+        try{
+            stmt = myCONN.prepareStatement("SELECT * FROM conta WHERE numMesa = ? AND status = 1"); // TRUE = conta aberta
+            stmt.setInt(1, numMesa);
+            rs = this.getResultSet(stmt);
+            if(rs.next()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
         }
         return false;
     }
@@ -92,7 +149,7 @@ public class ContaDAO extends DAO{
     public void delete(Conta conta) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM conta WHERE id = ?");
+            stmt = myCONN.prepareStatement("DELETE FROM conta WHERE contaID = ?");
             stmt.setInt(1, conta.getId());
             this.executeUpdate(stmt);
             stmt.close();
