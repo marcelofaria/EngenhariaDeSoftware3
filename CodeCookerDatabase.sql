@@ -38,6 +38,12 @@ CREATE TABLE usuario (
 	PRIMARY KEY(usuarioID)
 );
 
+CREATE TABLE mesa (
+	numMesa SMALLINT NOT NULL AUTO_INCREMENT,
+	status BOOLEAN NOT NULL,
+	PRIMARY KEY(numMesa)
+);
+
 CREATE TABLE conta (
 	contaID INT NOT NULL AUTO_INCREMENT,
 	numMesa INT NOT NULL,
@@ -90,12 +96,6 @@ CREATE TABLE produto (
 	marca VARCHAR(150),
 	fornecedor VARCHAR(150),
 	PRIMARY KEY(produtoID)
-);
-
-CREATE TABLE mesa (
-	numMesa SMALLINT NOT NULL AUTO_INCREMENT,
-	status BOOLEAN NOT NULL,
-	PRIMARY KEY(numMesa)
 );
 
 CREATE TABLE reserva (
