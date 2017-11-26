@@ -29,15 +29,15 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnAdicionarProduto" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="btnBuscarProduto" max="32767" attributes="0"/>
+                              <Component id="btnBuscarProduto" pref="112" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="btnAlterarProduto" max="32767" attributes="0"/>
+                              <Component id="btnAlterarProduto" pref="112" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="btnExcluirProduto" max="32767" attributes="0"/>
+                              <Component id="btnExcluirProduto" pref="112" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="btnAdicionarProduto" min="-2" pref="390" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -50,9 +50,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="65" max="32767" attributes="0"/>
               <Component id="lblTituloEstoque" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Component id="btnAdicionarProduto" min="-2" pref="51" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+              <Component id="btnAdicionarProduto" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnExcluirProduto" alignment="1" min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
@@ -87,17 +87,14 @@
         <Property name="text" type="java.lang.String" value="Controle de Estoque"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAdicionarProduto">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Adicionar"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnBuscarProduto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAdicionarProduto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
     </Component>
   </SubComponents>

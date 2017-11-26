@@ -5,17 +5,41 @@
  */
 package view.estoque;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Dulcina
  */
-public class PainelAdicionarProduto extends javax.swing.JPanel {
+public class PainelAdicionarProduto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PainelAdicionarProduto
-     */
     public PainelAdicionarProduto() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+    public void addBtnAdicionarProdListener(ActionListener listener){
+        this.btnAdicionar.addActionListener(listener);
+    }
+    
+    public void addBtnCancelarAddListener(ActionListener listener){
+        this.btnCancelar.addActionListener(listener);
+    }
+    
+    public String getNomeProduto(){
+        return txtNome.getText();
+    }
+    
+    public String getMarcaProduto(){
+        return txtMarca.getText();
+    }
+    
+    public String getFornecedorProduto(){
+        return txtFornecedor.getText();
+    }
+    
+    public int getQuantidadeProduto(){
+        return spnQuantidade.getComponentCount();
     }
 
     /**
@@ -27,19 +51,114 @@ public class PainelAdicionarProduto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        btnAdicionar = new javax.swing.JButton();
+        lblFornecedor = new javax.swing.JLabel();
+        txtFornecedor = new javax.swing.JTextField();
+        lblQuantidade = new javax.swing.JLabel();
+        spnQuantidade = new javax.swing.JSpinner();
+        lblAdicionarProduto = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        txtNome = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnAdicionar.setText("Adicionar");
+
+        lblFornecedor.setText("Fornecedor");
+
+        lblQuantidade.setText("Quantidade");
+
+        lblAdicionarProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAdicionarProduto.setText("Adicionar Produto");
+
+        lblNome.setText("Nome");
+
+        lblMarca.setText("Marca");
+
+        btnCancelar.setText("Cancelar");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(136, 136, 136)
+                            .addComponent(lblAdicionarProduto))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(57, 57, 57)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNome)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblQuantidade)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblMarca)
+                                        .addComponent(lblFornecedor))
+                                    .addGap(262, 262, 262)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCancelar))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblAdicionarProduto)
+                .addGap(4, 4, 4)
+                .addComponent(lblNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblFornecedor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblQuantidade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar))
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JLabel lblAdicionarProduto;
+    private javax.swing.JLabel lblFornecedor;
+    private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblQuantidade;
+    private javax.swing.JSpinner spnQuantidade;
+    private javax.swing.JTextField txtFornecedor;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

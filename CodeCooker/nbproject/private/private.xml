@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/control/FuncionarioController.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/funcionarios/PainelFuncionario.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/TelaPrincipal.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/itens/PainelItens.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/model/DAO.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/control/CodeCooker.java</file>
-            <file>file:/C:/Users/Talita-csl/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelEstoque.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/control/CodeCooker.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/control/EstoqueController.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelExcluirProduto.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/model/ProdutoDAO.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelEditarProduto.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelAdicionarProduto.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelBuscarProduto.java</file>
+            <file>file:/C:/Users/Dulcina/Documents/NetBeansProjects/EngenhariaDeSoftware3/CodeCooker/src/view/estoque/PainelEstoque.java</file>
         </group>
     </open-files>
 </project-private>
