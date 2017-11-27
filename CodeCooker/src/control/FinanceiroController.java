@@ -322,7 +322,6 @@ public class FinanceiroController {
             HTML = nomeArquivo + ".html";
             CSS_DIR = "resources/";
             DEST = nomeArquivo + ".pdf";
-            System.out.println(DEST);
 
             try {
                 createPdf(DEST);

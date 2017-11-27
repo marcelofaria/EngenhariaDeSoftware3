@@ -64,24 +64,27 @@ public class PainelEstoque extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBuscarProduto = new javax.swing.JButton();
         btnAlterarProduto = new javax.swing.JButton();
         btnExcluirProduto = new javax.swing.JButton();
-        lblTituloEstoque = new javax.swing.JLabel();
-        btnBuscarProduto = new javax.swing.JButton();
+        lblTituloItens = new javax.swing.JLabel();
         btnAdicionarProduto = new javax.swing.JButton();
 
+        setMaximumSize(new java.awt.Dimension(535, 362));
+        setMinimumSize(new java.awt.Dimension(535, 362));
         setPreferredSize(new java.awt.Dimension(535, 362));
-
-        btnAlterarProduto.setText("Alterar");
-
-        btnExcluirProduto.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirProduto.setText("Excluir");
-
-        lblTituloEstoque.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloEstoque.setText("Controle de Estoque");
 
         btnBuscarProduto.setText("Buscar");
 
+        btnAlterarProduto.setText("Alterar");
+
+        btnExcluirProduto.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcluirProduto.setText("Excluir");
+
+        lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTituloItens.setText("Controle de Estoque");
+
+        btnAdicionarProduto.setBackground(new java.awt.Color(255, 255, 255));
         btnAdicionarProduto.setText("Adicionar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -91,33 +94,33 @@ public class PainelEstoque extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(lblTituloEstoque))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(btnAlterarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnExcluirProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))))
-                .addGap(89, 89, 89))
+                                .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(lblTituloItens)))
+                .addGap(0, 91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(lblTituloEstoque)
-                .addGap(65, 65, 65)
-                .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(62, 62, 62)
+                .addComponent(lblTituloItens, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnExcluirProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,7 +131,7 @@ public class PainelEstoque extends javax.swing.JPanel {
     private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnExcluirProduto;
-    private javax.swing.JLabel lblTituloEstoque;
+    private javax.swing.JLabel lblTituloItens;
     // End of variables declaration//GEN-END:variables
 }
 

@@ -11,7 +11,6 @@ import model.Mesa;
 import model.MesaDAO;
 import model.Usuario;
 import model.UsuarioDAO;
-import view.AuthenticationView;
 import view.TelaPrincipal;
 
 /**

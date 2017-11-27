@@ -58,6 +58,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MesasController mesasControl = new MesasController(pm);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pm);
         
+        PainelItens pi = new PainelItens();
+        ItensController itensControl = new ItensController(pi);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/sandwich.png")), pi);
+        
         PainelContas pcontas = new PainelContas();
         ContasController cc = new ContasController(pcontas);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/conta.png")), pcontas);
@@ -66,9 +70,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         EstoqueController estoqueControl = new EstoqueController(pe);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pe);
         
-        PainelItens pi = new PainelItens();
-        ItensController itensControl = new ItensController(pi);
-        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/sandwich.png")), pi);
         
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
@@ -113,13 +114,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ReservarMesa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         }
         //</editor-fold>
 
