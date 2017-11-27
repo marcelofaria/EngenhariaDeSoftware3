@@ -160,7 +160,7 @@ public class UsuarioDAO extends DAO {
         try {
             stmt = myCONN.prepareStatement("DELETE FROM usuario WHERE cpf=?");
             stmt.setString(1, u.getCpf());
-            System.out.println(u.getCpf());
+            //System.out.println(u.getCpf());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

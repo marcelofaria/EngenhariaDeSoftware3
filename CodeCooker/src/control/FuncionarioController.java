@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
 import model.Usuario;
 import model.UsuarioDAO;
 import view.funcionarios.CadastrarFuncionario;
-import view.funcionarios.ConfirmaExcluirFuncionario;
-import view.funcionarios.ExcluirFuncionario;
+import view.funcionarios.ExcluiFuncionario;
 import view.funcionarios.PainelFuncionario;
 
 /**
@@ -25,38 +24,105 @@ public class FuncionarioController {
     
     private PainelFuncionario painelFunc;
     private CadastrarFuncionario cadFunc;
-    private ExcluirFuncionario excFunc;
-    private ConfirmaExcluirFuncionario ceFunc;
-    UsuarioDAO u = UsuarioDAO.getInstance();
+    private ExcluiFuncionario excFunc;
+    UsuarioDAO udao = UsuarioDAO.getInstance();
     List<Usuario> usuarios;
     
     public FuncionarioController(PainelFuncionario pf){
     
         this.painelFunc = pf;
         this.cadFunc = this.painelFunc.getCadastrarFuncFrame();
-        this.excFunc = this.painelFunc.getExcluirFuncFrame();
-        this.ceFunc = this.excFunc.getConfirmaExcluirFuncFrame();
+        this.excFunc = this.painelFunc.getExcluiFuncFrame();
         
         painelFunc.addBtnCadastrarFuncListener(new BtnAbrirCadastrarListener());
         cadFunc.addBtnCadastrarListener(new BtnCadastrarListener());
         cadFunc.addBtnCancelarListener(new BtnCancelarListener());
         painelFunc.addBtnExcluirFuncListener(new BtnAbrirExcluirListener());
-        excFunc.addBtnCancelarListener(new btnCancelarEListener());
-        excFunc.addcmbSeletorListener(new CmbSeletorListener());
+        excFunc.addBtnBuscarListener(new BtnBuscarFuncListener());
+        excFunc.addBtnCancelarListener(new BtnCancelarFuncListener());
+        excFunc.addBtnExcluirListener(new BtnExcluirFuncListener());
 
     }
     
-    class CmbSeletorListener implements ActionListener{
+    class BtnExcluirFuncListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            excFunc.setLstVoid();
-            excFunc.setLstFuncionariosByCmb();
+            excFunc.excluirFuncionario();
+            
+            String nome;
+            Object [] o = new Object[4];
+            nome = excFunc.getNomeFunc();
+            
+            List<Usuario> funcionario = udao.retrieveLike(nome);
+            
+            excFunc.instanciarTabela();
+            excFunc.limparTabela();
+            
+            for(int i = 0; i < funcionario.size(); i++){
+                try{
+                o[1] = funcionario.get(i).getNome();
+                o[2] = funcionario.get(i).getCpf();
+                o[0] = funcionario.get(i).getId();
+                excFunc.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
         }
     
+    }
     
+    class BtnAbrirExcluirListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            excFunc.setVisible(true);
+            try {
+            excFunc.limparTabela();
+                
+            } catch (NullPointerException e) {
+            }
+        }
+    }
+    
+    class BtnBuscarFuncListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            
+            String nome;
+            Object [] o = new Object[4];
+            nome = excFunc.getNomeFunc();
+            
+            List<Usuario> funcionario = udao.retrieveLike(nome);
+            
+            excFunc.instanciarTabela();
+            excFunc.limparTabela();
+            
+            for(int i = 0; i < funcionario.size(); i++){
+                try{
+                o[1] = funcionario.get(i).getNome();
+                o[2] = funcionario.get(i).getCpf();
+                o[0] = funcionario.get(i).getId();
+                excFunc.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
+        }
     }
 
+    class BtnCancelarFuncListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+           excFunc.dispose();
+           painelFunc.setLstVoid();
+           painelFunc.relistar();
+        }
+    }
+    
     class btnCancelarEListener implements ActionListener {
 
         @Override
@@ -67,19 +133,6 @@ public class FuncionarioController {
         }
     }
 
-    class BtnAbrirExcluirListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            //System.out.println("Criando nova tela...");
-            
-            excFunc.setVisible(true);
-            excFunc.setLstVoid();
-            excFunc.relistar();
-            
-        }
-    }
-    
     class BtnAbrirCadastrarListener implements ActionListener{
 
         @Override
@@ -147,17 +200,6 @@ public class FuncionarioController {
         public void actionPerformed(ActionEvent ae) {
             cadFunc.dispose();
         }
-    }
-    
-    class BtnConfirmaExcluirListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-        
-            ceFunc.escolheExclusao();
-            
-        }
-    
     }
     
 }

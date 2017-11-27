@@ -5,11 +5,8 @@
  */
 package view.funcionarios;
 
-import view.funcionarios.ExcluirFuncionario;
-import view.funcionarios.CadastrarFuncionario;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.DefaultListModel;
 import model.Usuario;
 import model.UsuarioDAO;
@@ -65,9 +62,9 @@ public class PainelFuncionario extends javax.swing.JPanel {
         
     }
     
-    public ExcluirFuncionario getExcluirFuncFrame(){
+    public ExcluiFuncionario getExcluiFuncFrame(){
     
-        return new ExcluirFuncionario();
+        return new ExcluiFuncionario();
     
     }
     
