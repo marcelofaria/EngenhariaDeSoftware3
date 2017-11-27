@@ -12,27 +12,21 @@ import view.itens.PainelItens;
 import control.CodeCookerController;
 import control.ContasController;
 import control.EstoqueController;
+import control.FinanceiroController;
 import control.FuncionarioController;
 import control.ItensController;
 import control.MesasController;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Label;
 import java.awt.Toolkit;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import view.cardapio.PainelCardapio;
 import view.contas.PainelContas;
 import view.estoque.PainelEstoque;
+import view.financeiro.PainelFinanceiro;
 
 /**
  *
@@ -80,6 +74,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         FuncionarioController funcControl = new FuncionarioController(pf);
         tabPane.addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
         
+        PainelFinanceiro pfin = new PainelFinanceiro();
+        FinanceiroController fc = new FinanceiroController(pfin);
+        tabPane.addTab("", new ImageIcon(getClass().getResource("/image/money.png")), pfin);
+                
+        tabPane.addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if(tabPane.getSelectedIndex() == 7){
+                    fc.carregarReceitaDoDia();
+                    fc.carregarNumPedidosDoDia();
+                    fc.carregarPratoDoDia();
+                }
+            }
+        });
         
         tabPane.setEnabledAt(1, false);
         tabPane.setEnabledAt(2, false);
@@ -143,17 +151,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblImagemCozinheiro = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        pnlFinancas = new javax.swing.JPanel();
-        lblTituloFinanceiro = new javax.swing.JLabel();
-        btnRelatorio = new javax.swing.JButton();
-        lblReceita = new javax.swing.JLabel();
-        lblTxtNClientes = new javax.swing.JLabel();
-        lblTxtNPedidos = new javax.swing.JLabel();
-        lblTxtPratoDoDia = new javax.swing.JLabel();
-        lblValorReceita = new javax.swing.JLabel();
-        lblNClientes = new javax.swing.JLabel();
-        lblNPedidos = new javax.swing.JLabel();
-        lblPratoDoDia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCookers");
@@ -273,88 +270,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
 
-        lblTituloFinanceiro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloFinanceiro.setText("Financeiro");
-
-        btnRelatorio.setText("Gerar relatório");
-        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioActionPerformed(evt);
-            }
-        });
-
-        lblReceita.setText("Receita do dia");
-
-        lblTxtNClientes.setText("Nº de clientes");
-
-        lblTxtNPedidos.setText("Nº Pedidos");
-
-        lblTxtPratoDoDia.setText("Prato do dia");
-
-        lblValorReceita.setForeground(new java.awt.Color(0, 204, 0));
-        lblValorReceita.setText("R$ 90,00");
-
-        lblNClientes.setText("12");
-
-        lblNPedidos.setText("22");
-
-        lblPratoDoDia.setText("Stuffed Peppers");
-
-        javax.swing.GroupLayout pnlFinancasLayout = new javax.swing.GroupLayout(pnlFinancas);
-        pnlFinancas.setLayout(pnlFinancasLayout);
-        pnlFinancasLayout.setHorizontalGroup(
-            pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFinancasLayout.createSequentialGroup()
-                .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFinancasLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(lblTituloFinanceiro))
-                    .addGroup(pnlFinancasLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTxtNPedidos)
-                            .addComponent(lblTxtNClientes)
-                            .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblReceita))
-                        .addGap(41, 41, 41)
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValorReceita)
-                            .addComponent(lblNClientes)
-                            .addComponent(lblNPedidos)
-                            .addComponent(lblPratoDoDia))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlFinancasLayout.setVerticalGroup(
-            pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFinancasLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(lblTituloFinanceiro)
-                .addGap(62, 62, 62)
-                .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlFinancasLayout.createSequentialGroup()
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReceita)
-                            .addComponent(lblValorReceita))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtNClientes)
-                            .addComponent(lblNClientes))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtNPedidos)
-                            .addComponent(lblNPedidos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlFinancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblPratoDoDia)))
-                    .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(135, Short.MAX_VALUE))
-        );
-
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/money.png")), pnlFinancas); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -372,10 +287,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void tabPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPaneStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_tabPaneStateChanged
-
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatorioActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
@@ -455,23 +366,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnRelatorio;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblImagemCozinheiro;
-    private javax.swing.JLabel lblNClientes;
-    private javax.swing.JLabel lblNPedidos;
-    private javax.swing.JLabel lblPratoDoDia;
-    private javax.swing.JLabel lblReceita;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTituloFinanceiro;
-    private javax.swing.JLabel lblTxtNClientes;
-    private javax.swing.JLabel lblTxtNPedidos;
-    private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblValorReceita;
-    private javax.swing.JPanel pnlFinancas;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JTabbedPane tabPane;
     private javax.swing.JPasswordField txtSenha;
