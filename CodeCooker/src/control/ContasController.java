@@ -164,7 +164,6 @@ public class ContasController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int numMesa = tela.getNumMesa();
-            System.out.println(numMesa);
             DefaultTableModel model = tela.getModeloTabela();
             model.setRowCount(0);
             carregarContaMesa(numMesa);

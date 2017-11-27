@@ -16,21 +16,13 @@ import control.FinanceiroController;
 import control.FuncionarioController;
 import control.ItensController;
 import control.MesasController;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Label;
 import java.awt.Toolkit;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import view.cardapio.PainelCardapio;
 import view.contas.PainelContas;
 import view.estoque.PainelEstoque;
@@ -86,6 +78,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         FinanceiroController fc = new FinanceiroController(pfin);
         tabPane.addTab("", new ImageIcon(getClass().getResource("/image/money.png")), pfin);
                 
+        tabPane.addChangeListener(new ChangeListener(){
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if(tabPane.getSelectedIndex() == 7){
+                    fc.carregarReceitaDoDia();
+                    fc.carregarNumPedidosDoDia();
+                    fc.carregarPratoDoDia();
+                }
+            }
+        });
+        
         tabPane.setEnabledAt(1, false);
         tabPane.setEnabledAt(2, false);
         tabPane.setEnabledAt(3, false);

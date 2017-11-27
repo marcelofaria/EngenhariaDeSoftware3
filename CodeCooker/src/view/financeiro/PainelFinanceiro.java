@@ -24,22 +24,19 @@ public class PainelFinanceiro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNClientes = new javax.swing.JLabel();
         lblNPedidos = new javax.swing.JLabel();
         lblPratoDoDia = new javax.swing.JLabel();
         lblTituloFinanceiro = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JButton();
         lblReceita = new javax.swing.JLabel();
-        lblTxtNClientes = new javax.swing.JLabel();
         lblTxtNPedidos = new javax.swing.JLabel();
         lblTxtPratoDoDia = new javax.swing.JLabel();
         lblValorReceita = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(513, 351));
         setMinimumSize(new java.awt.Dimension(513, 351));
         setPreferredSize(new java.awt.Dimension(513, 351));
-
-        lblNClientes.setText("12");
 
         lblNPedidos.setText("22");
 
@@ -52,8 +49,6 @@ public class PainelFinanceiro extends javax.swing.JPanel {
 
         lblReceita.setText("Receita do dia");
 
-        lblTxtNClientes.setText("Nº de clientes");
-
         lblTxtNPedidos.setText("Nº Pedidos");
 
         lblTxtPratoDoDia.setText("Prato do dia");
@@ -61,28 +56,30 @@ public class PainelFinanceiro extends javax.swing.JPanel {
         lblValorReceita.setForeground(new java.awt.Color(0, 204, 0));
         lblValorReceita.setText("R$ 90,00");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Hoje:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(lblTituloFinanceiro))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
+                        .addGap(108, 108, 108)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTxtNPedidos)
-                            .addComponent(lblTxtNClientes)
                             .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblReceita))
+                            .addComponent(lblReceita)
+                            .addComponent(jLabel1))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblValorReceita)
-                            .addComponent(lblNClientes)
                             .addComponent(lblNPedidos)
                             .addComponent(lblPratoDoDia))))
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -92,16 +89,17 @@ public class PainelFinanceiro extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(lblTituloFinanceiro)
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblReceita)
                             .addComponent(lblValorReceita))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtNClientes)
-                            .addComponent(lblNClientes))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTxtNPedidos)
@@ -109,8 +107,7 @@ public class PainelFinanceiro extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblPratoDoDia)))
-                    .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPratoDoDia))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -120,11 +117,7 @@ public class PainelFinanceiro extends javax.swing.JPanel {
     }
     
     public void setReceita(String receita){
-        this.lblReceita.setText(receita);
-    }
-    
-    public void setNClientes(int num){
-        this.lblReceita.setText(String.valueOf(num));
+        this.lblValorReceita.setText(receita);
     }
     
     public void setNumPedidos(int num){
@@ -132,17 +125,16 @@ public class PainelFinanceiro extends javax.swing.JPanel {
     }
     
     public void setPratoDoDia(String prato){
-        this.lblTxtPratoDoDia.setText(prato);
+        this.lblPratoDoDia.setText(prato);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRelatorio;
-    private javax.swing.JLabel lblNClientes;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblNPedidos;
     private javax.swing.JLabel lblPratoDoDia;
     private javax.swing.JLabel lblReceita;
     private javax.swing.JLabel lblTituloFinanceiro;
-    private javax.swing.JLabel lblTxtNClientes;
     private javax.swing.JLabel lblTxtNPedidos;
     private javax.swing.JLabel lblTxtPratoDoDia;
     private javax.swing.JLabel lblValorReceita;

@@ -7,7 +7,6 @@ package control;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorker;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
@@ -28,13 +27,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Conta;
 import model.ContaDAO;
+import model.Item;
+import model.ItemDAO;
 import model.ItemPedido;
 import model.ItemPedidoDAO;
 import model.Pedido;
@@ -58,13 +58,71 @@ public class FinanceiroController {
 
         this.tela = tela;
         tela.addBtnRelatorioListener(new BtnGerarRelatorioPainelListener());
-        
+        this.carregarReceitaDoDia();     
+        this.carregarPratoDoDia();
+        this.carregarNumPedidosDoDia();
 
         this.telaGerar = new GerarRelatorio();
         this.telaGerar.addBtnGerarRelatorioListener(new BtnGerarRelatorioListener());
 
     }
 
+    public final void  carregarReceitaDoDia(){
+        
+        ContaDAO cdao = ContaDAO.getInstance();
+        Calendar cal = Calendar.getInstance();
+        List<Conta> contas = cdao.retrieveGeneric("SELECT * FROM conta WHERE (dataConta BETWEEN '"+ String.valueOf(new java.sql.Date(cal.getTimeInMillis()))+"' AND '"+String.valueOf(new java.sql.Date(cal.getTimeInMillis()))+"' );");
+        double receitaDoDia = 0;
+        for(Conta c : contas){
+            receitaDoDia += c.getValorTotal();
+        }
+        
+        tela.setReceita(String.valueOf(receitaDoDia));
+        
+    }
+    
+    public final void carregarPratoDoDia(){
+        
+        ItemDAO idao = ItemDAO.getInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = String.valueOf(new java.sql.Date(cal.getTimeInMillis()));
+        String query = "SELECT * FROM item\n" +
+"                       WHERE itemID = (SELECT itemID\n" +
+                        "               FROM item_pedido\n" +
+                        "               INNER JOIN pedido ON item_pedido.pedidoID = pedido.pedidoID\n" +
+                        "               INNER JOIN conta ON pedido.contaID = conta.contaID\n" +
+                        "               WHERE conta.dataConta BETWEEN '"+data+"' AND '"+data+"'\n" +
+                        "               GROUP BY itemID\n" +
+                        "               ORDER BY count(*) DESC\n" +
+                        "               LIMIT 1)";
+        
+        List<Item> itens = idao.retrieveGeneric(query);
+        
+        if(!itens.isEmpty()){
+            tela.setPratoDoDia(itens.get(0).getNome());
+        }
+        else{
+            tela.setReceita("Não houveram pedidos hoje.");
+        }
+        
+    }
+    
+    public final void carregarNumPedidosDoDia(){
+        
+        Calendar cal = Calendar.getInstance();
+        String data = String.valueOf(new java.sql.Date(cal.getTimeInMillis()));
+        String query = "SELECT * FROM item_pedido\n" +
+                       "INNER JOIN pedido ON pedido.pedidoID = item_pedido.pedidoID\n" +
+                       "INNER JOIN conta ON pedido.contaID = conta.contaID\n" +
+                       "WHERE conta.dataConta BETWEEN '"+data+"' AND '"+data+"';";
+        
+        ItemPedidoDAO ipdao = ItemPedidoDAO.getInstance();
+        List<ItemPedido> l = ipdao.retrieveGeneric(query);
+        
+        tela.setNumPedidos(l.size());
+        
+    }
+    
     public void createHTML() {
 
         try {
