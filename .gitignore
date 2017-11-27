@@ -4,3 +4,4 @@ CodeCooker/build
 *.orig
 /CodeCooker/dist/
 CodeCooker/nbproject/private/private.properties
+CodeCooker/nbproject/private/private.xml
