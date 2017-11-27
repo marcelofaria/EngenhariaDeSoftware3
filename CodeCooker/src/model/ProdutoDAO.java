@@ -89,14 +89,15 @@ public class ProdutoDAO extends DAO{
         return produto;
     }
      
-    public boolean update(Produto produto) {
+    public boolean update(Produto produto, Produto produto1) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("UPDATE produto SET qtd=?, nome=?, marca=?, fornecedor=? WHERE id = ?");
+            stmt = myCONN.prepareStatement("UPDATE produto SET qtd=?, nome=?, marca=?, fornecedor=? WHERE nome=?");
             stmt.setInt(1, produto.getQtd());
             stmt.setString(2, produto.getNome());
             stmt.setString(3, produto.getMarca());
             stmt.setString(4, produto.getFornecedor());
+            stmt.setString(5, produto1.getNome());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -111,8 +112,8 @@ public class ProdutoDAO extends DAO{
     public void delete(Produto produto) {
         PreparedStatement stmt;
         try {
-            stmt = myCONN.prepareStatement("DELETE FROM produto WHERE id = ?");
-            stmt.setInt(1, produto.getId());
+            stmt = myCONN.prepareStatement("DELETE FROM produto WHERE nome = ?");
+            stmt.setString(1, produto.getNome());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

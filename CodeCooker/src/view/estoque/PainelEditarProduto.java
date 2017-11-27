@@ -5,6 +5,8 @@
  */
 package view.estoque;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Dulcina
@@ -13,8 +15,50 @@ public class PainelEditarProduto extends javax.swing.JFrame {
 
     public PainelEditarProduto() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+    public void addBtnSalvarListener(ActionListener listener){
+        this.btnSalvar.addActionListener(listener);
+    }
+    
+    public void addBtnCancelarListener(ActionListener listener){
+        this.btnCancelar.addActionListener(listener);
+    }
+    
+    public String getNomeProduto(){
+        return txtNome.getText();
+    }
+    
+    public void setNomeProduto(String nome){
+        txtNome.setText(nome);
+    }
+    
+    public String getMarcaProduto(){
+        return txtMarca.getText();
+    }
+    
+    public void setMarcaProduto(String nome){
+        txtMarca.setText(nome);
+    }
+    
+    public String getFornecedorProduto(){
+        return txtFornecedor.getText();
+    }
+    
+    public void setFornecedorProduto(String nome){
+        txtFornecedor.setText(nome);
     }
 
+    public int getQuantidadeProduto(){
+        return (Integer)spnQuantidade.getValue();
+    }
+    
+    public void setQuantidadeProduto(int nome){
+        spnQuantidade.setValue(nome);
+    }
+  
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

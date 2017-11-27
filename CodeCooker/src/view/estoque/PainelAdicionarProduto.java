@@ -39,7 +39,7 @@ public class PainelAdicionarProduto extends javax.swing.JFrame {
     }
     
     public int getQuantidadeProduto(){
-        return spnQuantidade.getComponentCount();
+        return (Integer)spnQuantidade.getValue();
     }
 
     /**

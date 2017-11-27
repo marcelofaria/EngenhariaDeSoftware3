@@ -9,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Produto;
 import model.ProdutoDAO;
 import view.estoque.PainelAdicionarProduto;
+import view.estoque.PainelAlterarProduto;
 import view.estoque.PainelBuscarProduto;
 import view.estoque.PainelEditarProduto;
 import view.estoque.PainelEstoque;
@@ -27,6 +27,7 @@ public class EstoqueController {
     private PainelEstoque painelEst;
     private PainelAdicionarProduto painelAddProd;
     private PainelBuscarProduto painelBusProd;
+    private PainelAlterarProduto painelAltProd;
     private PainelEditarProduto painelEdProd;
     private PainelExcluirProduto painelExcProd;
     
@@ -39,7 +40,8 @@ public class EstoqueController {
         this.painelAddProd = pe.getPainelAdicionar();
         this.painelBusProd = pe.getPainelBuscar();
         this.painelEdProd = pe.getPainelEditar();
-        this.painelExcProd = pe.getPainelExcluirProduto();
+        this.painelAltProd = pe.getPainelAlterar();
+        this.painelExcProd = pe.getPainelExcluir();
         
         pe.addBtnAdicionarProdutoListener(new BtnAdicionarListener());
         painelAddProd.addBtnAdicionarProdListener(new BtnAdicionarProdListener());
@@ -48,11 +50,215 @@ public class EstoqueController {
         pe.addBtnBuscarProdutoListener(new BtnBuscarListener());
         painelBusProd.addBtnBuscarListener(new BtnBuscarBuscListener());
         painelBusProd.addBtnCancelarListener(new BtnCancelarBuscListener());
-        painelBusProd.addBtnEditarListener(new BtnEditarBuscListener());
         
         pe.addBtnAlterarProdutoListener(new BtnAlterarListener());
+        painelAltProd.addBtnBuscarListener(new BtnBuscarAltListener());
+        painelAltProd.addBtnCancelarListener(new BtnCancelarAltListener());
+        painelAltProd.addBtnEditarListener(new BtnEditarAltListener());
+        
         pe.addBtnExcluirProdutoListener(new BtnExcluirListener());
+        painelExcProd.addBtnBuscarListener(new BtnBuscarExcListener());
+        painelExcProd.addBtnCancelarListener(new BtnCancelarExcListener());
+        painelExcProd.addBtnExcluirListener(new BtnExcluirExcListener());
 
+        painelEdProd.addBtnSalvarListener(new BtnSalvarEdListener());
+        painelEdProd.addBtnCancelarListener(new BtnCancelarEdListener());
+    }
+    
+    class BtnExcluirExcListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            painelExcProd.excluirProduto();
+            
+            String nome;
+            Object [] o = new Object[4];
+            nome = painelAltProd.getNomeProd();
+            
+            List<Produto> produto = pdao.retrieveLike(nome);
+            
+            painelExcProd.instanciarTabela();
+            painelExcProd.limparTabela();
+            
+            for(int i = 0; i < produto.size(); i++){
+                try{
+                o[0] = produto.get(i).getNome();
+                o[1] = produto.get(i).getMarca();
+                o[2] = produto.get(i).getFornecedor();
+                o[3] = produto.get(i).getQtd();
+                painelExcProd.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
+        }
+
+    }
+    
+    class BtnCancelarExcListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            painelExcProd.dispose();
+            painelExcProd.limparTabela();
+        }
+
+    }
+
+    class BtnBuscarExcListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String nome;
+            Object [] o = new Object[4];
+            nome = painelAltProd.getNomeProd();
+            
+            List<Produto> produto = pdao.retrieveLike(nome);
+            
+            painelExcProd.instanciarTabela();
+            painelExcProd.limparTabela();
+            
+            for(int i = 0; i < produto.size(); i++){
+                try{
+                o[0] = produto.get(i).getNome();
+                o[1] = produto.get(i).getMarca();
+                o[2] = produto.get(i).getFornecedor();
+                o[3] = produto.get(i).getQtd();
+                painelExcProd.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
+        }
+
+    }
+    
+    class BtnEditarAltListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if(painelAltProd.editarProduto() instanceof String){
+                painelEdProd.setVisible(true);
+                String nome;
+                
+                nome = painelAltProd.editarProduto();
+                ProdutoDAO pdao = ProdutoDAO.getInstance();
+                List<Produto> prod;
+
+                prod = pdao.retrieveLike(nome);
+                                
+                painelEdProd.setNomeProduto(prod.get(0).getNome());
+                painelEdProd.setMarcaProduto(prod.get(0).getMarca());
+                painelEdProd.setFornecedorProduto(prod.get(0).getFornecedor());
+                painelEdProd.setQuantidadeProduto(prod.get(0).getQtd());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Produto não foi encontrado, tente novamente");
+            }
+            
+        }
+    
+    }
+    
+    class BtnCancelarAltListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            painelAltProd.dispose();
+            painelAltProd.limparTabela();
+        }
+    }
+    
+    class BtnBuscarAltListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String nome;
+            Object [] o = new Object[4];
+            nome = painelAltProd.getNomeProd();
+            
+            List<Produto> produto = pdao.retrieveLike(nome);
+            
+            painelAltProd.instanciarTabela();
+            painelAltProd.limparTabela();
+            
+            for(int i = 0; i < produto.size(); i++){
+                try{
+                o[0] = produto.get(i).getNome();
+                o[1] = produto.get(i).getMarca();
+                o[2] = produto.get(i).getFornecedor();
+                o[3] = produto.get(i).getQtd();
+                painelAltProd.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
+        }
+    
+    }
+    
+    class BtnSalvarEdListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String Nome = painelAltProd.editarProduto();
+            String nome;
+            String marca;
+            String fornecedor;
+            int quantidade;
+            
+            List<Produto> prod, prod1;
+            prod = pdao.retrieveLike(Nome);
+            prod1 = pdao.retrieveLike(Nome);
+            
+            nome = painelEdProd.getNomeProduto();
+            marca = painelEdProd.getMarcaProduto();
+            fornecedor = painelEdProd.getFornecedorProduto();
+            quantidade = painelEdProd.getQuantidadeProduto();
+            
+            prod.get(0).setNome(nome);
+            prod.get(0).setMarca(marca);
+            prod.get(0).setFornecedor(fornecedor);
+            prod.get(0).setQtd(quantidade);
+            //System.out.println(prod.get(0).getId());
+            //p = new Produto(quantidade, nome, marca, fornecedor);
+                    
+            pdao.update(prod.get(0), prod1.get(0));
+            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso");
+            painelEdProd.dispose();
+            
+            String nnome;
+            Object [] o = new Object[4];
+            nnome = painelAltProd.getNomeProd();
+            
+            List<Produto> produto = pdao.retrieveLike(nnome);
+            
+            painelAltProd.instanciarTabela();
+            painelAltProd.limparTabela();
+            
+            for(int i = 0; i < produto.size(); i++){
+                try{
+                o[0] = produto.get(i).getNome();
+                o[1] = produto.get(i).getMarca();
+                o[2] = produto.get(i).getFornecedor();
+                o[3] = produto.get(i).getQtd();
+                painelAltProd.preencherTabela(o);
+                //o[i+3] = produto.get(i).getQtd();    
+                } catch(ArrayIndexOutOfBoundsException a){
+                }       
+            } 
+            
+            
+        }
+    }
+    
+    class BtnCancelarEdListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            painelEdProd.dispose();
+        }
+    
     }
     
     class BtnBuscarBuscListener implements ActionListener {
@@ -61,22 +267,19 @@ public class EstoqueController {
         public void actionPerformed(ActionEvent ae) {
             
             String nome;
-            String [] o = new String[4];
+            Object [] o = new Object[4];
             nome = painelBusProd.getNomeProd();
             
             List<Produto> produto = pdao.retrieveLike(nome);
             
             painelBusProd.instanciarTabela();
             painelBusProd.limparTabela();
-            
             for(int i = 0; i < produto.size(); i++){
                 try{
                 o[0] = produto.get(i).getNome();
                 o[1] = produto.get(i).getMarca();
                 o[2] = produto.get(i).getFornecedor();
-                int qtd = produto.get(i).getQtd();
-                String Qtd = "" + qtd;
-                o[3] = Qtd;
+                o[3] = produto.get(i).getQtd();
                 painelBusProd.preencherTabela(o);
                 //o[i+3] = produto.get(i).getQtd();    
                 } catch(ArrayIndexOutOfBoundsException a){
@@ -92,6 +295,7 @@ public class EstoqueController {
         @Override
         public void actionPerformed(ActionEvent ae) {
             painelBusProd.dispose();
+            painelBusProd.limparTabela();
         }
 
     }
@@ -100,7 +304,7 @@ public class EstoqueController {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-
+            painelEdProd.setVisible(true);
         }
 
     }
@@ -131,6 +335,7 @@ public class EstoqueController {
             
             pdao.create(quantidade, nome, marca, fornecedor);
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+            painelAddProd.dispose();
             
         }
     }
@@ -155,7 +360,7 @@ public class EstoqueController {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            painelEdProd.setVisible(true);
+            painelAltProd.setVisible(true);
         }
     }
 

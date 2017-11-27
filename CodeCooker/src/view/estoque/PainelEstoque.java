@@ -48,10 +48,13 @@ public class PainelEstoque extends javax.swing.JPanel {
         return new PainelEditarProduto();
     }
     
-    public PainelExcluirProduto getPainelExcluirProduto(){
+    public PainelExcluirProduto getPainelExcluir(){
         return new PainelExcluirProduto();
     }
-    
+    public PainelAlterarProduto getPainelAlterar() {
+        return new PainelAlterarProduto();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,3 +131,4 @@ public class PainelEstoque extends javax.swing.JPanel {
     private javax.swing.JLabel lblTituloEstoque;
     // End of variables declaration//GEN-END:variables
 }
+

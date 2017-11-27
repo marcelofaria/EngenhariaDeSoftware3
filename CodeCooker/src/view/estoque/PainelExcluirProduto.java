@@ -5,14 +5,92 @@
  */
 package view.estoque;
 
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Produto;
+import model.ProdutoDAO;
+
 /**
  *
  * @author Dulcina
  */
 public class PainelExcluirProduto extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+    
     public PainelExcluirProduto() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+    public void addBtnExcluirListener(ActionListener listener){
+        this.btnExcluir.addActionListener(listener);
+    }
+    
+    public void addBtnCancelarListener(ActionListener listener){
+        this.btnCancelar.addActionListener(listener);
+    }
+    
+    public void addBtnBuscarListener(ActionListener listener){
+        this.btnBuscar.addActionListener(listener);
+    }
+    
+    public void instanciarTabela(){
+        modelo = (DefaultTableModel) tblTabela.getModel();
+    }
+    
+    public void preencherTabela(Object [] o){
+
+        modelo.addRow(new Object[]{o[0], o[1], o[2], o[3]});
+        
+    }
+    
+    public void limparTabela(){
+        if(modelo.getRowCount() > 0){
+            while(modelo.getRowCount() > 0)
+            {
+                modelo.removeRow(0);
+            }
+        }
+    }
+    
+    public String getNomeProd(){
+        return txtBuscarProduto.getText();
+    }
+    
+    public void excluirProduto (){
+        
+        try {
+            int row = tblTabela.getSelectedRow();
+            int column = tblTabela.getSelectedColumn();
+            Object nome = tblTabela.getValueAt(row, 0);
+            Object marca = tblTabela.getValueAt(row, 1);
+
+            //System.out.println(nome);
+            //System.out.println(marca);
+            ProdutoDAO pdao = ProdutoDAO.getInstance();
+            List<Produto> prod;
+
+            prod = pdao.retrieveLike(nome.toString());
+            String Nome = prod.get(0).getNome();
+            String Marca = prod.get(0).getMarca();
+            //System.out.println(Nome);
+            //System.out.println(Marca);
+            
+            if(Nome.compareTo(nome.toString()) == 0 && Marca.compareTo(marca.toString()) == 0){
+                pdao.delete(prod.get(0));
+                JOptionPane.showMessageDialog(null, "Produto Excluido com sucesso!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Produto não foi excluído, tente novamente");
+            }
+            
+        } catch (IndexOutOfBoundsException e) {
+        } catch (ClassCastException ex) {
+        }
+        
     }
 
     /**
@@ -38,17 +116,14 @@ public class PainelExcluirProduto extends javax.swing.JFrame {
 
         tblTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Quantidade", "Marca", "Fornecedor"
+                "Nome", "Marca", "Fornecedor", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -77,17 +152,15 @@ public class PainelExcluirProduto extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(btnExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addGap(63, 63, 63))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

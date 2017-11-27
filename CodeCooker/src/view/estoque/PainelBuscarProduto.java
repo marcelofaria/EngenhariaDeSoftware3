@@ -29,10 +29,6 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
     public void addBtnCancelarListener(ActionListener listener){
         this.btnCancelar.addActionListener(listener);
     }
-
-    public void addBtnEditarListener(ActionListener listener){
-        this.btnEditar.addActionListener(listener);
-    }
     
     public String getNomeProd(){
         return txtBuscarProduto.getText();
@@ -42,7 +38,7 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
         modelo = (DefaultTableModel) tblTabela.getModel();
     }
     
-    public void preencherTabela(String [] o){
+    public void preencherTabela(Object [] o){
 
         modelo.addRow(new Object[]{o[0], o[1], o[2], o[3]});
         
@@ -72,7 +68,6 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTabela = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +85,7 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -101,12 +96,11 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
-        btnEditar.setText("Editar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -116,15 +110,11 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(btnCancelar)))
                 .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(63, 63, 63))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +127,9 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
                     .addComponent(txtBuscarProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnEditar))
-                .addGap(26, 26, 26))
+                .addGap(30, 30, 30)
+                .addComponent(btnCancelar)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -151,7 +139,6 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscarProduto;
     private javax.swing.JTable tblTabela;
