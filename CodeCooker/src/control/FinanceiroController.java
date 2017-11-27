@@ -31,6 +31,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Conta;
 import model.ContaDAO;
 import model.Item;
@@ -58,7 +59,7 @@ public class FinanceiroController {
 
         this.tela = tela;
         tela.addBtnRelatorioListener(new BtnGerarRelatorioPainelListener());
-        this.carregarReceitaDoDia();     
+        this.carregarReceitaDoDia();
         this.carregarPratoDoDia();
         this.carregarNumPedidosDoDia();
 
@@ -67,62 +68,61 @@ public class FinanceiroController {
 
     }
 
-    public final void  carregarReceitaDoDia(){
-        
+    public final void carregarReceitaDoDia() {
+
         ContaDAO cdao = ContaDAO.getInstance();
         Calendar cal = Calendar.getInstance();
-        List<Conta> contas = cdao.retrieveGeneric("SELECT * FROM conta WHERE (dataConta BETWEEN '"+ String.valueOf(new java.sql.Date(cal.getTimeInMillis()))+"' AND '"+String.valueOf(new java.sql.Date(cal.getTimeInMillis()))+"' );");
+        List<Conta> contas = cdao.retrieveGeneric("SELECT * FROM conta WHERE (dataConta BETWEEN '" + String.valueOf(new java.sql.Date(cal.getTimeInMillis())) + "' AND '" + String.valueOf(new java.sql.Date(cal.getTimeInMillis())) + "' );");
         double receitaDoDia = 0;
-        for(Conta c : contas){
+        for (Conta c : contas) {
             receitaDoDia += c.getValorTotal();
         }
-        
+
         tela.setReceita(String.valueOf(receitaDoDia));
-        
+
     }
-    
-    public final void carregarPratoDoDia(){
-        
+
+    public final void carregarPratoDoDia() {
+
         ItemDAO idao = ItemDAO.getInstance();
         Calendar cal = Calendar.getInstance();
         String data = String.valueOf(new java.sql.Date(cal.getTimeInMillis()));
-        String query = "SELECT * FROM item\n" +
-"                       WHERE itemID = (SELECT itemID\n" +
-                        "               FROM item_pedido\n" +
-                        "               INNER JOIN pedido ON item_pedido.pedidoID = pedido.pedidoID\n" +
-                        "               INNER JOIN conta ON pedido.contaID = conta.contaID\n" +
-                        "               WHERE conta.dataConta BETWEEN '"+data+"' AND '"+data+"'\n" +
-                        "               GROUP BY itemID\n" +
-                        "               ORDER BY count(*) DESC\n" +
-                        "               LIMIT 1)";
-        
+        String query = "SELECT * FROM item\n"
+                + "                       WHERE itemID = (SELECT itemID\n"
+                + "               FROM item_pedido\n"
+                + "               INNER JOIN pedido ON item_pedido.pedidoID = pedido.pedidoID\n"
+                + "               INNER JOIN conta ON pedido.contaID = conta.contaID\n"
+                + "               WHERE conta.dataConta BETWEEN '" + data + "' AND '" + data + "'\n"
+                + "               GROUP BY itemID\n"
+                + "               ORDER BY count(*) DESC\n"
+                + "               LIMIT 1)";
+
         List<Item> itens = idao.retrieveGeneric(query);
-        
-        if(!itens.isEmpty()){
+
+        if (!itens.isEmpty()) {
             tela.setPratoDoDia(itens.get(0).getNome());
-        }
-        else{
+        } else {
             tela.setReceita("Não houveram pedidos hoje.");
         }
-        
+
     }
-    
-    public final void carregarNumPedidosDoDia(){
-        
+
+    public final void carregarNumPedidosDoDia() {
+
         Calendar cal = Calendar.getInstance();
         String data = String.valueOf(new java.sql.Date(cal.getTimeInMillis()));
-        String query = "SELECT * FROM item_pedido\n" +
-                       "INNER JOIN pedido ON pedido.pedidoID = item_pedido.pedidoID\n" +
-                       "INNER JOIN conta ON pedido.contaID = conta.contaID\n" +
-                       "WHERE conta.dataConta BETWEEN '"+data+"' AND '"+data+"';";
-        
+        String query = "SELECT * FROM item_pedido\n"
+                + "INNER JOIN pedido ON pedido.pedidoID = item_pedido.pedidoID\n"
+                + "INNER JOIN conta ON pedido.contaID = conta.contaID\n"
+                + "WHERE conta.dataConta BETWEEN '" + data + "' AND '" + data + "';";
+
         ItemPedidoDAO ipdao = ItemPedidoDAO.getInstance();
         List<ItemPedido> l = ipdao.retrieveGeneric(query);
-        
+
         tela.setNumPedidos(l.size());
-        
+
     }
-    
+
     public void createHTML() {
 
         try {
@@ -182,11 +182,10 @@ public class FinanceiroController {
             writer.println("</head>");
 
             writer.println("<body>");
-            
 
             writer.println("\t<div id=\"header\">");
             writer.println("\t\t<h1 style=\"font-size: 200%;\">Relatório financeiro</h1>");
-            writer.println("\t\t<p style=\"padding: 1px; margin: 1px;\">De "+telaGerar.getDataInicial()+ " até "+telaGerar.getDataFinal()+"</p>");
+            writer.println("\t\t<p style=\"padding: 1px; margin: 1px;\">De " + telaGerar.getDataInicial() + " até " + telaGerar.getDataFinal() + "</p>");
             writer.println("\t</div>");
 
             ContaDAO cdao = ContaDAO.getInstance();
@@ -198,7 +197,6 @@ public class FinanceiroController {
                 } else {
                     status = "Fechada";
                 }
-                
 
                 writer.println("\t<div class=\"divConta\" style=\"padding-top: 40px;\">");
                 PedidoDAO pdao = PedidoDAO.getInstance();
@@ -257,38 +255,46 @@ public class FinanceiroController {
     public void createPdf(String file) throws IOException, DocumentException {
         // step 1
         Document document = new Document();
+
         // step 2
+        Calendar cal = Calendar.getInstance();
+        String data = String.valueOf(new java.sql.Date(cal.getTimeInMillis()));
+        int num = 1;
+        while (new File(file).exists()) {
+            file = new String("relatorio" + data + " (" + num + ").pdf");
+            num++;
+        }
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
         writer.setInitialLeading(12.5f);
         // step 3
         document.open();
         // step 4
- 
+
         // CSS
-        CSSResolver cssResolver =
-                XMLWorkerHelper.getInstance().getDefaultCssResolver(false);
+        CSSResolver cssResolver
+                = XMLWorkerHelper.getInstance().getDefaultCssResolver(false);
         FileRetrieve retrieve = new FileRetrieveImpl(this.CSS_DIR);
         cssResolver.setFileRetrieve(retrieve);
- 
+
         // HTML
         HtmlPipelineContext htmlContext = new HtmlPipelineContext(null);
         htmlContext.setTagFactory(Tags.getHtmlTagProcessorFactory());
         htmlContext.autoBookmark(false);
- 
+
         // Pipelines
         PdfWriterPipeline pdf = new PdfWriterPipeline(document, writer);
         HtmlPipeline html = new HtmlPipeline(htmlContext, pdf);
         CssResolverPipeline css = new CssResolverPipeline(cssResolver, html);
- 
+
         // XML Worker
         XMLWorker worker = new XMLWorker(css, true);
         XMLParser p = new XMLParser(worker);
         p.parse(new FileInputStream(this.HTML));
- 
+
         // step 5
         document.close();
     }
-    
+
     class BtnGerarRelatorioPainelListener implements ActionListener {
 
         @Override
@@ -313,13 +319,16 @@ public class FinanceiroController {
                 num++;
             }
 
-            HTML = nomeArquivo+".html";
+            HTML = nomeArquivo + ".html";
             CSS_DIR = "resources/";
-            DEST = nomeArquivo+".pdf";
-            
+            DEST = nomeArquivo + ".pdf";
+            System.out.println(DEST);
+
             try {
                 createPdf(DEST);
+                JOptionPane.showMessageDialog(null, "Relatório criado com sucesso.");
             } catch (IOException | DocumentException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao exportar PDF.");
                 Logger.getLogger(FinanceiroController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
