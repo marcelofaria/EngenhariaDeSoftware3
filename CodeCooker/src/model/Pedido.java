@@ -8,6 +8,7 @@ public class Pedido {
      */
     public Pedido(int pedidoID, int contaID) {
         this.pedidoID = pedidoID;
+        this.contaID = contaID;
     }
 
     private int pedidoID;
