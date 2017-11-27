@@ -5,17 +5,92 @@
  */
 package view.estoque;
 
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Produto;
+import model.ProdutoDAO;
+
 /**
  *
  * @author Dulcina
  */
-public class PainelExcluirProduto extends javax.swing.JPanel {
+public class PainelExcluirProduto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PainelExcluirProduto
-     */
+    DefaultTableModel modelo;
+    
     public PainelExcluirProduto() {
         initComponents();
+        setLocationRelativeTo(null);
+    }
+    
+    public void addBtnExcluirListener(ActionListener listener){
+        this.btnExcluir.addActionListener(listener);
+    }
+    
+    public void addBtnCancelarListener(ActionListener listener){
+        this.btnCancelar.addActionListener(listener);
+    }
+    
+    public void addBtnBuscarListener(ActionListener listener){
+        this.btnBuscar.addActionListener(listener);
+    }
+    
+    public void instanciarTabela(){
+        modelo = (DefaultTableModel) tblTabela.getModel();
+    }
+    
+    public void preencherTabela(Object [] o){
+
+        modelo.addRow(new Object[]{o[0], o[1], o[2], o[3]});
+        
+    }
+    
+    public void limparTabela(){
+        if(modelo.getRowCount() > 0){
+            while(modelo.getRowCount() > 0)
+            {
+                modelo.removeRow(0);
+            }
+        }
+    }
+    
+    public String getNomeProd(){
+        return txtBuscarProduto.getText();
+    }
+    
+    public void excluirProduto (){
+        
+        try {
+            int row = tblTabela.getSelectedRow();
+            int column = tblTabela.getSelectedColumn();
+            Object nome = tblTabela.getValueAt(row, 0);
+            Object marca = tblTabela.getValueAt(row, 1);
+
+            //System.out.println(nome);
+            //System.out.println(marca);
+            ProdutoDAO pdao = ProdutoDAO.getInstance();
+            List<Produto> prod;
+
+            prod = pdao.retrieveLike(nome.toString());
+            String Nome = prod.get(0).getNome();
+            String Marca = prod.get(0).getMarca();
+            //System.out.println(Nome);
+            //System.out.println(Marca);
+            
+            if(Nome.compareTo(nome.toString()) == 0 && Marca.compareTo(marca.toString()) == 0){
+                pdao.delete(prod.get(0));
+                JOptionPane.showMessageDialog(null, "Produto Excluido com sucesso!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Produto não foi excluído, tente novamente");
+            }
+            
+        } catch (IndexOutOfBoundsException e) {
+        } catch (ClassCastException ex) {
+        }
+        
     }
 
     /**
@@ -27,19 +102,94 @@ public class PainelExcluirProduto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        txtBuscarProduto = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTabela = new javax.swing.JTable();
+        btnCancelar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        lblExcluirProduto = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnBuscar.setText("Buscar");
+
+        tblTabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Marca", "Fornecedor", "Quantidade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblTabela);
+
+        btnCancelar.setText("Cancelar");
+
+        btnExcluir.setText("Excluir");
+
+        lblExcluirProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblExcluirProduto.setText("Excluir Produto");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(lblExcluirProduto))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(btnExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addGap(63, 63, 63))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblExcluirProduto)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtBuscarProduto))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnExcluir))
+                .addGap(26, 26, 26))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblExcluirProduto;
+    private javax.swing.JTable tblTabela;
+    private javax.swing.JTextField txtBuscarProduto;
     // End of variables declaration//GEN-END:variables
 }

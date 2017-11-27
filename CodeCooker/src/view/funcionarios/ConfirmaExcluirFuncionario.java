@@ -24,8 +24,7 @@ public class ConfirmaExcluirFuncionario extends javax.swing.JFrame {
      */
     public ConfirmaExcluirFuncionario() {
         initComponents();
-        setLocationRelativeTo(null);
-        
+        setLocationRelativeTo(null);    
     }
     
     DefaultListModel modelM = new DefaultListModel();
@@ -80,8 +79,7 @@ public class ConfirmaExcluirFuncionario extends javax.swing.JFrame {
 
     private void lstFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstFuncionariosMouseClicked
         // TODO add your handling code here:
-        escolheExclusao();    
-        
+        escolheExclusao();   
     }//GEN-LAST:event_lstFuncionariosMouseClicked
 
     public String getFuncionarios(String nome, String cpf){
@@ -109,6 +107,7 @@ public class ConfirmaExcluirFuncionario extends javax.swing.JFrame {
         u.delete(usu);
         
         JOptionPane.showMessageDialog(null, "Funcionário Excluído com Sucesso!");
+        
         dispose();
         
     }
