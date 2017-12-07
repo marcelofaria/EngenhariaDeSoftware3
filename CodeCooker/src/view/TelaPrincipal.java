@@ -46,7 +46,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         CenteredFrame(this);
         lblBemVindo.setVisible(false);
-        lblImagemCozinheiro.add(lblTitulo);
+        //lblImagemCozinheiro.add(lblTitulo);
         
     }
     
@@ -95,9 +95,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        lblImagemCozinheiro = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CodeCookers");
@@ -119,27 +119,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlHome.setBackground(new java.awt.Color(255, 255, 255));
         pnlHome.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         pnlHome.setMaximumSize(new java.awt.Dimension(25, 25));
+        pnlHome.setLayout(null);
 
-        btnLogin.setText("Conectar");
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Conectar/button_connect.png"))); // NOI18N
+        btnLogin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Conectar/button_conectar_clicked.png"))); // NOI18N
+        btnLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Conectar/button_conectar_swap.png"))); // NOI18N
+        pnlHome.add(btnLogin);
+        btnLogin.setBounds(85, 268, 80, 23);
 
         lblTitulo.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
         lblTitulo.setText("CodeCookers");
+        pnlHome.add(lblTitulo);
+        lblTitulo.setBounds(11, 12, 182, 37);
 
+        txtUsuario.setBackground(new java.awt.Color(255, 248, 244));
         txtUsuario.setToolTipText("");
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
+        pnlHome.add(txtUsuario);
+        txtUsuario.setBounds(52, 175, 110, 20);
+
+        txtSenha.setBackground(new java.awt.Color(255, 248, 244));
+        pnlHome.add(txtSenha);
+        txtSenha.setBounds(52, 230, 110, 20);
 
         lblUsuario.setText("Usuario");
+        pnlHome.add(lblUsuario);
+        lblUsuario.setBounds(52, 155, 36, 14);
 
         lblSenha.setText("Senha");
-
-        lblImagemCozinheiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cozinheiro.jpg"))); // NOI18N
+        pnlHome.add(lblSenha);
+        lblSenha.setBounds(52, 213, 30, 14);
 
         lblBemVindo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblBemVindo.setText("Bem Vindo!");
+        pnlHome.add(lblBemVindo);
+        lblBemVindo.setBounds(79, 115, 136, 29);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -152,63 +170,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
-        pnlHome.setLayout(pnlHomeLayout);
-        pnlHomeLayout.setHorizontalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
-                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlHomeLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnLogin)
-                                    .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblSenha)
-                                        .addComponent(lblUsuario))))
-                            .addGroup(pnlHomeLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblTitulo)))
-                        .addGap(0, 31, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblBemVindo)))
-                .addGap(18, 18, 18)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblImagemCozinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlHomeLayout.setVerticalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHomeLayout.createSequentialGroup()
-                        .addGroup(pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlHomeLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24))
-                            .addGroup(pnlHomeLayout.createSequentialGroup()
-                                .addComponent(lblTitulo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblBemVindo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(lblUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblSenha)
-                        .addGap(3, 3, 3)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLogin))
-                    .addComponent(lblImagemCozinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        pnlHome.add(jLayeredPane1);
+        jLayeredPane1.setBounds(233, 31, 100, 100);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        pnlHome.add(jLabel1);
+        jLabel1.setBounds(0, 1, 540, 350);
 
         tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
 
@@ -216,11 +183,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -282,9 +249,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblBemVindo;
-    private javax.swing.JLabel lblImagemCozinheiro;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuario;

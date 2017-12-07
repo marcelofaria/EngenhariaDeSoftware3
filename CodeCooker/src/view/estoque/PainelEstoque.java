@@ -69,60 +69,47 @@ public class PainelEstoque extends javax.swing.JPanel {
         btnExcluirProduto = new javax.swing.JButton();
         lblTituloItens = new javax.swing.JLabel();
         btnAdicionarProduto = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(535, 362));
         setMinimumSize(new java.awt.Dimension(535, 362));
         setPreferredSize(new java.awt.Dimension(535, 362));
+        setLayout(null);
 
-        btnBuscarProduto.setText("Buscar");
+        btnBuscarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/button_buscar.png"))); // NOI18N
+        btnBuscarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/button_buscar_clicked.png"))); // NOI18N
+        btnBuscarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/button_buscar_swap.png"))); // NOI18N
+        add(btnBuscarProduto);
+        btnBuscarProduto.setBounds(54, 237, 112, 45);
 
-        btnAlterarProduto.setText("Alterar");
+        btnAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar.png"))); // NOI18N
+        btnAlterarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar_clicked.png"))); // NOI18N
+        btnAlterarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar_swap.png"))); // NOI18N
+        add(btnAlterarProduto);
+        btnAlterarProduto.setBounds(193, 237, 112, 45);
 
         btnExcluirProduto.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcluirProduto.setText("Excluir");
+        btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir.png"))); // NOI18N
+        btnExcluirProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir_clicked.png"))); // NOI18N
+        btnExcluirProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir_swap.png"))); // NOI18N
+        add(btnExcluirProduto);
+        btnExcluirProduto.setBounds(332, 237, 112, 45);
 
         lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloItens.setText("Controle de Estoque");
+        add(lblTituloItens);
+        lblTituloItens.setBounds(137, 62, 241, 28);
 
         btnAdicionarProduto.setBackground(new java.awt.Color(255, 255, 255));
-        btnAdicionarProduto.setText("Adicionar");
+        btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar.png"))); // NOI18N
+        btnAdicionarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar_clicked.png"))); // NOI18N
+        btnAdicionarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar_swap.png"))); // NOI18N
+        add(btnAdicionarProduto);
+        btnAdicionarProduto.setBounds(54, 168, 390, 51);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(lblTituloItens)))
-                .addGap(0, 91, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblTituloItens, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, -10, 540, 370);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -131,6 +118,7 @@ public class PainelEstoque extends javax.swing.JPanel {
     private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnExcluirProduto;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTituloItens;
     // End of variables declaration//GEN-END:variables
 }
