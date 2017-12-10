@@ -79,79 +79,46 @@ public class ExcluirReserva extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblExcluirReserva.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblExcluirReserva.setText("Excluir Reserva");
+        getContentPane().add(lblExcluirReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 40, -1, -1));
 
         lblMesa.setText("Mesa");
+        getContentPane().add(lblMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 101, -1, -1));
 
         cmbMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6", "Mesa 7" }));
+        getContentPane().add(cmbMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 121, 263, 30));
 
         lblDataHora.setText("Data/hora da reserva");
+        getContentPane().add(lblDataHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 169, -1, -1));
 
+        txtDataHora.setBackground(new java.awt.Color(255, 244, 248));
         try {
             txtDataHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        getContentPane().add(txtDataHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 189, 263, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
         jLabel3.setText("aaaa/mm/dd hh:mm");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 169, -1, 14));
 
-        btnConfirmar.setText("Confirmar");
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Confirmar/button_confirmar.png"))); // NOI18N
+        btnConfirmar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Confirmar/button_confirmar_clicked.png"))); // NOI18N
+        btnConfirmar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Confirmar/button_confirmar_swap.png"))); // NOI18N
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 158, 30));
 
         btnCancelar.setText("Cancelar");
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 302, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(lblExcluirReserva))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblMesa)
-                            .addComponent(cmbMesa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDataHora)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                                .addComponent(jLabel3))
-                            .addComponent(txtDataHora)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCancelar)))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(lblExcluirReserva)
-                .addGap(32, 32, 32)
-                .addComponent(lblMesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDataHora)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +127,7 @@ public class ExcluirReserva extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cmbMesa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblDataHora;
     private javax.swing.JLabel lblExcluirReserva;

@@ -5,7 +5,9 @@
  */
 package view.funcionarios;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,7 +21,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     public CadastrarFuncionario() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
     
     public void addBtnCancelarListener(ActionListener btnCancelarListener){
@@ -109,103 +111,69 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         lblCNPJ = new javax.swing.JLabel();
         txtCNPJ = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(366, 390));
+        setMinimumSize(new java.awt.Dimension(366, 390));
+        setResizable(false);
+        setSize(new java.awt.Dimension(366, 390));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/button_cadastrar.png"))); // NOI18N
+        btnCadastrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/button_cadastrar_clicked.png"))); // NOI18N
+        btnCadastrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/button_cadastrar_swap.png"))); // NOI18N
+        getContentPane().add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 143, 44));
 
         lblCargo.setText("Cargo");
+        getContentPane().add(lblCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 33, -1, -1));
 
+        cmbCargo.setBackground(new java.awt.Color(255, 248, 244));
         cmbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Caixa", "Gerente", "Metre" }));
+        getContentPane().add(cmbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 58, 265, 30));
 
         lblNomeCompleto.setText("Nome Completo");
+        getContentPane().add(lblNomeCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 106, -1, -1));
+
+        txtNomeCompleto.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtNomeCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 126, 265, 30));
 
         lblUsuario.setText("Usuário");
+        getContentPane().add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 167, -1, -1));
+
+        txtUsuario.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 187, 116, 30));
 
         lblCPF.setText("CPF");
+        getContentPane().add(lblCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 228, -1, -1));
 
         lblSenha.setText("Senha");
+        getContentPane().add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 228, -1, -1));
 
-        btnCancelar.setText("Cancelar");
+        txtSenha.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 248, 116, 30));
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar.png"))); // NOI18N
+        btnCancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_clicked.png"))); // NOI18N
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_swap.png"))); // NOI18N
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, 75, 23));
 
         lblCNPJ.setText("CNPJ");
+        getContentPane().add(lblCNPJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 167, -1, -1));
 
+        txtCNPJ.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtCNPJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 187, 116, 30));
+
+        txtCPF.setBackground(new java.awt.Color(255, 248, 244));
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        getContentPane().add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 248, 116, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblNomeCompleto, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lblSenha)))
-                                        .addComponent(lblUsuario))
-                                    .addGap(33, 33, 33)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblCNPJ)
-                                        .addComponent(lblCPF)
-                                        .addComponent(txtCNPJ)
-                                        .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))))
-                            .addComponent(lblCargo))))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lblCargo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblNomeCompleto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCNPJ))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(txtUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(lblCPF))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCPF)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE366x390.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,6 +182,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmbCargo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCNPJ;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCargo;

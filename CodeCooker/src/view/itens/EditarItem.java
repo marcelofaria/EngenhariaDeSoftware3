@@ -41,6 +41,7 @@ public class EditarItem extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         lblPreco1 = new javax.swing.JLabel();
         txtPreco1 = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(337, 366));
@@ -48,91 +49,58 @@ public class EditarItem extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(337, 366));
         setResizable(false);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblNome1.setText("Nome");
+        jPanel2.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 47, -1, -1));
+
+        txtNome1.setBackground(new java.awt.Color(255, 248, 244));
+        jPanel2.add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 67, 254, 30));
+
+        txtIngredientes1.setBackground(new java.awt.Color(255, 248, 244));
+        jPanel2.add(txtIngredientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 135, 254, 30));
 
         lblIngredientes1.setText("Ingredientes");
+        jPanel2.add(lblIngredientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 115, -1, -1));
 
         jLabel2.setText("Disponibilidade");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 183, -1, -1));
 
         radDisponivel1.setText("Disponível");
+        jPanel2.add(radDisponivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 204, -1, -1));
 
         radIndisponivel1.setText("Indisponível");
+        jPanel2.add(radIndisponivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 204, -1, -1));
 
-        btnAdicionar1.setText("Salvar");
+        btnAdicionar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar/Grande/button_salvar.png"))); // NOI18N
+        btnAdicionar1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar/Grande/button_salvar_clicked.png"))); // NOI18N
+        btnAdicionar1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar/Grande/button_salvar_swap.png"))); // NOI18N
         btnAdicionar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionar1ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnAdicionar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 245, 142, 59));
 
-        jButton2.setText("Cancelar");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar.png"))); // NOI18N
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_clicked.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_swap.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 322, 75, 23));
 
         lblPreco1.setText("Preço");
+        jPanel2.add(lblPreco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 245, -1, -1));
 
+        txtPreco1.setBackground(new java.awt.Color(255, 248, 244));
         txtPreco1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        jPanel2.add(txtPreco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 265, 94, 38));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton2)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(lblIngredientes1)
-                            .addComponent(lblNome1)
-                            .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(radDisponivel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(radIndisponivel1))
-                            .addComponent(txtIngredientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblPreco1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtPreco1))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAdicionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(lblNome1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblIngredientes1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIngredientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radDisponivel1)
-                    .addComponent(radIndisponivel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdicionar1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblPreco1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +162,7 @@ public class EditarItem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblIngredientes1;

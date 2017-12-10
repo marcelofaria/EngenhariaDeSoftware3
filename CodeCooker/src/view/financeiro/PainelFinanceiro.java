@@ -33,83 +33,47 @@ public class PainelFinanceiro extends javax.swing.JPanel {
         lblTxtPratoDoDia = new javax.swing.JLabel();
         lblValorReceita = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(513, 351));
-        setMinimumSize(new java.awt.Dimension(513, 351));
-        setPreferredSize(new java.awt.Dimension(513, 351));
+        setMaximumSize(new java.awt.Dimension(540, 350));
+        setMinimumSize(new java.awt.Dimension(540, 350));
+        setPreferredSize(new java.awt.Dimension(540, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNPedidos.setText("22");
+        add(lblNPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         lblPratoDoDia.setText("Stuffed Peppers");
+        add(lblPratoDoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
 
         lblTituloFinanceiro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloFinanceiro.setText("Financeiro");
+        add(lblTituloFinanceiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 69, -1, -1));
 
-        btnRelatorio.setText("Gerar relatório");
+        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Gerar Relatório/button_gerar-relatorio.png"))); // NOI18N
+        btnRelatorio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Gerar Relatório/button_gerar-relatorio_clicked.png"))); // NOI18N
+        btnRelatorio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Gerar Relatório/button_gerar-relatorio_swap.png"))); // NOI18N
+        add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 132, 74));
 
         lblReceita.setText("Receita do dia");
+        add(lblReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
         lblTxtNPedidos.setText("Nº Pedidos");
+        add(lblTxtNPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
         lblTxtPratoDoDia.setText("Prato do dia");
+        add(lblTxtPratoDoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
 
-        lblValorReceita.setForeground(new java.awt.Color(0, 204, 0));
+        lblValorReceita.setForeground(new java.awt.Color(0, 102, 0));
         lblValorReceita.setText("R$ 90,00");
+        add(lblValorReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Hoje:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(lblTituloFinanceiro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTxtNPedidos)
-                            .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblReceita)
-                            .addComponent(jLabel1))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValorReceita)
-                            .addComponent(lblNPedidos)
-                            .addComponent(lblPratoDoDia))))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(lblTituloFinanceiro)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReceita)
-                            .addComponent(lblValorReceita))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtNPedidos)
-                            .addComponent(lblNPedidos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTxtPratoDoDia)
-                            .addComponent(lblPratoDoDia))))
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));
     }// </editor-fold>//GEN-END:initComponents
 
     public void addBtnRelatorioListener(ActionListener listener){
@@ -131,6 +95,7 @@ public class PainelFinanceiro extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblNPedidos;
     private javax.swing.JLabel lblPratoDoDia;
     private javax.swing.JLabel lblReceita;

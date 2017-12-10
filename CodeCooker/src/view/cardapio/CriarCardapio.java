@@ -86,17 +86,24 @@ public class CriarCardapio extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblTituloCriarCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloCriarCardapio.setText("Criar cardápio");
+        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 44, -1, -1));
 
         lblDia.setText("Dia");
+        jPanel1.add(lblDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 100, -1, -1));
 
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado" }));
+        jPanel1.add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 91, 312, 33));
 
+        tblItens.setBackground(new java.awt.Color(255, 248, 244));
         tblItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -120,6 +127,9 @@ public class CriarCardapio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblItens.setGridColor(new java.awt.Color(216, 201, 192));
+        tblItens.setSelectionBackground(new java.awt.Color(244, 216, 194));
+        tblItens.setSelectionForeground(new java.awt.Color(81, 56, 39));
         jScrollPane1.setViewportView(tblItens);
         if (tblItens.getColumnModel().getColumnCount() > 0) {
             tblItens.getColumnModel().getColumn(0).setMinWidth(0);
@@ -131,66 +141,31 @@ public class CriarCardapio extends javax.swing.JFrame {
             tblItens.getColumnModel().getColumn(3).setPreferredWidth(60);
         }
 
-        btnCriarCardapio.setText("Criar cardapio");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 135, 456, 109));
 
-        btnLimparTudo.setText("Limpar tudo");
+        btnCriarCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar Cardápio/button_criar-cardapio.png"))); // NOI18N
+        btnCriarCardapio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar Cardápio/button_criar-cardapio_clicked.png"))); // NOI18N
+        btnCriarCardapio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar Cardápio/button_criar-cardapio_swap.png"))); // NOI18N
+        jPanel1.add(btnCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 299, 116, 23));
 
-        btnCancelar.setText("Sair");
+        btnLimparTudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Limpar Tudo/Comprido/button_limpar-tudo.png"))); // NOI18N
+        btnLimparTudo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Limpar Tudo/Comprido/button_limpar-tudo_clicked.png"))); // NOI18N
+        btnLimparTudo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Limpar Tudo/Comprido/button_limpar-tudo_swap.png"))); // NOI18N
+        jPanel1.add(btnLimparTudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 299, 116, 23));
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Sair/Pequeno/button_sair.png"))); // NOI18N
+        btnCancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Sair/Pequeno/button_sair_clicked.png"))); // NOI18N
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Sair/Pequeno/button_sair_swap.png"))); // NOI18N
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 299, 116, 23));
+
+        txtBuscar.setBackground(new java.awt.Color(255, 248, 244));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 252, 389, 29));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lupa.png"))); // NOI18N
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 252, 50, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(lblTituloCriarCardapio)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(lblDia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnCriarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(46, 46, 46)
-                            .addComponent(btnLimparTudo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(45, 45, 45)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(20, 20, 20))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblTituloCriarCardapio)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDia)
-                    .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnCriarCardapio)
-                    .addComponent(btnLimparTudo)
-                    .addComponent(btnCancelar))
-                .addGap(18, 18, 18))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 340));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,6 +238,7 @@ public class CriarCardapio extends javax.swing.JFrame {
     private javax.swing.JButton btnCriarCardapio;
     private javax.swing.JButton btnLimparTudo;
     private javax.swing.JComboBox<String> cmbDia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDia;

@@ -5,9 +5,14 @@
  */
 package view.contas;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
+import javax.swing.JComponent;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,7 +25,23 @@ public class AdicionarPedido extends javax.swing.JFrame {
      */
     public AdicionarPedido() {
         initComponents();
-        CenteredFrame(this);
+        CenteredFrame(this);setColors(spnQtd, new Color(255,248,244));
+    }
+    
+    private static void setColors(JSpinner spinner, Color background)
+    {
+        JComponent editor = spinner.getEditor();
+        System.out.println("Editor "+editor);
+        int n = editor.getComponentCount();
+        for (int i=0; i<n; i++)
+        {
+            Component c = editor.getComponent(i);
+            System.out.println("Component "+i+": "+c);
+            if (c instanceof JTextField)
+            {
+                c.setBackground(background);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -31,41 +52,28 @@ public class AdicionarPedido extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         spnQtd = new javax.swing.JSpinner();
         btnOk = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Quantidade");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnOk.setText("OK");
+        jLabel1.setText("Quantidade");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 45, -1, -1));
+        jPanel1.add(spnQtd, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 37, 38, 30));
+
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/OK/button_ok.png"))); // NOI18N
+        btnOk.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/OK/button_ok_clicked.png"))); // NOI18N
+        btnOk.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/OK/button_ok_swap.png"))); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
             }
         });
+        jPanel1.add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 37, 86, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(spnQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(spnQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +107,7 @@ public class AdicionarPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner spnQtd;
     // End of variables declaration//GEN-END:variables

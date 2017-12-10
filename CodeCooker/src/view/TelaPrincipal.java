@@ -37,7 +37,9 @@ import view.financeiro.PainelFinanceiro;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     /**
-     *
+     * Minha cor
+     * #c1a28c
+     * #f4d8c2
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
@@ -110,11 +112,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabPane.setMinimumSize(new java.awt.Dimension(110, 50));
         tabPane.setPreferredSize(new java.awt.Dimension(433, 230));
-        tabPane.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                tabPaneStateChanged(evt);
-            }
-        });
 
         pnlHome.setBackground(new java.awt.Color(255, 255, 255));
         pnlHome.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -134,11 +131,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(255, 248, 244));
         txtUsuario.setToolTipText("");
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
         pnlHome.add(txtUsuario);
         txtUsuario.setBounds(52, 175, 110, 20);
 
@@ -192,14 +184,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tabPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPaneStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tabPaneStateChanged
-
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     public static void setLookAndFeel() {
         try {

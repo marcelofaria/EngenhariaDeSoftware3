@@ -25,8 +25,7 @@ public class PainelAdicionarProduto extends javax.swing.JFrame {
         
     }
     
-    private static void setColors(
-        JSpinner spinner, Color background)
+    private static void setColors(JSpinner spinner, Color background)
     {
         JComponent editor = spinner.getEditor();
         System.out.println("Editor "+editor);
@@ -94,7 +93,7 @@ public class PainelAdicionarProduto extends javax.swing.JFrame {
 
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionarG.png"))); // NOI18N
         btnAdicionar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionarG_clicked.png"))); // NOI18N
-        btnAdicionar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionarG.png"))); // NOI18N
+        btnAdicionar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionarG_swap.png"))); // NOI18N
         getContentPane().add(btnAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 231, 142, 59));
 
         lblFornecedor.setText("Fornecedor");

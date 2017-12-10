@@ -120,79 +120,59 @@ public class PainelFuncionario extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         lstCaixas = new javax.swing.JList<>();
         btnCadastrarFuncionario = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setMinimumSize(new java.awt.Dimension(540, 350));
+        setPreferredSize(new java.awt.Dimension(540, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnExcluirFuncionario.setBackground(new java.awt.Color(255, 51, 51));
-        btnExcluirFuncionario.setText("Excluir funcionário");
+        btnExcluirFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario.png"))); // NOI18N
+        btnExcluirFuncionario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario_clicked.png"))); // NOI18N
+        btnExcluirFuncionario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario_swap.png"))); // NOI18N
+        add(btnExcluirFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 292, 119, 23));
 
         lblTituloFuncionarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloFuncionarios.setText("Funcionários");
+        add(lblTituloFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 37, -1, -1));
 
         lblListaMetres.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblListaMetres.setText("Metres");
+        add(lblListaMetres, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 89, -1, -1));
 
         lblListaCaixas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblListaCaixas.setText("Caixas");
+        add(lblListaCaixas, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 89, -1, -1));
 
+        lstMetres.setBackground(new java.awt.Color(255, 248, 244));
+        lstMetres.setSelectionBackground(new java.awt.Color(244, 216, 194));
+        lstMetres.setSelectionForeground(new java.awt.Color(81, 56, 39));
         jScrollPane2.setViewportView(lstMetres);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 112, 116, 67));
+
+        lstCaixas.setBackground(new java.awt.Color(255, 248, 244));
+        lstCaixas.setSelectionBackground(new java.awt.Color(244, 216, 194));
+        lstCaixas.setSelectionForeground(new java.awt.Color(81, 56, 39));
         jScrollPane3.setViewportView(lstCaixas);
 
-        btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 255, 102));
-        btnCadastrarFuncionario.setText("Cadastrar funcionário");
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 112, 116, 67));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(lblListaMetres)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblListaCaixas)
-                .addGap(123, 123, 123))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTituloFuncionarios)
-                            .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(btnExcluirFuncionario)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lblTituloFuncionarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblListaCaixas)
-                    .addComponent(lblListaMetres))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluirFuncionario)
-                .addGap(44, 44, 44))
-        );
+        btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 255, 102));
+        btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario.png"))); // NOI18N
+        btnCadastrarFuncionario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario_clicked.png"))); // NOI18N
+        btnCadastrarFuncionario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario_swap.png"))); // NOI18N
+        add(btnCadastrarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 223, 142, 51));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 540, 350));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCadastrarFuncionario;
     private javax.swing.JToggleButton btnExcluirFuncionario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblListaCaixas;

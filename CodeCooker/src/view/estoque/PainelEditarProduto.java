@@ -5,7 +5,12 @@
  */
 package view.estoque;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionListener;
+import javax.swing.JComponent;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,6 +21,23 @@ public class PainelEditarProduto extends javax.swing.JFrame {
     public PainelEditarProduto() {
         initComponents();
         setLocationRelativeTo(null);
+        setColors(spnQuantidade, new Color(255,248,244));
+    }
+    
+    private static void setColors(JSpinner spinner, Color background)
+    {
+        JComponent editor = spinner.getEditor();
+        System.out.println("Editor "+editor);
+        int n = editor.getComponentCount();
+        for (int i=0; i<n; i++)
+        {
+            Component c = editor.getComponent(i);
+            System.out.println("Component "+i+": "+c);
+            if (c instanceof JTextField)
+            {
+                c.setBackground(background);
+            }
+        }
     }
     
     public void addBtnSalvarListener(ActionListener listener){
@@ -79,87 +101,49 @@ public class PainelEditarProduto extends javax.swing.JFrame {
         lblEditarProduto = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         lblMarca = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar.png"))); // NOI18N
+        btnCancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_clicked.png"))); // NOI18N
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cancelar/button_cancelar_swap.png"))); // NOI18N
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 276, 75, 23));
 
-        btnSalvar.setText("Salvar Alterações");
+        txtNome.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 62, 317, 27));
+
+        txtMarca.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 120, 317, 27));
+
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar Alterações/button_salvar-alteracoes.png"))); // NOI18N
+        btnSalvar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar Alterações/button_salvar-alteracoes_clicked.png"))); // NOI18N
+        btnSalvar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Salvar Alterações/button_salvar-alteracoes_swap.png"))); // NOI18N
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 231, 142, 59));
 
         lblFornecedor.setText("Fornecedor");
+        getContentPane().add(lblFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 158, -1, -1));
+
+        txtFornecedor.setBackground(new java.awt.Color(255, 248, 244));
+        getContentPane().add(txtFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 178, 317, 27));
 
         lblQuantidade.setText("Quantidade");
+        getContentPane().add(lblQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 211, -1, -1));
+        getContentPane().add(spnQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 231, 159, 27));
 
         lblEditarProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEditarProduto.setText("Editar Produto");
+        getContentPane().add(lblEditarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 19, -1, -1));
 
         lblNome.setText("Nome");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 42, -1, -1));
 
         lblMarca.setText("Marca");
+        getContentPane().add(lblMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 100, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(57, 57, 57)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNome)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblQuantidade)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblMarca)
-                                            .addComponent(lblFornecedor))
-                                        .addGap(262, 262, 262)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnCancelar))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(lblEditarProduto)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblEditarProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMarca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFornecedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQuantidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(spnQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar))
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE400x310.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,6 +151,7 @@ public class PainelEditarProduto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblEditarProduto;
     private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblMarca;

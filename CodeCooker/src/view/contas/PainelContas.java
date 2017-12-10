@@ -38,13 +38,17 @@ public class PainelContas extends javax.swing.JPanel {
         btnAdicionarPedido = new javax.swing.JButton();
         btnAlterarConta = new javax.swing.JButton();
         lblTituloContas = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(518, 351));
-        setMinimumSize(new java.awt.Dimension(518, 351));
-        setPreferredSize(new java.awt.Dimension(518, 351));
+        setMaximumSize(new java.awt.Dimension(540, 350));
+        setMinimumSize(new java.awt.Dimension(540, 350));
+        setPreferredSize(new java.awt.Dimension(540, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbMesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6" }));
+        add(cmbMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 103, 328, -1));
 
+        tblPedidos.setBackground(new java.awt.Color(255, 248, 244));
         tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -69,6 +73,9 @@ public class PainelContas extends javax.swing.JPanel {
             }
         });
         tblPedidos.setColumnSelectionAllowed(true);
+        tblPedidos.setGridColor(new java.awt.Color(216, 201, 192));
+        tblPedidos.setSelectionBackground(new java.awt.Color(244, 216, 194));
+        tblPedidos.setSelectionForeground(new java.awt.Color(81, 56, 39));
         tblPedidos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblPedidos);
         tblPedidos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -84,69 +91,38 @@ public class PainelContas extends javax.swing.JPanel {
             tblPedidos.getColumnModel().getColumn(4).setPreferredWidth(50);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 134, 328, 139));
+
         lblTotalConta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTotalConta.setText("Total");
+        add(lblTotalConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 290, -1, -1));
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(102, 255, 102));
         txtTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 284, 146, 33));
 
-        btnFecharConta.setText("Fechar conta");
+        btnFecharConta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Fechar Conta/button_fechar-conta.png"))); // NOI18N
+        btnFecharConta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Fechar Conta/button_fechar-conta_clicked.png"))); // NOI18N
+        btnFecharConta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Fechar Conta/button_fechar-conta_swap.png"))); // NOI18N
+        add(btnFecharConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 134, 111, 42));
 
-        btnAdicionarPedido.setText("Adicionar pedido");
+        btnAdicionarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar Pedido/button_adicionar-pedido.png"))); // NOI18N
+        btnAdicionarPedido.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar Pedido/button_adicionar-pedido_clicked.png"))); // NOI18N
+        btnAdicionarPedido.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar Pedido/button_adicionar-pedido_swap.png"))); // NOI18N
+        add(btnAdicionarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 182, 111, 42));
 
-        btnAlterarConta.setText("Alterar conta");
+        btnAlterarConta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar Conta/button_alterar-conta.png"))); // NOI18N
+        btnAlterarConta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar Conta/button_alterar-conta_clicked.png"))); // NOI18N
+        btnAlterarConta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar Conta/button_alterar-conta_swap.png"))); // NOI18N
+        add(btnAlterarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 230, 111, 42));
 
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloContas.setText("Contas");
+        add(lblTituloContas, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 39, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTotalConta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                        .addComponent(cmbMesas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFecharConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterarConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(lblTituloContas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblTituloContas)
-                .addGap(35, 35, 35)
-                .addComponent(cmbMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnFecharConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterarConta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTotalConta))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));
     }// </editor-fold>//GEN-END:initComponents
 
     public void addBtnFecharContaListener(ActionListener listener){
@@ -197,6 +173,7 @@ public class PainelContas extends javax.swing.JPanel {
     private javax.swing.JButton btnAlterarConta;
     private javax.swing.JButton btnFecharConta;
     private javax.swing.JComboBox<String> cmbMesas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloContas;
     private javax.swing.JLabel lblTotalConta;

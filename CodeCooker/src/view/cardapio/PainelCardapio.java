@@ -24,89 +24,46 @@ public class PainelCardapio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        btnMostrar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         lblTituloCardapio = new javax.swing.JLabel();
         btnCriar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(535, 362));
-        setMinimumSize(new java.awt.Dimension(535, 362));
-        setPreferredSize(new java.awt.Dimension(535, 362));
-
-        jPanel1.setMaximumSize(new java.awt.Dimension(535, 362));
-        jPanel1.setMinimumSize(new java.awt.Dimension(535, 362));
-
-        btnMostrar.setText("Mostrar");
-
-        btnEditar.setText("Editar");
-
-        btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("Excluir");
+        setMaximumSize(new java.awt.Dimension(540, 350));
+        setMinimumSize(new java.awt.Dimension(540, 350));
+        setPreferredSize(new java.awt.Dimension(540, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloCardapio.setText("Cardápio");
+        add(lblTituloCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 62, -1, 28));
 
         btnCriar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCriar.setText("Criar");
+        btnCriar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar/button_criar.png"))); // NOI18N
+        btnCriar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar/button_criar_clicked.png"))); // NOI18N
+        btnCriar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar/button_criar_swap.png"))); // NOI18N
+        add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 168, 169, 51));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTituloCardapio)
-                        .addGap(138, 138, 138))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCriar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblTituloCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(60, 60, 60))
-        );
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Editar/Grande/button_editar.png"))); // NOI18N
+        btnEditar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Editar/Grande/button_editar_clicked.png"))); // NOI18N
+        btnEditar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Editar/Grande/button_editar_swap.png"))); // NOI18N
+        add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 251, 169, 51));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        btnExcluir.setBackground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Grande/button_excluir.png"))); // NOI18N
+        btnExcluir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Grande/button_excluir_clicked.png"))); // NOI18N
+        btnExcluir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Grande/button_excluir_swap.png"))); // NOI18N
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 251, 169, 51));
+
+        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Mostrar/button_mostrar.png"))); // NOI18N
+        btnMostrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Mostrar/button_mostrar_clicked.png"))); // NOI18N
+        btnMostrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Mostrar/button_mostrar_swap.png"))); // NOI18N
+        add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 168, 169, 51));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));
     }// </editor-fold>//GEN-END:initComponents
 
     public void addBtnCriarListener(ActionListener listener){
@@ -132,7 +89,7 @@ public class PainelCardapio extends javax.swing.JPanel {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblTituloCardapio;
     // End of variables declaration//GEN-END:variables
 }

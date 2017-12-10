@@ -80,36 +80,36 @@ public class PainelEstoque extends javax.swing.JPanel {
         btnBuscarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/button_buscar_clicked.png"))); // NOI18N
         btnBuscarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/button_buscar_swap.png"))); // NOI18N
         add(btnBuscarProduto);
-        btnBuscarProduto.setBounds(54, 237, 112, 45);
+        btnBuscarProduto.setBounds(70, 240, 112, 45);
 
         btnAlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar.png"))); // NOI18N
         btnAlterarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar_clicked.png"))); // NOI18N
         btnAlterarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Alterar/button_alterar_swap.png"))); // NOI18N
         add(btnAlterarProduto);
-        btnAlterarProduto.setBounds(193, 237, 112, 45);
+        btnAlterarProduto.setBounds(210, 240, 112, 45);
 
         btnExcluirProduto.setBackground(new java.awt.Color(255, 255, 255));
         btnExcluirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir.png"))); // NOI18N
         btnExcluirProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir_clicked.png"))); // NOI18N
         btnExcluirProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/button_excluir_swap.png"))); // NOI18N
         add(btnExcluirProduto);
-        btnExcluirProduto.setBounds(332, 237, 112, 45);
+        btnExcluirProduto.setBounds(350, 240, 112, 45);
 
         lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTituloItens.setText("Controle de Estoque");
         add(lblTituloItens);
-        lblTituloItens.setBounds(137, 62, 241, 28);
+        lblTituloItens.setBounds(160, 70, 241, 28);
 
         btnAdicionarProduto.setBackground(new java.awt.Color(255, 255, 255));
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar.png"))); // NOI18N
         btnAdicionarProduto.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar_clicked.png"))); // NOI18N
         btnAdicionarProduto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar_swap.png"))); // NOI18N
         add(btnAdicionarProduto);
-        btnAdicionarProduto.setBounds(54, 168, 390, 51);
+        btnAdicionarProduto.setBounds(70, 170, 390, 51);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, -10, 540, 370);
+        jLabel1.setBounds(0, 1, 540, 350);
     }// </editor-fold>//GEN-END:initComponents
 
 

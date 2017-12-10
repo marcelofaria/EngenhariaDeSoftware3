@@ -330,135 +330,71 @@ public class PainelMesas extends javax.swing.JPanel {
         btnMesa4 = new javax.swing.JButton();
         btnMesa6 = new javax.swing.JButton();
         btnMesa5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(540, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMesa2.setText("Mesa 2");
+        add(lblMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
         lblMesa3.setText("Mesa 3");
+        add(lblMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
         lblMesa4.setText("Mesa 4");
+        add(lblMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         lblMesa5.setText("Mesa 5");
+        add(lblMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         btnMesa2.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
+        add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 84, 79));
 
         lblMesa6.setText("Mesa 6");
+        add(lblMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         lblMesa1.setText("Mesa 1");
+        add(lblMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-        btnReservarMesa.setText("Reservar mesa");
+        btnReservarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa.png"))); // NOI18N
+        btnReservarMesa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa_clicked.png"))); // NOI18N
+        btnReservarMesa.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa_swap.png"))); // NOI18N
+        add(btnReservarMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 110, 36));
 
         btnMesa3.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
+        add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 84, 79));
 
-        btnExcluir.setText("Excluir reserva");
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva.png"))); // NOI18N
+        btnExcluir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva_clicked.png"))); // NOI18N
+        btnExcluir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva_swap.png"))); // NOI18N
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 110, 36));
 
         btnMesa1.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa1.setForeground(new java.awt.Color(102, 255, 102));
         btnMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
         btnMesa1.setOpaque(true);
+        add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 84, 79));
 
         blTituloMesa.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         blTituloMesa.setText("Mesas");
+        add(blTituloMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 25, -1, -1));
 
         btnMesa4.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
+        add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 84, 79));
 
         btnMesa6.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
+        add(btnMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 84, 79));
 
         btnMesa5.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
+        add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 84, 79));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblMesa4)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblMesa5)
-                                        .addGap(58, 58, 58))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lblMesa6))
-                                    .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(blTituloMesa)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblMesa1)
-                                .addGap(62, 62, 62)
-                                .addComponent(lblMesa2)
-                                .addGap(69, 69, 69)
-                                .addComponent(lblMesa3)))))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReservarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(blTituloMesa)
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMesa1)
-                            .addComponent(lblMesa2)
-                            .addComponent(lblMesa3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMesa4)
-                            .addComponent(lblMesa5)
-                            .addComponent(lblMesa6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(19, 19, 19))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -472,6 +408,7 @@ public class PainelMesas extends javax.swing.JPanel {
     private javax.swing.JButton btnMesa5;
     private javax.swing.JButton btnMesa6;
     private javax.swing.JButton btnReservarMesa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMesa1;
     private javax.swing.JLabel lblMesa2;
     private javax.swing.JLabel lblMesa3;
