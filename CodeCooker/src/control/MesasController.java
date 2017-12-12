@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import model.Mesa;
 import model.MesaDAO;
 import model.Reserva;
@@ -277,6 +278,10 @@ public class MesasController {
 
         }
 
+    }
+    
+    public PainelMesas getTela(){
+        return this.tela;
     }
     
 }

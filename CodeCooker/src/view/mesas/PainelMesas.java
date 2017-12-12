@@ -7,6 +7,7 @@ package view.mesas;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -304,6 +305,10 @@ public class PainelMesas extends javax.swing.JPanel {
 
         }
 
+    }
+    
+    public JButton getBtnMesa1(){
+        return this.btnMesa1;
     }
 
     /**

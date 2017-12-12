@@ -282,28 +282,6 @@ public class CardapioController {
 
     }
 
-    public void atualizarTabelaIncluir() {
-        ItemDAO idao = ItemDAO.getInstance();
-        DefaultTableModel modelo = telaEditar.getModeloTblIncluir();
-        List<Item> everyItem = idao.RetrieveAll();
-        for (Item i : everyItem) {
-            modelo.setRowCount(0);
-            if (!EditarCardapio.getSelectedItems().contains(i)) {
-                modelo.addRow(new Object[]{i.getId(), false, i.getNome(), i.getTipo()});
-            }
-        }
-    }
-
-    public void atualizarTabelaExcluir() {
-        ItemDAO idao = ItemDAO.getInstance();
-        DefaultTableModel modelo = telaEditar.getModeloTblExcluir();
-        for (Integer id : EditarCardapio.getSelectedItems()) {
-            Item i = idao.retrieveById(id);
-            modelo.setRowCount(0);
-            modelo.addRow(new Object[]{i.getId(), true, i.getNome(), i.getTipo()});
-        }
-    }
-
     class BtnLimparTudoEditarListener implements ActionListener {
 
         @Override
