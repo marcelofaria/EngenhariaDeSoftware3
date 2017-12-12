@@ -325,7 +325,7 @@ public class FinanceiroController {
 
             try {
                 createPdf(DEST);
-                JOptionPane.showMessageDialog(null, "Relatório criado com sucesso.");
+                //JOptionPane.showMessageDialog(null, "Relatório criado com sucesso.");
             } catch (IOException | DocumentException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao exportar PDF.");
                 Logger.getLogger(FinanceiroController.class.getName()).log(Level.SEVERE, null, ex);

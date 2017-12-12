@@ -227,7 +227,7 @@ public class ContasController {
                                 DefaultTableModel model = tela.getModeloTabela();
                                 model.setRowCount(0);
                                 carregarContaMesa(tela.getNumMesa());
-                                JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -291,7 +291,7 @@ public class ContasController {
                                 DefaultTableModel model = tela.getModeloTabela();
                                 model.setRowCount(0);
                                 carregarContaMesa(tela.getNumMesa());
-                                JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -355,7 +355,7 @@ public class ContasController {
                                 DefaultTableModel model = tela.getModeloTabela();
                                 model.setRowCount(0);
                                 carregarContaMesa(tela.getNumMesa());
-                                JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -419,7 +419,7 @@ public class ContasController {
                                 DefaultTableModel model = tela.getModeloTabela();
                                 model.setRowCount(0);
                                 carregarContaMesa(tela.getNumMesa());
-                                JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Pedido criado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {

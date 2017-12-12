@@ -91,15 +91,15 @@ public class MesasController {
         @Override
         public void actionPerformed(ActionEvent e) {
             ReservaDAO rDAO = ReservaDAO.getInstance();
-            List<Reserva> reservas = rDAO.retrieveGeneric("SELECT * FROM reserva WHERE dataEHorario LIKE '" + telaExcluir.getDataHora() + "' "
-            + "AND numMesa = " + telaExcluir.getMesa());
+            List<Reserva> reservas = rDAO.retrieveGeneric("SELECT reservaID, numMesa, usuarioID, nome, max(dataEHorario), numPessoas, telefone FROM reserva WHERE numMesa LIKE '" + telaExcluir.getMesa() + "'");
             
             if(!reservas.isEmpty()){
+                
                 rDAO.delete(reservas.get(0));
                 MesaDAO mdao = MesaDAO.getInstance();
                 mdao.update(new Mesa(telaExcluir.getMesa(), 0));
                 tela.liberarMesa(telaExcluir.getMesa());
-                JOptionPane.showMessageDialog(null, "Reserva excluída com sucesso.");
+                //JOptionPane.showMessageDialog(null, "Reserva excluída com sucesso.");
                 telaExcluir.dispose();
             }
             else{
@@ -130,7 +130,7 @@ public class MesasController {
                 mdao.update(new Mesa(telaReserva.getMesa(), 2));
                 tela.reservarMesa(telaReserva.getMesa());
                 telaReserva.dispose();
-                JOptionPane.showMessageDialog(null, "Reserva criada com sucesso.");
+                //JOptionPane.showMessageDialog(null, "Reserva criada com sucesso.");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Falha ao criar reserva. Cheque o formulário.");
             }

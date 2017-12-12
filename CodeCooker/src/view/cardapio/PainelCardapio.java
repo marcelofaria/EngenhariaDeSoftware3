@@ -37,8 +37,9 @@ public class PainelCardapio extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloCardapio.setText("Cardápio");
-        add(lblTituloCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 62, -1, 28));
+        lblTituloCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cardapios.png"))); // NOI18N
+        lblTituloCardapio.setText(" ");
+        add(lblTituloCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 300, 70));
 
         btnCriar.setBackground(new java.awt.Color(255, 255, 255));
         btnCriar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Criar/button_criar.png"))); // NOI18N

@@ -44,32 +44,32 @@ public class CodeCookerController {
         
         PainelCardapio pc = new PainelCardapio();
         CardapioController cardapioControl = new CardapioController(pc);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/menu.png")), pc);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/menu_minimalistic.png")), pc);
         
         PainelMesas pm = new PainelMesas();
         MesasController mesasControl = new MesasController(pm);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/pixel_round_table_by_shi_ju-d7gxbbg.png")), pm);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/table_win.png")), pm);
         
         PainelItens pi = new PainelItens();
         ItensController itensControl = new ItensController(pi);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/sandwich.png")), pi);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/food_minimalistic.png")), pi);
         
         PainelContas pcontas = new PainelContas();
         ContasController cc = new ContasController(pcontas);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/conta.png")), pcontas);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/ic_book_black_24dp.png")), pcontas);
         
         PainelEstoque pe = new PainelEstoque();
         EstoqueController estoqueControl = new EstoqueController(pe);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/Cardboard_Box_Closed.png")), pe);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/box.png")), pe);
         
         
         PainelFuncionario pf = new PainelFuncionario();
         FuncionarioController funcControl = new FuncionarioController(pf);
-        tela.getTabbedPane().addTab("",new ImageIcon(getClass().getResource("/image/waiter.png")), pf);
+        tela.getTabbedPane().addTab("",new ImageIcon(getClass().getResource("/image/ic_face_black_24dp.png")), pf);
         
         PainelFinanceiro pfin = new PainelFinanceiro();
         FinanceiroController fc = new FinanceiroController(pfin);
-        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/money.png")), pfin);
+        tela.getTabbedPane().addTab("", new ImageIcon(getClass().getResource("/image/ic_attach_money_black_24dp.png")), pfin);
         
         tela.getTabbedPane().addChangeListener(new ChangeListener(){
             @Override

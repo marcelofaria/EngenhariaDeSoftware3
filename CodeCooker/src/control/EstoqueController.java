@@ -229,7 +229,7 @@ public class EstoqueController {
             //p = new Produto(quantidade, nome, marca, fornecedor);
 
             pdao.update(prod.get(0), prod1.get(0));
-            JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso");
+            //JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso");
             painelEdProd.dispose();
 
             String nnome;
@@ -349,7 +349,7 @@ public class EstoqueController {
             quantidade = painelAddProd.getQuantidadeProduto();
 
             pdao.create(quantidade, nome, marca, fornecedor);
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+            //JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
             painelAddProd.dispose();
 
         }

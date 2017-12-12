@@ -95,8 +95,9 @@ public class MostrarCardapio extends javax.swing.JFrame {
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 277, 198, 23));
 
         lblTituloCriarCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloCriarCardapio.setText("Cardápios");
-        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 22, -1, -1));
+        lblTituloCriarCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cardapios_s.png"))); // NOI18N
+        lblTituloCriarCardapio.setText(" ");
+        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 190, -1));
 
         lblDia.setText("Dia");
         jPanel1.add(lblDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 78, -1, -1));

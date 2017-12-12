@@ -121,8 +121,9 @@ public class EditarCardapio extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloCriarCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloCriarCardapio.setText("Editar Cardápio");
-        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 26, -1, -1));
+        lblTituloCriarCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/editar_card.png"))); // NOI18N
+        lblTituloCriarCardapio.setText(" ");
+        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 300, -1));
 
         cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado" }));
         jPanel1.add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 81, 333, 30));

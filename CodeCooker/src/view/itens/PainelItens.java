@@ -90,8 +90,8 @@ public class PainelItens extends javax.swing.JPanel {
         add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 112, 45));
 
         lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloItens.setText("Alimentos e Bebidas");
-        add(lblTituloItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, 28));
+        lblTituloItens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/itens.png"))); // NOI18N
+        add(lblTituloItens, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 280, 120));
 
         btnAdicionar.setBackground(new java.awt.Color(255, 255, 255));
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar.png"))); // NOI18N

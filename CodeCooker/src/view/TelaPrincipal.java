@@ -122,34 +122,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLogin.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Conectar/button_conectar_clicked.png"))); // NOI18N
         btnLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Conectar/button_conectar_swap.png"))); // NOI18N
         pnlHome.add(btnLogin);
-        btnLogin.setBounds(85, 268, 80, 23);
+        btnLogin.setBounds(220, 300, 80, 23);
 
         lblTitulo.setFont(new java.awt.Font("Ubuntu", 1, 28)); // NOI18N
-        lblTitulo.setText("CodeCookers");
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/codecookers.png"))); // NOI18N
+        lblTitulo.setText(" ");
         pnlHome.add(lblTitulo);
-        lblTitulo.setBounds(11, 12, 182, 37);
+        lblTitulo.setBounds(11, 12, 450, 64);
 
         txtUsuario.setBackground(new java.awt.Color(255, 248, 244));
         txtUsuario.setToolTipText("");
         pnlHome.add(txtUsuario);
-        txtUsuario.setBounds(52, 175, 110, 20);
+        txtUsuario.setBounds(170, 200, 180, 30);
 
         txtSenha.setBackground(new java.awt.Color(255, 248, 244));
         pnlHome.add(txtSenha);
-        txtSenha.setBounds(52, 230, 110, 20);
+        txtSenha.setBounds(170, 260, 180, 30);
 
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUsuario.setText("Usuario");
         pnlHome.add(lblUsuario);
-        lblUsuario.setBounds(52, 155, 36, 14);
+        lblUsuario.setBounds(170, 180, 50, 14);
 
+        lblSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblSenha.setText("Senha");
         pnlHome.add(lblSenha);
-        lblSenha.setBounds(52, 213, 30, 14);
+        lblSenha.setBounds(170, 240, 40, 14);
 
         lblBemVindo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblBemVindo.setText("Bem Vindo!");
+        lblBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bem vindo.png"))); // NOI18N
         pnlHome.add(lblBemVindo);
-        lblBemVindo.setBounds(79, 115, 136, 29);
+        lblBemVindo.setBounds(150, 140, 214, 40);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -169,7 +172,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlHome.add(jLabel1);
         jLabel1.setBounds(0, 1, 540, 350);
 
-        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/casa.png")), pnlHome, ""); // NOI18N
+        tabPane.addTab("", new javax.swing.ImageIcon(getClass().getResource("/image/ic_store_black_24dp.png")), pnlHome, ""); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

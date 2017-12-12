@@ -336,62 +336,63 @@ public class PainelMesas extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMesa2.setText("Mesa 2");
-        add(lblMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        add(lblMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
 
         lblMesa3.setText("Mesa 3");
-        add(lblMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+        add(lblMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
         lblMesa4.setText("Mesa 4");
-        add(lblMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        add(lblMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         lblMesa5.setText("Mesa 5");
-        add(lblMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        add(lblMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
 
         btnMesa2.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 84, 79));
+        add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 84, 79));
 
         lblMesa6.setText("Mesa 6");
-        add(lblMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
+        add(lblMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
         lblMesa1.setText("Mesa 1");
-        add(lblMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        add(lblMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         btnReservarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa.png"))); // NOI18N
         btnReservarMesa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa_clicked.png"))); // NOI18N
         btnReservarMesa.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Reservar Mesa/button_reservar-mesa_swap.png"))); // NOI18N
-        add(btnReservarMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 110, 36));
+        add(btnReservarMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 110, 36));
 
         btnMesa3.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 84, 79));
+        add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 84, 79));
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva.png"))); // NOI18N
         btnExcluir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva_clicked.png"))); // NOI18N
         btnExcluir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir Reserva/button_excluir-reserva_swap.png"))); // NOI18N
-        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 110, 36));
+        add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 110, 36));
 
         btnMesa1.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa1.setForeground(new java.awt.Color(102, 255, 102));
         btnMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
         btnMesa1.setOpaque(true);
-        add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 84, 79));
+        add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 84, 79));
 
         blTituloMesa.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        blTituloMesa.setText("Mesas");
-        add(blTituloMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 25, -1, -1));
+        blTituloMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/mesas.png"))); // NOI18N
+        blTituloMesa.setText(" ");
+        add(blTituloMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 190, -1));
 
         btnMesa4.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 84, 79));
+        add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 84, 79));
 
         btnMesa6.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        add(btnMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 84, 79));
+        add(btnMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 84, 79));
 
         btnMesa5.setBackground(new java.awt.Color(102, 255, 102));
         btnMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Small_Table.png"))); // NOI18N
-        add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 84, 79));
+        add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 84, 79));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));

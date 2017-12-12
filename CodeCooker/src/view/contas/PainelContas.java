@@ -118,8 +118,9 @@ public class PainelContas extends javax.swing.JPanel {
         add(btnAlterarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 230, 111, 42));
 
         lblTituloContas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloContas.setText("Contas");
-        add(lblTituloContas, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 39, -1, -1));
+        lblTituloContas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/contas.png"))); // NOI18N
+        lblTituloContas.setText(" ");
+        add(lblTituloContas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 350));

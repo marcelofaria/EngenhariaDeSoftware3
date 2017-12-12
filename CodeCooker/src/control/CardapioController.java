@@ -10,9 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cardapio;
@@ -158,7 +156,7 @@ public class CardapioController {
             try {
                 if (!cdao.existeCardapio(telaCriar.getDia())) {
                     cdao.create(telaCriar.getDia(), itens);
-                    JOptionPane.showMessageDialog(null, "Cardápio criado com sucesso.");
+                    //JOptionPane.showMessageDialog(null, "Cardápio criado com sucesso.");
                     telaCriar.dispose();
                 } else {
                     int resposta = JOptionPane.showConfirmDialog(
@@ -169,7 +167,7 @@ public class CardapioController {
                     if (resposta == JOptionPane.YES_OPTION) {
                         cdao.excluirCardapio(telaCriar.getDia());
                         cdao.create(telaCriar.getDia(), itens);
-                        JOptionPane.showMessageDialog(null, "Cardápio criado com sucesso.");
+                        //JOptionPane.showMessageDialog(null, "Cardápio criado com sucesso.");
                         telaCriar.dispose();
                     } else {
                         telaCriar.dispose();
@@ -251,7 +249,7 @@ public class CardapioController {
             CardapioDAO cdao = CardapioDAO.getInstance();
             if (cdao.existeCardapio(telaExcluir.getDia())) {
                 cdao.excluirCardapio(telaExcluir.getDia());
-                JOptionPane.showMessageDialog(null, "Cardápio excluído com sucesso.");
+                //JOptionPane.showMessageDialog(null, "Cardápio excluído com sucesso.");
                 telaExcluir.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Um cardápio para " + telaExcluir.getDia() + " não existe.");
@@ -337,7 +335,7 @@ public class CardapioController {
             try {
                 cdao.excluirCardapio(telaEditar.getDia());
                 cdao.create(telaEditar.getDia(), itens);
-                JOptionPane.showMessageDialog(null, "Cadápio editado com sucesso.");
+                //JOptionPane.showMessageDialog(null, "Cadápio editado com sucesso.");
                 telaEditar.setVisible(false);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Falha ao editar cardápio.");

@@ -96,9 +96,10 @@ public class PainelEstoque extends javax.swing.JPanel {
         btnExcluirProduto.setBounds(350, 240, 112, 45);
 
         lblTituloItens.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloItens.setText("Controle de Estoque");
+        lblTituloItens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/estoque.png"))); // NOI18N
+        lblTituloItens.setText(" ");
         add(lblTituloItens);
-        lblTituloItens.setBounds(160, 70, 241, 28);
+        lblTituloItens.setBounds(80, 70, 396, 50);
 
         btnAdicionarProduto.setBackground(new java.awt.Color(255, 255, 255));
         btnAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Adicionar/button_adicionar.png"))); // NOI18N

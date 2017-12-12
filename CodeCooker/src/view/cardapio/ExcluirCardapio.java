@@ -64,8 +64,9 @@ public class ExcluirCardapio extends javax.swing.JFrame {
         jPanel1.add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 312, 33));
 
         lblTituloCriarCardapio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloCriarCardapio.setText("Excluir Cardápio");
-        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
+        lblTituloCriarCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/excl_card.png"))); // NOI18N
+        lblTituloCriarCardapio.setText(" ");
+        jPanel1.add(lblTituloCriarCardapio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 320, -1));
 
         lblDia.setText("Dia");
         jPanel1.add(lblDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));

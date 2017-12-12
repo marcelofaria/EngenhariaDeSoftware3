@@ -80,7 +80,7 @@ public class ItensController {
                     ai.setVisible(false);
                     ItemDAO idao = ItemDAO.getInstance();
                     idao.create(ai.getNome(), "Prato", ai.getPreco(), ai.getIngredientes(), ai.getDisponibilidade());
-                    JOptionPane.showMessageDialog(null, "Prato criado com sucesso.");
+                    //JOptionPane.showMessageDialog(null, "Prato criado com sucesso.");
                 }
 
             });
@@ -120,7 +120,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -168,7 +168,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Prato", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Prato editado com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -210,7 +210,7 @@ public class ItensController {
                         ItemDAO idao = ItemDAO.getInstance();
                         idao.delete(itemID);
                         bi.dispose();
-                        JOptionPane.showMessageDialog(null, "Prato excluído com sucesso.");
+                        //JOptionPane.showMessageDialog(null, "Prato excluído com sucesso.");
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
                     }
@@ -231,7 +231,7 @@ public class ItensController {
                     ai.setVisible(false);
                     ItemDAO idao = ItemDAO.getInstance();
                     idao.create(ai.getNome(), "Porcao", ai.getPreco(), ai.getIngredientes(), ai.getDisponibilidade());
-                    JOptionPane.showMessageDialog(null, "Porção criada com sucesso.");
+                    //JOptionPane.showMessageDialog(null, "Porção criada com sucesso.");
                 }
 
             });
@@ -271,7 +271,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -318,7 +318,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Porcao", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Porcao editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -360,7 +360,7 @@ public class ItensController {
                         ItemDAO idao = ItemDAO.getInstance();
                         idao.delete(itemID);
                         bi.dispose();
-                        JOptionPane.showMessageDialog(null, "Porção excluída com sucesso.");
+                        //JOptionPane.showMessageDialog(null, "Porção excluída com sucesso.");
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
                     }
@@ -381,7 +381,7 @@ public class ItensController {
                     ai.setVisible(false);
                     ItemDAO idao = ItemDAO.getInstance();
                     idao.create(ai.getNome(), "Bebida", ai.getPreco(), ai.getIngredientes(), ai.getDisponibilidade());
-                    JOptionPane.showMessageDialog(null, "Bebida criada com sucesso.");
+                    //JOptionPane.showMessageDialog(null, "Bebida criada com sucesso.");
                 }
 
             });
@@ -421,7 +421,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -467,7 +467,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Bebida", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Bebida editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -508,7 +508,7 @@ public class ItensController {
                         ItemDAO idao = ItemDAO.getInstance();
                         idao.delete(itemID);
                         bi.dispose();
-                        JOptionPane.showMessageDialog(null, "Bebida excluída com sucesso.");
+                        //JOptionPane.showMessageDialog(null, "Bebida excluída com sucesso.");
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
                     }
@@ -529,7 +529,7 @@ public class ItensController {
                     ai.setVisible(false);
                     ItemDAO idao = ItemDAO.getInstance();
                     idao.create(ai.getNome(), "Sobremesa", ai.getPreco(), ai.getIngredientes(), ai.getDisponibilidade());
-                    JOptionPane.showMessageDialog(null, "Sobremesa criada com sucesso.");
+                    //JOptionPane.showMessageDialog(null, "Sobremesa criada com sucesso.");
                 }
 
             });
@@ -569,7 +569,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -615,7 +615,7 @@ public class ItensController {
                                 ei.setVisible(false);
                                 ItemDAO idao = ItemDAO.getInstance();
                                 idao.update(new Item(itemID, ei.getNome(), "Sobremesa", ei.getPreco(), ei.getIngredientes(), ei.getDisponibilidade()));
-                                JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
+                                //JOptionPane.showMessageDialog(null, "Sobremesa editada com sucesso.");
                             }
                         });
                     } catch (ArrayIndexOutOfBoundsException ex) {
@@ -656,7 +656,7 @@ public class ItensController {
                         ItemDAO idao = ItemDAO.getInstance();
                         idao.delete(itemID);
                         bi.dispose();
-                        JOptionPane.showMessageDialog(null, "Sobremesa excluída com sucesso.");
+                        //JOptionPane.showMessageDialog(null, "Sobremesa excluída com sucesso.");
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         JOptionPane.showMessageDialog(null, "Por favor, selecione antes um item da tabela que deseja excluir.");
                     }

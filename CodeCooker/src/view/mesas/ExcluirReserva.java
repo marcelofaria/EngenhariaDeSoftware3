@@ -42,10 +42,6 @@ public class ExcluirReserva extends javax.swing.JFrame {
             return 6;
         
     }
-
-    public String getDataHora(){
-        return txtDataHora.getText() + ":00";
-    }
     
     public void addBtnConfirmarListener(ActionListener listener){
         this.btnConfirmar.addActionListener(listener);
@@ -74,9 +70,6 @@ public class ExcluirReserva extends javax.swing.JFrame {
         lblExcluirReserva = new javax.swing.JLabel();
         lblMesa = new javax.swing.JLabel();
         cmbMesa = new javax.swing.JComboBox<>();
-        lblDataHora = new javax.swing.JLabel();
-        txtDataHora = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -85,29 +78,15 @@ public class ExcluirReserva extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblExcluirReserva.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblExcluirReserva.setText("Excluir Reserva");
-        getContentPane().add(lblExcluirReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 40, -1, -1));
+        lblExcluirReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/excl_reserv.png"))); // NOI18N
+        lblExcluirReserva.setText(" ");
+        getContentPane().add(lblExcluirReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 290, -1));
 
         lblMesa.setText("Mesa");
-        getContentPane().add(lblMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 101, -1, -1));
+        getContentPane().add(lblMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         cmbMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4", "Mesa 5", "Mesa 6", "Mesa 7" }));
-        getContentPane().add(cmbMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 121, 263, 30));
-
-        lblDataHora.setText("Data/hora da reserva");
-        getContentPane().add(lblDataHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 169, -1, -1));
-
-        txtDataHora.setBackground(new java.awt.Color(255, 244, 248));
-        try {
-            txtDataHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        getContentPane().add(txtDataHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 189, 263, 30));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel3.setText("aaaa/mm/dd hh:mm");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 169, -1, 14));
+        getContentPane().add(cmbMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 263, 30));
 
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Confirmar/button_confirmar.png"))); // NOI18N
         btnConfirmar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Confirmar/button_confirmar_clicked.png"))); // NOI18N
@@ -128,10 +107,7 @@ public class ExcluirReserva extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cmbMesa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblDataHora;
     private javax.swing.JLabel lblExcluirReserva;
     private javax.swing.JLabel lblMesa;
-    private javax.swing.JFormattedTextField txtDataHora;
     // End of variables declaration//GEN-END:variables
 }

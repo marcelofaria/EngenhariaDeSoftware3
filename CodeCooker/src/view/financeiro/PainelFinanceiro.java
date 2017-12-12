@@ -47,8 +47,9 @@ public class PainelFinanceiro extends javax.swing.JPanel {
         add(lblPratoDoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
 
         lblTituloFinanceiro.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloFinanceiro.setText("Financeiro");
-        add(lblTituloFinanceiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 69, -1, -1));
+        lblTituloFinanceiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Financeiro.png"))); // NOI18N
+        lblTituloFinanceiro.setText("  ");
+        add(lblTituloFinanceiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
         btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Gerar Relatório/button_gerar-relatorio.png"))); // NOI18N
         btnRelatorio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Gerar Relatório/button_gerar-relatorio_clicked.png"))); // NOI18N

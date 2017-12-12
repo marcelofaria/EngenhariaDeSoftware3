@@ -74,16 +74,17 @@ public class PainelBuscarProduto extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBuscarProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblBuscarProduto.setText("Buscar Produto");
-        getContentPane().add(lblBuscarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 22, -1, -1));
+        lblBuscarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/busc_prod.png"))); // NOI18N
+        lblBuscarProduto.setText(" ");
+        getContentPane().add(lblBuscarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 290, -1));
 
         txtBuscarProduto.setBackground(new java.awt.Color(255, 248, 248));
-        getContentPane().add(txtBuscarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 57, 224, 30));
+        getContentPane().add(txtBuscarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 224, 30));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/Buscar Pequeno/button_buscar.png"))); // NOI18N
         btnBuscar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/Buscar Pequeno/button_buscar_clicked.png"))); // NOI18N
         btnBuscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Buscar/Buscar Pequeno/button_buscar_swap.png"))); // NOI18N
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 57, 108, 30));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 108, 30));
 
         tblTabela.setBackground(new java.awt.Color(255, 248, 244));
         tblTabela.setModel(new javax.swing.table.DefaultTableModel(

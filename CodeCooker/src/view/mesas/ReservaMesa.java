@@ -111,8 +111,9 @@ public class ReservaMesa extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Reserva de Mesa");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 22, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reserv_mesa.png"))); // NOI18N
+        jLabel1.setText(" ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 270, -1));
 
         txtNome.setBackground(new java.awt.Color(255, 248, 244));
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 89, 297, 30));

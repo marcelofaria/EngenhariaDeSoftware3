@@ -130,39 +130,40 @@ public class PainelFuncionario extends javax.swing.JPanel {
         btnExcluirFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario.png"))); // NOI18N
         btnExcluirFuncionario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario_clicked.png"))); // NOI18N
         btnExcluirFuncionario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Excluir/Funcionário/button_excluir-funcionario_swap.png"))); // NOI18N
-        add(btnExcluirFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 292, 119, 23));
+        add(btnExcluirFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 119, 23));
 
         lblTituloFuncionarios.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTituloFuncionarios.setText("Funcionários");
-        add(lblTituloFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 37, -1, -1));
+        lblTituloFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/funcionarios.png"))); // NOI18N
+        lblTituloFuncionarios.setText(" ");
+        add(lblTituloFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 380, -1));
 
         lblListaMetres.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblListaMetres.setText("Metres");
-        add(lblListaMetres, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 89, -1, -1));
+        add(lblListaMetres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         lblListaCaixas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblListaCaixas.setText("Caixas");
-        add(lblListaCaixas, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 89, -1, -1));
+        add(lblListaCaixas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         lstMetres.setBackground(new java.awt.Color(255, 248, 244));
         lstMetres.setSelectionBackground(new java.awt.Color(244, 216, 194));
         lstMetres.setSelectionForeground(new java.awt.Color(81, 56, 39));
         jScrollPane2.setViewportView(lstMetres);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 112, 116, 67));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 140, 100));
 
         lstCaixas.setBackground(new java.awt.Color(255, 248, 244));
         lstCaixas.setSelectionBackground(new java.awt.Color(244, 216, 194));
         lstCaixas.setSelectionForeground(new java.awt.Color(81, 56, 39));
         jScrollPane3.setViewportView(lstCaixas);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 112, 116, 67));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 140, 100));
 
         btnCadastrarFuncionario.setBackground(new java.awt.Color(102, 255, 102));
-        btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario.png"))); // NOI18N
-        btnCadastrarFuncionario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario_clicked.png"))); // NOI18N
-        btnCadastrarFuncionario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar Funcionário/button_cadastrar-funcionario_swap.png"))); // NOI18N
-        add(btnCadastrarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 223, 142, 51));
+        btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/Funcionário/button_cadastrar-funcionario.png"))); // NOI18N
+        btnCadastrarFuncionario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/Funcionário/button_cadastrar-funcionario_clicked.png"))); // NOI18N
+        btnCadastrarFuncionario.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Botões/Cadastrar/Funcionário/button_cadastrar-funcionario_swap.png"))); // NOI18N
+        add(btnCadastrarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Estilo/Redimensionadas/pexels-photo-349610RE.jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 540, 350));
